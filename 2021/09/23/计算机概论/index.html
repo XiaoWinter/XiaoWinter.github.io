@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"xiaowinter.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="参考资料  Crash Course 计算机视频 一、计算机的早期历史美索不达米亚 1000 BC 算盘    time area Instance 进制    1000BC 美索不达米亚 算盘 10   1694 德国 步进计算器 10   before 20 C world 计算表    1822 英国（Charles Babbage） 差分机（论文）    1822-1842 英国(Cha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机概论">
+<meta property="og:url" content="https://xiaowinter.github.io/2021/09/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/index.html">
+<meta property="og:site_name" content="DaWinter">
+<meta property="og:description" content="参考资料  Crash Course 计算机视频 一、计算机的早期历史美索不达米亚 1000 BC 算盘    time area Instance 进制    1000BC 美索不达米亚 算盘 10   1694 德国 步进计算器 10   before 20 C world 计算表    1822 英国（Charles Babbage） 差分机（论文）    1822-1842 英国(Cha">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://47.103.65.182/markdown/104.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/040.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/041.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/042.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/043.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/044.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/045.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/046.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/047.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/048.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/049.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/050.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/051.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/052.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/054.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/055.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/057.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/056.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/058.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/059.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/060.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/061.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/063.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/062.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/064.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/065.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/067.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/068.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/069.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/070.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/071.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/072.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/073.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/074.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/075.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/076.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/077.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/078.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/079.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/080.png">
+<meta property="og:image" content="http://47.103.65.182/markdown/081.png">
+<meta property="article:published_time" content="2021-09-23T09:36:14.650Z">
+<meta property="article:modified_time" content="2021-09-23T09:36:14.650Z">
+<meta property="article:author" content="Da Winter">
+<meta property="article:tag" content="计算机概论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://47.103.65.182/markdown/104.png">
+
+<link rel="canonical" href="https://xiaowinter.github.io/2021/09/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计算机概论 | DaWinter</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="DaWinter" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">DaWinter</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">DaWinter's blob</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2021/09/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://47.103.65.182/markdown/125.jpg">
+      <meta itemprop="name" content="Da Winter">
+      <meta itemprop="description" content="我这里有一些好康的">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机概论
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-23 17:36:14" itemprop="dateCreated datePublished" datetime="2021-09-23T17:36:14+08:00">2021-09-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>参考资料</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av21376839?p=1">Crash Course 计算机视频</a></p>
+<h2 id="一、计算机的早期历史"><a href="#一、计算机的早期历史" class="headerlink" title="一、计算机的早期历史"></a>一、计算机的早期历史</h2><p>美索不达米亚 1000 BC 算盘</p>
+<table>
+<thead>
+<tr>
+<th>time</th>
+<th>area</th>
+<th>Instance</th>
+<th>进制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1000BC</td>
+<td>美索不达米亚</td>
+<td>算盘</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1694</td>
+<td>德国</td>
+<td>步进计算器</td>
+<td>10</td>
+</tr>
+<tr>
+<td>before 20 C</td>
+<td>world</td>
+<td>计算表</td>
+<td></td>
+</tr>
+<tr>
+<td>1822</td>
+<td>英国（Charles Babbage）</td>
+<td>差分机（论文）</td>
+<td></td>
+</tr>
+<tr>
+<td>1822-1842</td>
+<td>英国(Charles Babbage)</td>
+<td>分析机（general computer）</td>
+<td></td>
+</tr>
+<tr>
+<td>18X（8|9）？</td>
+<td>美国（Hollerith IBM 创始人）</td>
+<td>打孔卡片制表机</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>Ada Lovelace 给分析机写了假象程序(第一程序员)</p>
+<p>Charles Babbage 设计了分析机，即通用计算机 （计算机之父）</p>
+<span id="more"></span>
+
+<h2 id="二、电子计算机"><a href="#二、电子计算机" class="headerlink" title="二、电子计算机"></a>二、电子计算机</h2><p>机械继电器（开关），利用电磁线圈的磁场把开关吸下来，联通电路</p>
+<p>二极管 （首先出现为热电子管）</p>
+<p>三级真空管（二代继电器），每秒客开闭千次</p>
+<p>1947 贝尔实验室 晶体管（半导体材料继电器），每秒万次开闭，加州硅谷，出现仙童半导体公司，仙童来变成了英特尔，目前的晶体管体积 50 纳米，每秒上百万次开闭，工作几十年，</p>
+<table>
+<thead>
+<tr>
+<th>time</th>
+<th>area</th>
+<th>instance</th>
+<th>person</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1944</td>
+<td>IBM</td>
+<td>Mark II</td>
+<td>IBM</td>
+<td>1947 pulled a bug</td>
+</tr>
+<tr>
+<td>1943.12</td>
+<td>英国 Bletchley</td>
+<td>Mark I</td>
+<td>Tommy Flowers</td>
+<td>大规模使用真空管(1600)，可编程，解密 Nazi</td>
+</tr>
+<tr>
+<td>1941</td>
+<td>英国 Bletchley</td>
+<td>Bombe</td>
+<td>Alan Turing</td>
+<td>designd to break Enigma code</td>
+</tr>
+<tr>
+<td>1946</td>
+<td>美</td>
+<td>ENIAC</td>
+<td>Pennsylvania</td>
+<td>积分，真正意义电子计算机</td>
+</tr>
+<tr>
+<td>1958</td>
+<td>美</td>
+<td>IBM608</td>
+<td>IBM</td>
+<td>使用晶体管</td>
+</tr>
+</tbody></table>
+<h2 id="三、布尔逻辑与逻辑门"><a href="#三、布尔逻辑与逻辑门" class="headerlink" title="三、布尔逻辑与逻辑门"></a>三、布尔逻辑与逻辑门</h2><h3 id="布尔代数"><a href="#布尔代数" class="headerlink" title="布尔代数"></a><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2016/08/boolean-algebra.html">布尔代数</a></h3><p>关于真值的逻辑运算称为布尔代数（Boolean Algebra），以它的创始人布尔命名。</p>
+<p>在编程语言中表示 T 值和 F 值的数据类型叫做布尔类型，在 C 语言中通常用<code>int</code>类型来表示，非 0 表示 T，0 表示 F。布尔逻辑是写程序的基本功之一，程序中的很多错误都可以归因于逻辑错误。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">以下是一些布尔代数的基本定理，为了简洁易读，T和F用1和0表示，AND用*号表示，OR用+号表示（从真值表可以看出AND和OR运算确实有些类似*和+），NOT用¬表示，x、y、z的值可能是0也可能是1。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">¬¬x=x</span><br><span class="line"></span><br><span class="line">x*0=0</span><br><span class="line">x+1=1</span><br><span class="line"></span><br><span class="line">x*1=x</span><br><span class="line">x+0=x</span><br><span class="line"></span><br><span class="line">x*x=x</span><br><span class="line">x+x=x</span><br><span class="line"></span><br><span class="line">x*¬x=0</span><br><span class="line">x+¬x=1</span><br><span class="line"></span><br><span class="line">x*y=y*x</span><br><span class="line">x+y=y+x</span><br><span class="line"></span><br><span class="line">x*(y*z)=(x*y)*z</span><br><span class="line">x+(y+z)=(x+y)+z</span><br><span class="line"></span><br><span class="line">x*(y+z)=x*y+x*z</span><br><span class="line">x+y*z=(x+y)*(x+z)</span><br><span class="line"></span><br><span class="line">x+x*y=x</span><br><span class="line">x*(x+y)=x</span><br><span class="line"></span><br><span class="line">x*y+x*¬y=x</span><br><span class="line">(x+y)*(x+¬y)=x</span><br><span class="line"></span><br><span class="line">¬(x*y)=¬x+¬y</span><br><span class="line">¬(x+y)=¬x*¬y</span><br><span class="line"></span><br><span class="line">x+¬x*y=x+y</span><br><span class="line">x*(¬x+y)=x*y</span><br><span class="line"></span><br><span class="line">x*y+¬x*z+y*z=x*y+¬x*z</span><br><span class="line">(x+y)*(¬x+z)*(y+z)=(x+y)*(¬x+z)</span><br><span class="line"></span><br><span class="line">除了第1行之外，这些公式都是每两行一组的，每组的两个公式就像对联一样：把其中一个公式中的*换成+、+换成*、0换成1、1换成0，就变成了与它对称的另一个公式。这些定理都可以通过真值表证明</span><br></pre></td></tr></table></figure>
+
+<h3 id="逻辑门-and-or-not-xor"><a href="#逻辑门-and-or-not-xor" class="headerlink" title="逻辑门 and or not xor"></a>逻辑门 and or not xor</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sunshine-jackie/p/8137240.html">逻辑门的晶体管实现</a></p>
+<p>VDD 就是电源的意思</p>
+<h4 id="and"><a href="#and" class="headerlink" title="and"></a>and</h4><table>
+<thead>
+<tr>
+<th>true</th>
+<th>true</th>
+<th>true</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody></table>
+<h4 id="or"><a href="#or" class="headerlink" title="or"></a>or</h4><table>
+<thead>
+<tr>
+<th>true</th>
+<th>true</th>
+<th>true</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody></table>
+<h4 id="not"><a href="#not" class="headerlink" title="not"></a>not</h4><table>
+<thead>
+<tr>
+<th>true</th>
+<th>false</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>false</td>
+<td>true</td>
+</tr>
+</tbody></table>
+<h4 id="xor"><a href="#xor" class="headerlink" title="xor"></a>xor</h4><table>
+<thead>
+<tr>
+<th>true</th>
+<th>true</th>
+<th>false</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody></table>
+<h2 id="四、二进制"><a href="#四、二进制" class="headerlink" title="四、二进制"></a>四、二进制</h2><h3 id="二进制，逢二进一"><a href="#二进制，逢二进一" class="headerlink" title="二进制，逢二进一"></a>二进制，逢二进一</h3><table>
+<thead>
+<tr>
+<th>2^7^</th>
+<th>2^6^</th>
+<th>2^5^</th>
+<th>2^4^</th>
+<th>2^3^</th>
+<th>2^2^</th>
+<th>2^1^</th>
+<th>2^0^</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>二进制中，</p>
+<p>一个 0 或 1 表示一位（1bit）</p>
+<p>8bit = 1byte(字节)</p>
+<p>1kb = 2^10^ byte = 1024 byte</p>
+<h4 id="数字表示"><a href="#数字表示" class="headerlink" title="数字表示"></a>数字表示</h4><h5 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h5><p>0 000 0000 0000 0000 0000 0000 0000 0000</p>
+<p>首位表示正负（sign）其余为数值</p>
+<h5 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h5><p>0 000 0000 0 000 0000 0000 0000 0000 0000</p>
+<p>浮点数是将科学计数法的数字进行存储，首位表示正负（sign）接下来八位 表示指数，剩下的 23 位表示有效位数</p>
+<p>例如</p>
+<p>153446631161563 的科学计数法表示 0.153446631161563 x 10^15^</p>
+<p>它的浮点数如下 4 字节的浮点数精度损失还是比较大</p>
+<p>0 000 0111 1 100 0101 1100 0111 1000 1001‬</p>
+<h4 id="字符的表示"><a href="#字符的表示" class="headerlink" title="字符的表示"></a>字符的表示</h4><p>字符表示最简单的方法就是给字母一个编号，就有了 ASCII</p>
+<p>为了表示 the world 的所有字符，后来就出现了 Unicode 和 ISO，之后他们俩兼容了，现在常用的编码实现位 utf-8,它是一种可变长的编码，<a href="#####utf-8">utf-8 编码规则</a></p>
+<h5 id="unicode"><a href="#unicode" class="headerlink" title="unicode"></a>unicode</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">正如上一节所说，世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。为什么电子邮件常常出现乱码？就是因为发信人和收信人使用的编码方式不一样。</span><br><span class="line"></span><br><span class="line">可以想象，如果有一种编码，将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。这就是 Unicode，就像它的名字都表示的，这是一种所有符号的编码。</span><br><span class="line"></span><br><span class="line">Unicode 当然是一个很大的集合，现在的规模可以容纳100多万个符号。每个符号的编码都不一样，比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字严。具体的符号对应表，可以查询unicode.org，或者专门的汉字对应表。</span><br></pre></td></tr></table></figure>
+
+<h5 id="unicode-的问题"><a href="#unicode-的问题" class="headerlink" title="unicode 的问题"></a>unicode 的问题</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">需要注意的是，Unicode 只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储。</span><br><span class="line"></span><br><span class="line">比如，汉字严的 Unicode 是十六进制数4E25，转换成二进制数足足有15位（100111000100101），也就是说，这个符号的表示至少需要2个字节。表示其他更大的符号，可能需要3个字节或者4个字节，甚至更多。</span><br><span class="line"></span><br><span class="line">这里就有两个严重的问题，第一个问题是，如何才能区别 Unicode 和 ASCII ？计算机怎么知道三个字节表示一个符号，而不是分别表示三个符号呢？第二个问题是，我们已经知道，英文字母只用一个字节表示就够了，如果 Unicode 统一规定，每个符号用三个或四个字节表示，那么每个英文字母前都必然有二到三个字节是0，这对于存储来说是极大的浪费，文本文件的大小会因此大出二三倍，这是无法接受的。</span><br><span class="line"></span><br><span class="line">它们造成的结果是：1）出现了 Unicode 的多种存储方式，也就是说有许多种不同的二进制格式，可以用来表示 Unicode。2）Unicode 在很长一段时间内无法推广，直到互联网的出现。</span><br></pre></td></tr></table></figure>
+
+<h5 id="utf-8"><a href="#utf-8" class="headerlink" title="utf-8"></a>utf-8</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">互联网的普及，强烈要求出现一种统一的编码方式。UTF-8 就是在互联网上使用最广的一种 Unicode 的实现方式。其他实现方式还包括 UTF-16（字符用两个字节或四个字节表示）和 UTF-32（字符用四个字节表示），不过在互联网上基本不用。重复一遍，这里的关系是，UTF-8 是 Unicode 的实现方式之一。</span><br><span class="line"></span><br><span class="line">UTF-8 最大的一个特点，就是它是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。</span><br><span class="line"></span><br><span class="line">UTF-8 的编码规则很简单，只有二条：</span><br><span class="line"></span><br><span class="line">1）对于单字节的符号，字节的第一位设为0，后面7位为这个符号的 Unicode 码。因此对于英语字母，UTF-8 编码和 ASCII 码是相同的。</span><br><span class="line"></span><br><span class="line">2）对于n字节的符号（n &gt; 1），第一个字节的前n位都设为1，第n + 1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的 Unicode 码。</span><br><span class="line"></span><br><span class="line">下表总结了编码规则，字母x表示可用编码的位。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Unicode 符号范围(十六进制)</th>
+<th>UTF-8 编码方式（二进制）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0000 0000-0000 007F</td>
+<td>0xxxxxxx</td>
+</tr>
+<tr>
+<td>0000 0080-0000 07FF</td>
+<td>110xxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>0000 0800-0000 FFFF</td>
+<td>1110xxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>0001 0000-0010 FFFF</td>
+<td>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">跟据上表，解读 UTF-8 编码非常简单。如果一个字节的第一位是0，则这个字节单独就是一个字符；如果第一位是1，则连续有多少个1，就表示当前字符占用多少个字节。</span><br><span class="line"></span><br><span class="line">下面，还是以汉字严为例，演示如何实现 UTF-8 编码。</span><br><span class="line"></span><br><span class="line">严的 Unicode 是4E25（100111000100101），根据上表，可以发现4E25处在第三行的范围内（0000 0800 - 0000 FFFF），因此严的 UTF-8 编码需要三个字节，即格式是1110xxxx 10xxxxxx 10xxxxxx。然后，从严的最后一个二进制位开始，依次从后向前填入格式中的x，多出的位补0。这样就得到了，严的 UTF-8 编码是11100100 10111000 10100101，转换成十六进制就是E4B8A5。</span><br></pre></td></tr></table></figure>
+
+<p>引用</p>
+<p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">字符编码笔记：ASCII，Unicode 和 UTF-8</a></p>
+<h4 id="字节序小知识"><a href="#字节序小知识" class="headerlink" title="字节序小知识"></a>字节序小知识</h4><img src="http://47.103.65.182/markdown/104.png">
+
+<h2 id="五、算数逻辑单元-ALU-Arithmetic-amp-Logic-Unit"><a href="#五、算数逻辑单元-ALU-Arithmetic-amp-Logic-Unit" class="headerlink" title="五、算数逻辑单元 ALU (Arithmetic &amp; Logic Unit)"></a>五、算数逻辑单元 ALU (Arithmetic &amp; Logic Unit)</h2><p>How Computer Calculate ——the ALU</p>
+<h3 id="计算单元"><a href="#计算单元" class="headerlink" title="计算单元"></a>计算单元</h3><h4 id="加法实现"><a href="#加法实现" class="headerlink" title="加法实现"></a>加法实现</h4><h5 id="a-half-adder"><a href="#a-half-adder" class="headerlink" title="a half adder"></a>a half adder</h5><p>进行 1bit 运算</p>
+<img src="http://47.103.65.182/markdown/040.png">
+
+<h5 id="全加器"><a href="#全加器" class="headerlink" title="全加器"></a>全加器</h5><p>full adder 使用两个 half adder 实现</p>
+<img src="http://47.103.65.182/markdown/041.png">
+
+<h5 id="8bit-adder"><a href="#8bit-adder" class="headerlink" title="8bit adder"></a>8bit adder</h5><img src="http://47.103.65.182/markdown/042.png">
+
+<img src="http://47.103.65.182/markdown/043.png">
+
+<h3 id="逻辑单元"><a href="#逻辑单元" class="headerlink" title="逻辑单元"></a>逻辑单元</h3><p>布尔运算 and or not xor</p>
+<p>对输入的信号，进行逻辑运算，结果符合真值表</p>
+<h4 id="ALU-抽象"><a href="#ALU-抽象" class="headerlink" title="ALU 抽象"></a>ALU 抽象</h4><img src="http://47.103.65.182/markdown/044.png">
+
+<h2 id="六、寄存器和内存（Registers-amp-RAM）"><a href="#六、寄存器和内存（Registers-amp-RAM）" class="headerlink" title="六、寄存器和内存（Registers &amp; RAM）"></a>六、寄存器和内存（Registers &amp; RAM）</h2><p>RAM : Random Access Memory</p>
+<p>PM : Persistent Memory</p>
+<p>存储 1bit 数据</p>
+<h3 id="sava-1"><a href="#sava-1" class="headerlink" title="sava 1"></a>sava 1</h3><p>就或门输出与输入链接，可以形成一个 1 的永久存储</p>
+<img src="http://47.103.65.182/markdown/045.png">
+
+<h3 id="sava-0"><a href="#sava-0" class="headerlink" title="sava 0"></a>sava 0</h3><p>将与门输出与输入连接，可以形成一个 0 的永久存储</p>
+<img src="http://47.103.65.182/markdown/046.png">
+
+<h3 id="锁存（AND-OR-LATCH）"><a href="#锁存（AND-OR-LATCH）" class="headerlink" title="锁存（AND-OR LATCH）"></a>锁存（AND-OR LATCH）</h3><p>将上述两个电路结合起来就做成了一个锁存器</p>
+<img src="http://47.103.65.182/markdown/047.png">
+
+<p>set 设为 1 后，无论 set 如何改变，输出一直为 1，即 set 将状态置为 1</p>
+<p>reset 设为 1 后，无论 reset 如何改变，输出一直为 0，即 reset 将状态置为 0</p>
+<p>set 和 reset 都为 0 的话，锁存器将会保存最后设置的状态，1bit 的记忆功能就实现了，记忆的结果取决于最后关闭的是谁</p>
+<h3 id="门锁（GATED-LATCH）"><a href="#门锁（GATED-LATCH）" class="headerlink" title="门锁（GATED LATCH）"></a>门锁（GATED LATCH）</h3><p>1bit 的可控制写入存储</p>
+<img src="http://47.103.65.182/markdown/048.png">
+
+<p>允许写入线为 0 时，set,reset 恒为 0,不可写入，允许写入线为 1 时，输入 0 将 reset 锁存，输入 1 将 set 锁存</p>
+<h4 id="抽象出门锁组件"><a href="#抽象出门锁组件" class="headerlink" title="抽象出门锁组件"></a>抽象出门锁组件</h4><img src="http://47.103.65.182/markdown/049.png">
+
+<h3 id="寄存器-register"><a href="#寄存器-register" class="headerlink" title="寄存器 register"></a>寄存器 register</h3><p>A group of lanches operating like this is called a <strong>register</strong> ,which hlod a single number , and the number of bits in a register is called its width.</p>
+<p>寄存器是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/CPU/120556">CPU</a>内部用来存放数据的一些小型存储区域，用来暂时存放参与运算的数据和运算结果。其实寄存器就是一种常用的时序逻辑电路，但这种时序逻辑电路只包含存储电路。寄存器的存储电路是由锁存器或触发器构成的，因为一个锁存器或触发器能存储 1 位二进制数，所以由 N 个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%94%81%E5%AD%98%E5%99%A8/10801965">锁存器</a>或触发器可以构成 N 位寄存器。寄存器是中央处理器内的组成部分。寄存器是有限存储容量的高速存储部件，它们可用来暂存指令</p>
+<img src="http://47.103.65.182/markdown/050.png">
+
+<p>16x16 门锁矩阵</p>
+<p>更大位的寄存器</p>
+<img src="http://47.103.65.182/markdown/051.png">
+
+<p>启用某个门锁的方式位激活相应的排线和列线</p>
+<img src="http://47.103.65.182/markdown/052.png">
+
+<p>在允许写入线前加一个<strong>与门</strong>，与行线和列线相连，就可以具体指向某个锁存</p>
+<img src="http://47.103.65.182/markdown/054.png">
+
+<p>启用行列线，再<strong>启用写入操作线</strong>，就可以操作这个锁存，再因为没有行列线的锁存是关闭启用写入线，所以写入操作线就算公用的（1 条线连所有），也可以做到针对某个锁存操作，</p>
+<img src="http://47.103.65.182/markdown/055.png">
+
+<p>启用行列线，再启用<strong>读取操作线</strong>，就可以打开门锁输出线的晶体管（应该是吧），启用数据输入输出线，就可以<strong>读取到这个锁存的输出</strong></p>
+<img src="http://47.103.65.182/markdown/057.png">
+
+<p>启用行列线，再启用<strong>写入操作线</strong>，就可以开启此所存的写入操作，此时操作<strong>数据输入输出线</strong>，可以设置锁存的值</p>
+<img src="http://47.103.65.182/markdown/056.png">
+
+<h3 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h3><p>如何表示操作的是哪个锁存，（我们任是使用 16x16 门锁矩阵）</p>
+<p>4bit 可以表示 16 个数字（0-15），8 个 bit 就可以表示一个地址（行，列）</p>
+<p>例如 3 行 10 列（0011，1010）</p>
+<h4 id="多路复用器-multiplexer"><a href="#多路复用器-multiplexer" class="headerlink" title="多路复用器(multiplexer)"></a>多路复用器(multiplexer)</h4><p>为了将行和列转换为地址，我们需要多路复用器(multiplexer)</p>
+<img src="http://47.103.65.182/markdown/058.png">
+
+<h4 id="内存（memory）"><a href="#内存（memory）" class="headerlink" title="内存（memory）"></a>内存（memory）</h4><img src="http://47.103.65.182/markdown/059.png">
+
+<h4 id="静态随机地址存储（SRAM）"><a href="#静态随机地址存储（SRAM）" class="headerlink" title="静态随机地址存储（SRAM）"></a>静态随机地址存储（SRAM）</h4><p>存储 8bit 数据的方式，8 个比特位用相同的地址分别存储</p>
+<img src="http://47.103.65.182/markdown/060.png">
+
+
+
+<p>这个是一个 SRAM （static random access memory）</p>
+<p>把这个内存单元，看成拥有 256 个地址，每个地址能读写一个 8bit 值，这就是 RAM</p>
+<img src="http://47.103.65.182/markdown/061.png">
+
+<h2 id="七、The-Center-Processing-Unit"><a href="#七、The-Center-Processing-Unit" class="headerlink" title="七、The Center Processing Unit"></a>七、The Center Processing Unit</h2><h3 id="基础组件"><a href="#基础组件" class="headerlink" title="基础组件"></a>基础组件</h3><img src="http://47.103.65.182/markdown/063.png">
+
+<h3 id="指令表"><a href="#指令表" class="headerlink" title="指令表"></a>指令表</h3><img src="http://47.103.65.182/markdown/062.png">
+
+<h3 id="cpu-基本架构"><a href="#cpu-基本架构" class="headerlink" title="cpu 基本架构"></a>cpu 基本架构</h3><p>我们还需要两个寄存器来完成 CPU，一个用来存储指令地址（本例是 RAM），一个用来存储指令</p>
+<img src="http://47.103.65.182/markdown/064.png">
+
+<h3 id="cpu-执行流程"><a href="#cpu-执行流程" class="headerlink" title="cpu 执行流程"></a>cpu 执行流程</h3><p>1.启动计算机，所有寄存器从零开始</p>
+<img src="http://47.103.65.182/markdown/065.png">
+
+<p>2.为了举例我们在 RAM 放了一个程序</p>
+<h4 id="取指令-FETCH-PHASE"><a href="#取指令-FETCH-PHASE" class="headerlink" title="取指令 FETCH PHASE"></a>取指令 FETCH PHASE</h4><p>cpu 的第一个阶段叫做<code>取指令阶段</code>FETCH PHASE ,负责拿到指令</p>
+<ul>
+<li>指令地址寄存器连到 RAM，此时寄存器地址为０,因此 RAM 返回地址 0 的值,值会复制到指令寄存器里</li>
+</ul>
+<img src="http://47.103.65.182/markdown/067.png">
+
+<h4 id="解码指令-DECODE-FHASE"><a href="#解码指令-DECODE-FHASE" class="headerlink" title="解码指令 DECODE FHASE"></a>解码指令 DECODE FHASE</h4><p>cpu 的第二个阶段叫做<code>解码阶段</code>DECODE FHASE,负责解析出要执行什么指令</p>
+<img src="http://47.103.65.182/markdown/068.png">
+
+<p>在我们定义的指令中,一个 8 位值,前 4 位代表指令,后 4 位代表参数;对于指令寄存器的值我们需要使用一个控制单元来进行解码</p>
+<ul>
+<li>检查指令是不是 LOAD_A,我们可以用很少的逻辑门实现</li>
+</ul>
+<img src="http://47.103.65.182/markdown/069.png">
+
+<h4 id="执行指令-EXECUTE-FHASE"><a href="#执行指令-EXECUTE-FHASE" class="headerlink" title="执行指令 EXECUTE FHASE"></a>执行指令 EXECUTE FHASE</h4><p>知道了是什么指令,我们就可以进入执行阶段</p>
+<img src="http://47.103.65.182/markdown/070.png">
+
+<ul>
+<li>电路的连接保证 LOAD_A 正确执行</li>
+</ul>
+<img src="http://47.103.65.182/markdown/071.png">
+
+<ul>
+<li>关闭电路,指令地址寄存器+1</li>
+</ul>
+<img src="http://47.103.65.182/markdown/072.png">
+
+<h3 id="控制单元"><a href="#控制单元" class="headerlink" title="控制单元"></a>控制单元</h3><p>分析完一个指令后,其他的指令也是类似的情况,所以将所有指令封装成一个控制单元</p>
+<img src="http://47.103.65.182/markdown/073.png">
+
+<ul>
+<li>对于 ADD 指令我们需要使用 ALU</li>
+</ul>
+<img src="http://47.103.65.182/markdown/074.png">
+
+<ul>
+<li>始终以精确的间隔触发电信号,控制单元会利用这个信号,推进 cpu 的内部操作,确保一切按步骤进行,cpu”取指令–&gt;解码–&gt;执行”的速度叫”时钟速度(CLOCK SPEED)”</li>
+</ul>
+<img src="http://47.103.65.182/markdown/075.png">
+
+<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><img src="http://47.103.65.182/markdown/076.png">
+
+<h2 id="八、指令和程序-Instruction-amp-Programs"><a href="#八、指令和程序-Instruction-amp-Programs" class="headerlink" title="八、指令和程序(Instruction&amp;Programs)"></a>八、指令和程序(Instruction&amp;Programs)</h2><p>cpu 之所以强大,是因为它是可编程的,写入不同的指令就会执行不同的任务,CPU 是一个可以被软件控制的硬件</p>
+<p>这是上一节的例子,四个指令形成了一个加法的操作</p>
+<ul>
+<li>RAM 地址 14 的值 加载到 RA</li>
+<li>RAM 地址 15 的值加载到 RB</li>
+<li>ADD RB &amp; RA ,将结果写入 RA</li>
+<li>将 RA 的值存到 RAM 的 13 地址</li>
+</ul>
+<img src="http://47.103.65.182/markdown/077.png">
+
+<h3 id="增加一些指令"><a href="#增加一些指令" class="headerlink" title="增加一些指令"></a>增加一些指令</h3><img src="http://47.103.65.182/markdown/078.png">
+
+<p>负数跳是通过 ALU 的标志位实现的</p>
+<img src="http://47.103.65.182/markdown/079.png">
+
+<p>没有 halt,cpu 就会继续执行下去,由于 0 不是指令所以电脑会崩,因为指令和数据都放在内存里,他们在根本上没有区别,都是二进制数,所以 halt 很重要,能区分指令和数据</p>
+<h3 id="循环的指令"><a href="#循环的指令" class="headerlink" title="循环的指令"></a>循环的指令</h3><ul>
+<li>RAM14 LOAD RA</li>
+<li>RAM15 LOAD RB</li>
+<li>ADD RB &amp; RA into RA</li>
+<li>JUMP 2 =&gt;INST.ADDR.REGISTER change into 2=&gt; EXECUTE RAM2 INST</li>
+<li>ADD RB &amp; RA into RA</li>
+<li>JUMP 2 =&gt;INST.ADDR.REGISTER change into 2=&gt; EXECUTE RAM2 INST</li>
+<li>…</li>
+</ul>
+<p>(INFINITE LOOP)</p>
+<img src="http://47.103.65.182/markdown/080.png">
+
+<h3 id="有条件的循环"><a href="#有条件的循环" class="headerlink" title="有条件的循环"></a>有条件的循环</h3><img src="http://47.103.65.182/markdown/081.png">
+
+<ul>
+<li>RAM14 LOAD RA</li>
+<li>RAM15 LOAD RB</li>
+<li>SUB RA - RB into RA 11-5=6&gt;0</li>
+<li>JUMP_NEG 5 =&gt; ALU RESULT &gt;0 =&gt;don’t EXECUTE</li>
+<li>JUMP 2=&gt;INST.ADDR.REGISTER change into 2=&gt; EXECUTE RAM2 INST</li>
+<li>SUB RB RA into RA into RA 6-5=1&gt;0</li>
+<li>JUMP_NEG 5 =&gt; ALU RESULT &gt;0 =&gt;don’t EXECUTE</li>
+<li>JUMP 2=&gt;INST.ADDR.REGISTER change into 2=&gt; EXECUTE RAM2 INST</li>
+<li>SUB RA - RB into RA 1-5=-4&gt;0</li>
+<li>JUMP_NEG 5 =&gt; ALU RESULT &lt;0 =&gt;INST.ADDR.REGISTER change into 5=&gt; EXECUTE RAM5 INST</li>
+<li>ADD RB &amp; RA into RA</li>
+<li>STORE RA into RAM 13</li>
+<li>HALT (结束)</li>
+</ul>
+<p>ALU 没有除法,但是我们可以通过程序来实现,</p>
+<h3 id="增加指令数量"><a href="#增加指令数量" class="headerlink" title="增加指令数量"></a>增加指令数量</h3><p>我们的指令使用 4bit 来表示,所以最多也就 16 条指令,</p>
+<p>增加指令有两种方法</p>
+<ul>
+<li>增加指令的位,即增加 INSTRUCTION LENGTH (指令长度)</li>
+<li>使用 VARIABLE LENGTH 　 INSTRUCTION 　（可变指令长度）HALT 立即执行 JUMP 看此参数,因此指令的位数可以不同,只要能保证功能即可</li>
+</ul>
+<h2 id="三十三、cryptography"><a href="#三十三、cryptography" class="headerlink" title="三十三、cryptography"></a>三十三、cryptography</h2><h3 id="模运算"><a href="#模运算" class="headerlink" title="模运算"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jojoke/archive/2007/12/17/1003594.html">模运算</a></h3><p>很多地方用到模运算，这里说明模运算的一些规律，并加以证明。 后续会对这些理论实际的应用加以记录和说明。</p>
+<ol>
+<li>模运算是取余运算(记做 % 或者 mod)，具有周期性的特点。 m%n 的意思是 n 除 m 后的余数， 当 m 递增时 m%n 呈现周期性特点， 并且 n 越大，周期越长，周期等于 n。<br>例如<br>0 % 20 = 0，1 % 20 = 1， 2 % 20 = 2， 3 % 20 = 3， …， 19 % 20 = 19<br>20 % 20 = 0，21 % 20 = 1，22 % 20 = 2，23 % 20 = 3， …，39 % 20 = 19</li>
+<li>如果 m % n = r，那么可以推出如下等式<br>m = k * n + r (k 为大于等于 0 的整数， r &lt;= m）</li>
+<li>同余式， 表示正整数 a，b 对 n 取模，它们的余数相同，记做 a ≡ b mod n 或者 a = b (mod n)。<br>根据 2 的等式可以推出 a = kn + b 或者 a - b = kn<br>证明： ∵ a = k1 _ n + r1<br>b = k2 _ n + r2<br>∴ a - b = (k1 - k2) _ n + (r1 - r2)<br>a = k _ n + (r1 - r2) + b<br>∵ a, b 对 n 取模同余，r1 = r2<br>∴ a = k * n + b (k = k1 - k2)</li>
+<li>模运算规则， 模运算与基本四则运算有些相似，但是除法例外。其规则如下</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(a + b) % n = (a % n + b % n) % n      （1）</span><br><span class="line">  (a - b) % n = (a % n - b % n) % n      （2）</span><br><span class="line">  (a * b) % n = (a % n * b % n) % n      （3）</span><br><span class="line">  a^b % n = ((a % n)b) % n           （4）</span><br></pre></td></tr></table></figure>
+
+<p>（1）式证明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">∵ a = k1*n + r1</span><br><span class="line"></span><br><span class="line">  b = k2*n + r2</span><br><span class="line"></span><br><span class="line"> a % n = r1</span><br><span class="line"></span><br><span class="line"> b % n = r2</span><br><span class="line"></span><br><span class="line">∴(a+b) % n = ((k1+k2)*n + (r1+r2)) % n = (r1+r2) % n = (a % n + b % n)% n</span><br></pre></td></tr></table></figure>
+
+<p>（2）式证明同上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>（3）式证明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">a = k1*n + r1</span><br><span class="line">b = k2*n + r2</span><br><span class="line">(a*b) % n = (k1k2n2 + (k1r2+k2r1)n + r1r2) % n = r1r2 % n = (a %n * b %n ) % n</span><br></pre></td></tr></table></figure>
+
+<p>(4)式证明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">设 a % n = r</span><br><span class="line">ab %n= (a * a * a * a…*a) %n = (a %n * a %n * a %n * … * a %n) %n = rb % n = ((a % n) b) % n</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>模运算看起来不是很直观，但是可以用来推导出一些有用的东西。 例如（4）式可以用来降幂运算，例如计算 6265 % 133,直接计算的话需要算出 6265 利用（4）式可以进行降幂运算。</p>
+<h3 id="Diffie-Hellman-算法"><a href="#Diffie-Hellman-算法" class="headerlink" title="Diffie-Hellman 算法"></a>Diffie-Hellman 算法</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/math/p/9383231.html">https://www.cnblogs.com/math/p/9383231.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0">离散对数</a>：定义素数 p 的原始根是能生成 1-(p-1)之间所有数的一个数，设 a 为 p 的原始根，则：a mod p，a^2^ mod p，…，a^(p-1)^ mod p 是各不相同的整数，且以某种排列方式组成了从 1 到 p-1 的所有整数。对于任意数 b 及素数 p 的原始根 a，可以找到一个唯一的指数 i，满足：b= a ^i^ mod p，其中 0≤i≤p-1，那么指数 i 称为 b 的以 a 为基数的模 p 的离散对数。</p>
+<p>Diffie-Hellman 算法的有效性依赖于计算离散对数的难度，其含义是：当已知大素数 p 和它的一个原根 a 后，对于给定的 b，要计算出 i 被认为是很困难的，而给定 i 计算 b 却相对容易。</p>
+<p>假设网络上有两个用户 A 和 B，彼此之间协商共同的密码，算法过程如图 1 所示 。</p>
+<p>假设交换密钥的值为 k 。</p>
+<p>(1)A 和 B 事先约好大素数 p 和它的原始根 a；</p>
+<p>(2)A 随机产生一个数 x，计算 X=a^x^ mod p，然后把 X 发给 B；</p>
+<p>3)B 随机产生一个数 y，计算 Y=a^y^mod p，然后把 Y 发给 A；</p>
+<p>(4)A 计算 k=Y^x^mod p；</p>
+<p>(5)B 计算 k’ = X^y^mod p;</p>
+<p>因为 k=Y^x^mod p = (a^y^mod p)^x^ mod p = (a^y^)^x^ mod p = (a^x^)^y^ mod p = (a^x^mod p)^y^ mod p = X^y^mod p = k’</p>
+<p>不安全网络上的窃听者只能得到 a、p、X、Y，除非能计算离散对数 x 和 y，否则将无法得到密钥 k，但对于大素数 p，计算离散对数是十分困难的，因此 k 为用户 A 和 B 独立计算出的密钥。</p>
+<p>扩展资料</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://crashcourse.club/">Crash Course 字幕组</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.patreon.com/crashcourse">Crash Course 官方</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/" rel="tag"># 计算机概论</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/23/%E5%A6%82%E4%BD%95%E5%9C%A8%E4%BF%A1%E6%81%AF%E4%B8%8D%E8%B6%B3%E6%97%B6%E4%BD%9C%E5%86%B3%E7%AD%96/" rel="prev" title="信息不足时如何做出决策">
+      <i class="fa fa-chevron-left"></i> 信息不足时如何做出决策
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/23/%E6%B5%81%E5%A4%84%E7%90%865/" rel="next" title="【浏览器怎么操作二进制】【五】总结">
+      【浏览器怎么操作二进制】【五】总结 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%97%A9%E6%9C%9F%E5%8E%86%E5%8F%B2"><span class="nav-number">1.</span> <span class="nav-text">一、计算机的早期历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">二、电子计算机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B8%83%E5%B0%94%E9%80%BB%E8%BE%91%E4%B8%8E%E9%80%BB%E8%BE%91%E9%97%A8"><span class="nav-number">3.</span> <span class="nav-text">三、布尔逻辑与逻辑门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E4%BB%A3%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">布尔代数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E9%97%A8-and-or-not-xor"><span class="nav-number">3.2.</span> <span class="nav-text">逻辑门 and or not xor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#and"><span class="nav-number">3.2.1.</span> <span class="nav-text">and</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#or"><span class="nav-number">3.2.2.</span> <span class="nav-text">or</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#not"><span class="nav-number">3.2.3.</span> <span class="nav-text">not</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xor"><span class="nav-number">3.2.4.</span> <span class="nav-text">xor</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">四、二进制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%EF%BC%8C%E9%80%A2%E4%BA%8C%E8%BF%9B%E4%B8%80"><span class="nav-number">4.1.</span> <span class="nav-text">二进制，逢二进一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E8%A1%A8%E7%A4%BA"><span class="nav-number">4.1.1.</span> <span class="nav-text">数字表示</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B4%E6%95%B0"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">整数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">浮点数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">4.1.2.</span> <span class="nav-text">字符的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#unicode"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">unicode</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#unicode-%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">unicode 的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#utf-8"><span class="nav-number">4.1.2.3.</span> <span class="nav-text">utf-8</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E5%BA%8F%E5%B0%8F%E7%9F%A5%E8%AF%86"><span class="nav-number">4.1.3.</span> <span class="nav-text">字节序小知识</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E5%8D%95%E5%85%83-ALU-Arithmetic-amp-Logic-Unit"><span class="nav-number">5.</span> <span class="nav-text">五、算数逻辑单元 ALU (Arithmetic &amp; Logic Unit)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%8D%95%E5%85%83"><span class="nav-number">5.1.</span> <span class="nav-text">计算单元</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.1.1.</span> <span class="nav-text">加法实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a-half-adder"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">a half adder</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%A8%E5%8A%A0%E5%99%A8"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">全加器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8bit-adder"><span class="nav-number">5.1.1.3.</span> <span class="nav-text">8bit adder</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%8D%95%E5%85%83"><span class="nav-number">5.2.</span> <span class="nav-text">逻辑单元</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ALU-%E6%8A%BD%E8%B1%A1"><span class="nav-number">5.2.1.</span> <span class="nav-text">ALU 抽象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E5%86%85%E5%AD%98%EF%BC%88Registers-amp-RAM%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">六、寄存器和内存（Registers &amp; RAM）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sava-1"><span class="nav-number">6.1.</span> <span class="nav-text">sava 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sava-0"><span class="nav-number">6.2.</span> <span class="nav-text">sava 0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%81%E5%AD%98%EF%BC%88AND-OR-LATCH%EF%BC%89"><span class="nav-number">6.3.</span> <span class="nav-text">锁存（AND-OR LATCH）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%A8%E9%94%81%EF%BC%88GATED-LATCH%EF%BC%89"><span class="nav-number">6.4.</span> <span class="nav-text">门锁（GATED LATCH）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E5%87%BA%E9%97%A8%E9%94%81%E7%BB%84%E4%BB%B6"><span class="nav-number">6.4.1.</span> <span class="nav-text">抽象出门锁组件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8-register"><span class="nav-number">6.5.</span> <span class="nav-text">寄存器 register</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%B0%E5%9D%80"><span class="nav-number">6.6.</span> <span class="nav-text">地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E5%99%A8-multiplexer"><span class="nav-number">6.6.1.</span> <span class="nav-text">多路复用器(multiplexer)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%EF%BC%88memory%EF%BC%89"><span class="nav-number">6.6.2.</span> <span class="nav-text">内存（memory）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E9%9A%8F%E6%9C%BA%E5%9C%B0%E5%9D%80%E5%AD%98%E5%82%A8%EF%BC%88SRAM%EF%BC%89"><span class="nav-number">6.6.3.</span> <span class="nav-text">静态随机地址存储（SRAM）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81The-Center-Processing-Unit"><span class="nav-number">7.</span> <span class="nav-text">七、The Center Processing Unit</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6"><span class="nav-number">7.1.</span> <span class="nav-text">基础组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E8%A1%A8"><span class="nav-number">7.2.</span> <span class="nav-text">指令表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpu-%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84"><span class="nav-number">7.3.</span> <span class="nav-text">cpu 基本架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpu-%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-number">7.4.</span> <span class="nav-text">cpu 执行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%96%E6%8C%87%E4%BB%A4-FETCH-PHASE"><span class="nav-number">7.4.1.</span> <span class="nav-text">取指令 FETCH PHASE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%A0%81%E6%8C%87%E4%BB%A4-DECODE-FHASE"><span class="nav-number">7.4.2.</span> <span class="nav-text">解码指令 DECODE FHASE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A4-EXECUTE-FHASE"><span class="nav-number">7.4.3.</span> <span class="nav-text">执行指令 EXECUTE FHASE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83"><span class="nav-number">7.5.</span> <span class="nav-text">控制单元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU"><span class="nav-number">7.6.</span> <span class="nav-text">CPU</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%8C%87%E4%BB%A4%E5%92%8C%E7%A8%8B%E5%BA%8F-Instruction-amp-Programs"><span class="nav-number">8.</span> <span class="nav-text">八、指令和程序(Instruction&amp;Programs)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%BA%9B%E6%8C%87%E4%BB%A4"><span class="nav-number">8.1.</span> <span class="nav-text">增加一些指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%8C%87%E4%BB%A4"><span class="nav-number">8.2.</span> <span class="nav-text">循环的指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%BE%AA%E7%8E%AF"><span class="nav-number">8.3.</span> <span class="nav-text">有条件的循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E6%8C%87%E4%BB%A4%E6%95%B0%E9%87%8F"><span class="nav-number">8.4.</span> <span class="nav-text">增加指令数量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E5%8D%81%E4%B8%89%E3%80%81cryptography"><span class="nav-number">9.</span> <span class="nav-text">三十三、cryptography</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E8%BF%90%E7%AE%97"><span class="nav-number">9.1.</span> <span class="nav-text">模运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Diffie-Hellman-%E7%AE%97%E6%B3%95"><span class="nav-number">9.2.</span> <span class="nav-text">Diffie-Hellman 算法</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Da Winter"
+      src="http://47.103.65.182/markdown/125.jpg">
+  <p class="site-author-name" itemprop="name">Da Winter</p>
+  <div class="site-description" itemprop="description">我这里有一些好康的</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Da Winter</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">33k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">30 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

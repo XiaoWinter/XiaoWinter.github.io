@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>DaWinter</title>
+  <icon>https://xiaowinter.github.io/icon.png</icon>
+  <subtitle>DaWinter&#39;s blob</subtitle>
+  <link href="https://xiaowinter.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://xiaowinter.github.io/"/>
+  <updated>2021-09-23T09:36:14.650Z</updated>
+  <id>https://xiaowinter.github.io/</id>
+  
+  <author>
+    <name>Da Winter</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【安排定律的表现】时差七小时</title>
+    <link href="https://xiaowinter.github.io/2021/09/23/%E4%B8%83%E5%B0%8F%E6%97%B6%E6%97%B6%E5%B7%AE/"/>
+    <id>https://xiaowinter.github.io/2021/09/23/%E4%B8%83%E5%B0%8F%E6%97%B6%E6%97%B6%E5%B7%AE/</id>
+    <published>2021-09-23T09:36:14.650Z</published>
+    <updated>2021-09-23T09:36:14.650Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2004 年 10 月 19 日，一部描写在英国的中国小留学生学习生活的电影《时差七小时》在北京举行新闻发布会。这部投资可观的电影请来了香港偶像明星助阵，在媒体上的宣传也颇具规模，可是这部电影的女主角却在电影界无人知晓。这个被叫做妞妞的女孩，同时也是这部电影的编剧、出品人、制片人。她是谁，为什么能够得到这些很多人梦寐以求的机会？&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="安排定律" scheme="https://xiaowinter.github.io/categories/%E5%AE%89%E6%8E%92%E5%AE%9A%E5%BE%8B/"/>
+    
+    
+    <category term="权力" scheme="https://xiaowinter.github.io/tags/%E6%9D%83%E5%8A%9B/"/>
+    
+    <category term="体制内" scheme="https://xiaowinter.github.io/tags/%E4%BD%93%E5%88%B6%E5%86%85/"/>
+    
+    <category term="安排定律" scheme="https://xiaowinter.github.io/tags/%E5%AE%89%E6%8E%92%E5%AE%9A%E5%BE%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【浏览器怎么操作二进制】【一】javaScript二进制对象基本认知</title>
+    <link href="https://xiaowinter.github.io/2021/09/23/%E6%B5%81%E5%A4%84%E7%90%86/"/>
+    <id>https://xiaowinter.github.io/2021/09/23/%E6%B5%81%E5%A4%84%E7%90%86/</id>
+    <published>2021-09-23T09:36:14.650Z</published>
+    <updated>2021-09-23T09:36:14.650Z</updated>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;ArrayBuffer-二进制数组&quot;&gt;&lt;a href=&quot;#ArrayBuffer-二进制数组&quot; class=&quot;headerlink&quot; title=&quot;ArrayBuffer,二进制数组&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://zh.javascript.info/arraybuffer-binary-arrays&quot;&gt;ArrayBuffer,二进制数组&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;在 Web 开发中，当我们处理文件时（创建，上传，下载），经常会遇到二进制数据。另一个典型的应用场景是图像处理。&lt;/p&gt;
+&lt;p&gt;这些都可以通过 JavaScript 进行处理，而且二进制操作性能更高。&lt;/p&gt;
+&lt;p&gt;不过，在 JavaScript 中有很多种二进制数据格式，会有点容易混淆。仅举几个例子：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ArrayBuffer&lt;/code&gt;，&lt;code&gt;Uint8Array&lt;/code&gt;，&lt;code&gt;DataView&lt;/code&gt;，&lt;code&gt;Blob&lt;/code&gt;，&lt;code&gt;File&lt;/code&gt; 及其他。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;与其他语言相比，&lt;strong&gt;JavaScript 中的二进制数据是以非标准方式实现的&lt;/strong&gt;。但是，当我们理清楚以后，一切就会变得相当简单了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="二进制数据,文件" scheme="https://xiaowinter.github.io/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE-%E6%96%87%E4%BB%B6/"/>
+    
+    
+    <category term="ArrayBuffer" scheme="https://xiaowinter.github.io/tags/ArrayBuffer/"/>
+    
+    <category term="TypeArray" scheme="https://xiaowinter.github.io/tags/TypeArray/"/>
+    
+    <category term="DataView" scheme="https://xiaowinter.github.io/tags/DataView/"/>
+    
+    <category term="二进制" scheme="https://xiaowinter.github.io/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【浏览器怎么操作二进制】【二】文本的二进制数据编解码</title>
+    <link href="https://xiaowinter.github.io/2021/09/23/%E6%B5%81%E5%A4%84%E7%90%862/"/>
+    <id>https://xiaowinter.github.io/2021/09/23/%E6%B5%81%E5%A4%84%E7%90%862/</id>
+    <published>2021-09-23T09:36:14.650Z</published>
+    <updated>2021-09-23T09:36:14.650Z</updated>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;TextDecoder-和-TextEncoder&quot;&gt;&lt;a href=&quot;#TextDecoder-和-TextEncoder&quot; class=&quot;headerlink&quot; title=&quot;TextDecoder 和 TextEncoder&quot;&gt;&lt;/a&gt;TextDecoder 和 TextEncoder&lt;/h4&gt;&lt;p&gt;背景知识&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ArrayBufferView&lt;/code&gt; 是所有视图的总称。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BufferSource&lt;/code&gt; 是 &lt;code&gt;ArrayBuffer&lt;/code&gt; 或 &lt;code&gt;ArrayBufferView&lt;/code&gt; 的总称。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本章中学习这些术语。&lt;code&gt;BufferSource&lt;/code&gt; 是最常用的术语之一，因为它的意思是“任何类型的二进制数据” —— &lt;code&gt;ArrayBuffer&lt;/code&gt; 或其上的视图。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="二进制数据,文件" scheme="https://xiaowinter.github.io/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE-%E6%96%87%E4%BB%B6/"/>
+    
+    
+    <category term="二进制" scheme="https://xiaowinter.github.io/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"/>
+    
+    <category term="TextDecoder" scheme="https://xiaowinter.github.io/tags/TextDecoder/"/>
+    
+    <category term="TextEncoder" scheme="https://xiaowinter.github.io/tags/TextEncoder/"/>
+    
+    <category term="decode" scheme="https://xiaowinter.github.io/tags/decode/"/>
+    
+    <category term="encode" scheme="https://xiaowinter.github.io/tags/encode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【浏览器怎么操作二进制】【三】Blob 消费者</title>
+    <link href="https://xiaowinter.github.io/2021/09/23/%E6%B5%81%E5%A4%84%E7%90%863/"/>
+    <id>https://xiaowinter.github.io/2021/09/23/%E6%B5%81%E5%A4%84%E7%90%863/</id>
+    <published>2021-09-23T09:36:14.650Z</published>
+    <updated>2021-09-23T09:36:14.650Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;Blob&quot;&gt;&lt;a href=&quot;#Blob&quot; class=&quot;headerlink&quot; title=&quot;Blob&quot;&gt;&lt;/a&gt;Blob&lt;/h3&gt;&lt;p&gt;&lt;code&gt;ArrayBuffer&lt;/code&gt; 和视图（view）都是 ECMA 标准的一部分，是 JavaScript 的一部分。&lt;/p&gt;
+&lt;p&gt;在浏览器中，还有其他更&lt;span style=&quot;color:red&quot;&gt;高级的对象&lt;/span&gt;，特别是 &lt;code&gt;Blob&lt;/code&gt;，在 &lt;a href=&quot;https://www.w3.org/TR/FileAPI/&quot;&gt;File API&lt;/a&gt; 中有相关描述。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Blob&lt;/code&gt; 由一个可选的字符串 &lt;code&gt;type&lt;/code&gt;（通常是 MIME 类型）和 &lt;code&gt;blobParts&lt;/code&gt; 组成 —— 一系列其他 &lt;code&gt;Blob&lt;/code&gt; 对象，字符串和 &lt;code&gt;BufferSource&lt;/code&gt;。&lt;/p&gt;
+&lt;img src=&quot;https://zh.javascript.info/article/blob/blob.svg&quot;&gt;</summary>
+    
+    
+    
+    <category term="二进制数据,文件" scheme="https://xiaowinter.github.io/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE-%E6%96%87%E4%BB%B6/"/>
+    
+    
+    <category term="二进制" scheme="https://xiaowinter.github.io/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"/>
+    
+    <category term="Blob" scheme="https://xiaowinter.github.io/tags/Blob/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【浏览器怎么操作二进制】【四】文件File及文件读取FileReader</title>
+    <link href="https://xiaowinter.github.io/2021/09/23/%E6%B5%81%E5%A4%84%E7%90%864/"/>
+    <id>https://xiaowinter.github.io/2021/09/23/%E6%B5%81%E5%A4%84%E7%90%864/</id>
+    <published>2021-09-23T09:36:14.650Z</published>
+    <updated>2021-09-23T09:36:14.650Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;File-和-FileReader&quot;&gt;&lt;a href=&quot;#File-和-FileReader&quot; class=&quot;headerlink&quot; title=&quot;File 和 FileReader&quot;&gt;&lt;/a&gt;File 和 FileReader&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.w3.org/TR/FileAPI/#dfn-file&quot;&gt;File&lt;/a&gt; 对象继承自 &lt;code&gt;Blob&lt;/code&gt;，并扩展了与文件系统相关的功能。&lt;/p&gt;
+&lt;p&gt;有两种方式可以获取它。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="二进制数据,文件" scheme="https://xiaowinter.github.io/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE-%E6%96%87%E4%BB%B6/"/>
+    
+    
+    <category term="二进制" scheme="https://xiaowinter.github.io/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"/>
+    
+    <category term="File" scheme="https://xiaowinter.github.io/tags/File/"/>
+    
+    <category term="FileReader" scheme="https://xiaowinter.github.io/tags/FileReader/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【浏览器怎么操作二进制】【五】总结</title>
+    <link href="https://xiaowinter.github.io/2021/09/23/%E6%B5%81%E5%A4%84%E7%90%865/"/>
+    <id>https://xiaowinter.github.io/2021/09/23/%E6%B5%81%E5%A4%84%E7%90%865/</id>
+    <published>2021-09-23T09:36:14.650Z</published>
+    <updated>2021-09-23T09:36:14.650Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://pic2.zhimg.com/80/v2-ed143b043805e01fbbea5712c7e27789_720w.jpg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="二进制数据,文件" scheme="https://xiaowinter.github.io/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE-%E6%96%87%E4%BB%B6/"/>
+    
+    
+    <category term="ArrayBuffer" scheme="https://xiaowinter.github.io/tags/ArrayBuffer/"/>
+    
+    <category term="TypeArray" scheme="https://xiaowinter.github.io/tags/TypeArray/"/>
+    
+    <category term="DataView" scheme="https://xiaowinter.github.io/tags/DataView/"/>
+    
+    <category term="二进制" scheme="https://xiaowinter.github.io/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6/"/>
+    
+    <category term="TextDecoder" scheme="https://xiaowinter.github.io/tags/TextDecoder/"/>
+    
+    <category term="TextEncoder" scheme="https://xiaowinter.github.io/tags/TextEncoder/"/>
+    
+    <category term="decode" scheme="https://xiaowinter.github.io/tags/decode/"/>
+    
+    <category term="encode" scheme="https://xiaowinter.github.io/tags/encode/"/>
+    
+    <category term="Blob" scheme="https://xiaowinter.github.io/tags/Blob/"/>
+    
+    <category term="File" scheme="https://xiaowinter.github.io/tags/File/"/>
+    
+    <category term="FileReader" scheme="https://xiaowinter.github.io/tags/FileReader/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机概论</title>
+    <link href="https://xiaowinter.github.io/2021/09/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/"/>
+    <id>https://xiaowinter.github.io/2021/09/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/</id>
+    <published>2021-09-23T09:36:14.650Z</published>
+    <updated>2021-09-23T09:36:14.650Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考资料&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/av21376839?p=1&quot;&gt;Crash Course 计算机视频&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;一、计算机的早期历史&quot;&gt;&lt;a href=&quot;#一、计算机的早期历史&quot; class=&quot;headerlink&quot; title=&quot;一、计算机的早期历史&quot;&gt;&lt;/a&gt;一、计算机的早期历史&lt;/h2&gt;&lt;p&gt;美索不达米亚 1000 BC 算盘&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;time&lt;/th&gt;
+&lt;th&gt;area&lt;/th&gt;
+&lt;th&gt;Instance&lt;/th&gt;
+&lt;th&gt;进制&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;1000BC&lt;/td&gt;
+&lt;td&gt;美索不达米亚&lt;/td&gt;
+&lt;td&gt;算盘&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1694&lt;/td&gt;
+&lt;td&gt;德国&lt;/td&gt;
+&lt;td&gt;步进计算器&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;before 20 C&lt;/td&gt;
+&lt;td&gt;world&lt;/td&gt;
+&lt;td&gt;计算表&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1822&lt;/td&gt;
+&lt;td&gt;英国（Charles Babbage）&lt;/td&gt;
+&lt;td&gt;差分机（论文）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1822-1842&lt;/td&gt;
+&lt;td&gt;英国(Charles Babbage)&lt;/td&gt;
+&lt;td&gt;分析机（general computer）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;18X（8|9）？&lt;/td&gt;
+&lt;td&gt;美国（Hollerith IBM 创始人）&lt;/td&gt;
+&lt;td&gt;打孔卡片制表机&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;Ada Lovelace 给分析机写了假象程序(第一程序员)&lt;/p&gt;
+&lt;p&gt;Charles Babbage 设计了分析机，即通用计算机 （计算机之父）&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="计算机基础" scheme="https://xiaowinter.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="计算机概论" scheme="https://xiaowinter.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>信息不足时如何做出决策</title>
+    <link href="https://xiaowinter.github.io/2021/09/23/%E5%A6%82%E4%BD%95%E5%9C%A8%E4%BF%A1%E6%81%AF%E4%B8%8D%E8%B6%B3%E6%97%B6%E4%BD%9C%E5%86%B3%E7%AD%96/"/>
+    <id>https://xiaowinter.github.io/2021/09/23/%E5%A6%82%E4%BD%95%E5%9C%A8%E4%BF%A1%E6%81%AF%E4%B8%8D%E8%B6%B3%E6%97%B6%E4%BD%9C%E5%86%B3%E7%AD%96/</id>
+    <published>2021-09-23T09:36:14.650Z</published>
+    <updated>2021-09-23T09:36:14.650Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt; 参考文献&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/51506088&quot;&gt;盈亏同源与退学重考&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.zhihu.com/question/57790189/answer/765315105&quot;&gt;能不能通俗地解释“盈亏同源”？ - 天启大烁哥的回答 - 知乎&lt;/a&gt; &lt;/p&gt;
+&lt;h6 id=&quot;盈亏同源是什么？&quot;&gt;&lt;a href=&quot;#盈亏同源是什么？&quot; class=&quot;headerlink&quot; title=&quot;盈亏同源是什么？&quot;&gt;&lt;/a&gt;盈亏同源是什么？&lt;/h6&gt;&lt;p&gt;敞口：自身当前所拥有的能导致盈利或亏损的事物（股票，基金，房产…）&lt;/p&gt;
+&lt;p&gt;​        而任何风险敞口，面对&lt;strong&gt;不确定的&lt;/strong&gt;未来，都有两种结局：盈利或者亏损。盈利和亏损的大小，跟你多少手持仓息息相关。&lt;/p&gt;
+&lt;p&gt;​        这就叫盈亏同源。&lt;/p&gt;
+&lt;p&gt;​        想要短期暴利，就要做好大回撤的准备，想要在一波行情中直接财务自由，你就要做好全部亏光的觉悟。&lt;/p&gt;
+&lt;h6 id=&quot;厌恶风险人性的本能&quot;&gt;&lt;a href=&quot;#厌恶风险人性的本能&quot; class=&quot;headerlink&quot; title=&quot;厌恶风险人性的本能&quot;&gt;&lt;/a&gt;厌恶风险人性的本能&lt;/h6&gt;&lt;blockquote&gt;
+&lt;p&gt;​    许多人在面对和自己利益攸关的选择的时候就会瞬间忘掉理智，&lt;strong&gt;本能性地想规避掉任何风险，追求一个确定性。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​                                                                                                                                                                ——  弗兰克扬&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="决策" scheme="https://xiaowinter.github.io/categories/%E5%86%B3%E7%AD%96/"/>
+    
+    
+    <category term="股市" scheme="https://xiaowinter.github.io/tags/%E8%82%A1%E5%B8%82/"/>
+    
+    <category term="博弈" scheme="https://xiaowinter.github.io/tags/%E5%8D%9A%E5%BC%88/"/>
+    
+    <category term="决策" scheme="https://xiaowinter.github.io/tags/%E5%86%B3%E7%AD%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>乔治·奥威尔和《动物农场》</title>
+    <link href="https://xiaowinter.github.io/2021/09/23/%E5%8A%A8%E7%89%A9%E5%86%9C%E5%9C%BA/"/>
+    <id>https://xiaowinter.github.io/2021/09/23/%E5%8A%A8%E7%89%A9%E5%86%9C%E5%9C%BA/</id>
+    <published>2021-09-23T09:36:14.650Z</published>
+    <updated>2021-09-23T09:36:14.650Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;为大家推荐的是一本寓言小说——《动物农场》。由英国作家乔治·奥威尔所写，于1945年出版。&lt;/p&gt;
+&lt;p&gt;这本小说给我带来深深的冲击和震撼，然而让我很遗憾的是，我能读到这本书确实是太晚了!在序言中，译者傅惟慈先生写到，该书直到2003年在上海文艺出版社重新印行《1984》时，才与之作为合集一并允许出版。&lt;/p&gt;
+&lt;p&gt;《动物农场》能与广大普通大众见面实在太难了，也许是因为它作为寓言故事太通俗了，太容易使人们回想起曾经有一段不愉快的历史，其中的某些故事角色促使人们不由自主地联想到真实的历史人物，但这小说却是作者在1943年动笔的……&lt;/p&gt;
+&lt;p&gt;为我所能读到时，已相隔70多年……&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pic1.zhimg.com/80/93cb282296b0c99fb938ecde5fd7e17c_720w.jpg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="乌托邦" scheme="https://xiaowinter.github.io/categories/%E4%B9%8C%E6%89%98%E9%82%A6/"/>
+    
+    
+    <category term="权力" scheme="https://xiaowinter.github.io/tags/%E6%9D%83%E5%8A%9B/"/>
+    
+  </entry>
+  
+</feed>
