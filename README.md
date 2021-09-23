@@ -1,4 +1,5 @@
 # XiaoWinter.github.io
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/5020/badge)](https://bestpractices.coreinfrastructure.org/projects/5020)
 
 ![](https://img.shields.io/badge/node-%3E=10.9.0-green?style=flat-square)
 
