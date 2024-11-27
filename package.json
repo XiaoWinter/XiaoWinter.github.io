@@ -18,12 +18,12 @@
     "hexo-generator-index": "^4.0.0",
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^6.3.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
     "hexo-theme-next": "^8.21.1"
   },
   "devDependencies": {
-    "hexo-deployer-git": "^4.0.0"
+    "hexo-deployer-git": "^4.0.0",
+    "hexo-filter-mathjax": "^0.9.0"
   }
 }
