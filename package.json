@@ -22,5 +22,8 @@
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
     "hexo-theme-next": "^8.21.1"
+  },
+  "devDependencies": {
+    "hexo-deployer-git": "^4.0.0"
   }
 }
