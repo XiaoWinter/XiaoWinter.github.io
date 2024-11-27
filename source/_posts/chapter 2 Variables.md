@@ -1,6 +1,6 @@
 ---
 title: chapter 2 Variables
-date: 2021-11-27 22:57:00
+date: 2021-11-28 00:02:00
 type: "tags"
 tags:
   - math

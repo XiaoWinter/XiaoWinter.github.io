@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "hexo-deployer-git": "^4.0.0",
-    "hexo-filter-mathjax": "^0.9.0"
+    "hexo-filter-mathjax": "^0.9.0",
+    "hexo-renderer-pandoc": "^0.4.0"
   }
 }

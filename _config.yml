@@ -104,3 +104,5 @@ deploy:
   type: 'git'
   repo: git@github.com:XiaoWinter/XiaoWinter.github.io.git
   branch: gh-pages
+pandoc:
+  pandoc_path: C:/Program Files/Pandoc/pandoc.exe
