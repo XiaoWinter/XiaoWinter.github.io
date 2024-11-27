@@ -7,7 +7,7 @@ on:
 
 env:
   GIT_USER: XiaoWinter
-  GIT_EMAIL: 3388656601@qq.com
+  GIT_EMAIL: 13629571305@qq.com
   THEME_REPO: theme-next/hexo-theme-next
   THEME_BRANCH: master
 
