@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node_version: [12.x]
+        node_version: [16.17.0]
 
     steps:
       - name: Checkout
@@ -49,9 +49,6 @@ jobs:
           git config --global user.email $GIT_EMAIL
           cp _config.next.yml themes/next/_config.yml
 
-      - name: Update file timestamps
-        run: |
-          git ls-files -z | while read -d '' path; do touch -d "@$(git log -1 --format="%ct" "$path")" "$path"; done
       - name: Install dependencies
         run: |
           npm install
