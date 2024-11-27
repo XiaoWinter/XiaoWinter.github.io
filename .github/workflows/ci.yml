@@ -28,6 +28,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node_version }}
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+  
+      - name: Check Pandoc path
+        run: which pandoc
+  
+      - name: Check Pandoc version
+        run: pandoc --version
 
       - name: Configuration environment
         env:
