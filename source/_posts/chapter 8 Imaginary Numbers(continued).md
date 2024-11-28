@@ -14,18 +14,18 @@ mathjax: true
 THE DEFINITION of the multiplication of ordered couples is guided by exactly the same considerations as is that of their addition. The interpretation of multiplication must be such that
 
 有序对的乘法定义完全遵循与其加法相同的原则。乘法的解释必须满足以下条件：
+<!--more-->
+($1 $) the result is another ordered couple,
 
-($\alpha $) the result is another ordered couple,
-
-($\beta $) the operation is commutative, so that
+($2 $) the operation is commutative, so that
 $$
 (x,y) \times (x',y') =  (x',y')\times(x,y)
 $$
-($\gamma $) the operation is associative, so that
+($3 $) the operation is associative, so that
 $$
 \left \{ (x,y) \times (x',y') \right \} \times (u,v)= (x,y) \times \left \{ (x',y') \times (u,v) \right \}
 $$
-($\delta $) must make the result of division unique [ with an exception for the case of the zero couple (0,0)], so that when we seek to determine the unknown couple (x,y) so as to satisfy the equation
+($4 $) must make the result of division unique [ with an exception for the case of the zero couple (0,0)], so that when we seek to determine the unknown couple (x,y) so as to satisfy the equation
 
 必须使得除法的结果唯一（零有序对 $(0,0)$ 的情况除外），这样当我们试图确定未知的有序对 $(x, y)$ 以满足方程时，结果是明确的。
 $$
@@ -35,13 +35,13 @@ there is one and only one answer, which we can represent(表示) by
 $$
 (x,y) = (c,d) {\div} (a,b), or \space by \space (x,y) = \frac{(c,d)}{(a,b)}.
 $$
-($\epsilon$) Furthermore the law involving both addition and multiplication, called the distributive law, must be satisfied, namely
+($5$) Furthermore the law involving both addition and multiplication, called the distributive law, must be satisfied, namely
 $$
 (x,y) \times \left \{ (a,b)+(c,d) \right \}=\left \{ (x,y) \times (a,b) \right \} + \left \{ (x,y) \times (c,d) \right \}.
 $$
-All these conditions ($\alpha $), ($\beta $), ($\gamma $), ($\delta $), ($\epsilon$) can be satisfied by an interpretation which , though it looks complicated at first, is capable of simple geometrical interpretation.
+All these conditions ($1 $), ($2 $), ($3 $), ($4 $), ($5$) can be satisfied by an interpretation which , though it looks complicated at first, is capable of simple geometrical interpretation.
 
-所有这些条件 ($\alpha $), ($\beta $), ($\gamma $), ($\delta $), ($\epsilon$)都可以通过一种解释来满足，尽管这种解释乍一看似乎复杂，但实际上可以用简单的几何学方法来解释。
+所有这些条件 ($1 $), ($2 $), ($3 $), ($4 $), ($5$)都可以通过一种解释来满足，尽管这种解释乍一看似乎复杂，但实际上可以用简单的几何学方法来解释。
 
 By definition we put
 
@@ -50,9 +50,9 @@ $$
 (x,y) \times (x',y') = \left \{ (xx'-yy'),(xy'+x'y) \right\}
 $$
 
-This is the definition of the meaning of the symbol $\times$ when it it written between two ordered couples. It follows evidently from this definition that the result of multiplication is another ordered couple, and that the value of the right-hand side of equation (A) is not altered by simultaneously interchanging x with x' and y with y'. Hence conditions ($\alpha$) and ($\beta$) are evidently satisfied. The proof of that satisfaction of ($\gamma$) , ($\delta$), ($\epsilon$) is equally easy when we have given the geometrical interpretation, which we will proceed to do in a moment. But before doing this it will be interesting to pause and see whether we have attained the object for which all this elaboration was initiated.
+This is the definition of the meaning of the symbol $\times$ when it it written between two ordered couples. It follows evidently from this definition that the result of multiplication is another ordered couple, and that the value of the right-hand side of equation (A) is not altered by simultaneously interchanging x with x' and y with y'. Hence conditions ($1$) and ($2$) are evidently satisfied. The proof of that satisfaction of ($3$) , ($4$), ($5$) is equally easy when we have given the geometrical interpretation, which we will proceed to do in a moment. But before doing this it will be interesting to pause and see whether we have attained the object for which all this elaboration was initiated.
 
-这是符号 $\times$ 在两个有序对之间书写时含义的定义。显然，根据这一定义，乘法的结果是另一个有序对，且通过同时将 $x$ 与 $x'$、$y$ 与 $y'$ 互换，方程 (A) 右侧的值不会发生变化。因此，条件 ($\alpha$) 和 ($\beta$) 显然满足。当我们给出几何解释后，条件 ($\gamma$)、($\delta$)、($\epsilon$) 的证明也同样容易。 但在此之前，暂停一下思考我们是否达到了这一精细构建的目标将是有趣的。
+这是符号 $\times$ 在两个有序对之间书写时含义的定义。显然，根据这一定义，乘法的结果是另一个有序对，且通过同时将 $x$ 与 $x'$、$y$ 与 $y'$ 互换，方程 (A) 右侧的值不会发生变化。因此，条件 ($1$) 和 ($2$) 显然满足。当我们给出几何解释后，条件 ($3$)、($4$)、($5$) 的证明也同样容易。 但在此之前，暂停一下思考我们是否达到了这一精细构建的目标将是有趣的。
 
 We came across equation of the form $x^2=-3$ , to which no solutions could be assigned in terms of positive and negative real numbers. We the found that all our difficulties would vanish if we could interpret the equation $x^2=-1$ , i.e. if we could so define $\sqrt{(-1)}$ that $\sqrt{(-1)} \times \sqrt{(-1)} = -1$ .
 
@@ -178,9 +178,9 @@ Hence we can conceive the vector $OP$ as making the vector $OQ$ rotate through a
 
 因此，我们可以将向量 $OP$ 想象为使向量 $OQ$ 旋转一个角度 $XOP$（即角 $QOR = XOP$），或者将向量 $OQ$ 想象为使向量 $OP$ 旋转角度 $XOQ$（即角 $POR = XOQ$）。
 
-We do not prove this general law, as we should thereby be led into more technical processes of mathematics than falls within the design of this book. But now we can immediately see that the associative law [numbered ($\gamma$) above] for multiplication is satisfied. Consider first the length of the resultant vector; this is got by the ordinary process of multiplication for real numbers; and thus the associative law holds for it.
+We do not prove this general law, as we should thereby be led into more technical processes of mathematics than falls within the design of this book. But now we can immediately see that the associative law [numbered ($3$) above] for multiplication is satisfied. Consider first the length of the resultant vector; this is got by the ordinary process of multiplication for real numbers; and thus the associative law holds for it.
 
-我们不证明这个一般法则，因为那样我们将进入比本书设计范围更为技术性的数学过程。但现在我们可以立即看到，乘法的结合律（上面编号为（$\gamma$））是成立的。首先考虑结果向量的长度；它是通过实数的普通乘法过程得到的；因此，结合律对它成立。
+我们不证明这个一般法则，因为那样我们将进入比本书设计范围更为技术性的数学过程。但现在我们可以立即看到，乘法的结合律（上面编号为（$3$））是成立的。首先考虑结果向量的长度；它是通过实数的普通乘法过程得到的；因此，结合律对它成立。
 
 Again, the direction of the resultant vector is got by the mere addition of angles, and the associative law hold for this process also.
 
