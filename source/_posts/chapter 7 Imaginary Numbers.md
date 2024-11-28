@@ -1,6 +1,6 @@
 ---
 title: chapter 7 Imaginary Numbers
-date: 2021-11-28 00:07:00
+date: 2024-11-28 00:07:00
 type: "tags"
 tags:
   - math

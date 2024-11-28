@@ -1,6 +1,6 @@
 ---
 title: chapter 6 Generalizations of number
-date: 2021-11-28 00:06:00
+date: 2024-11-28 00:06:00
 type: "tags"
 tags:
   - math
