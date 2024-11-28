@@ -1,6 +1,6 @@
 ---
 title: chapter 1 The Abstract Nature of Mathematics
-date: 2021-11-27 22:55:00
+date: 2024-11-27 22:55:00
 type: "tags"
 tags:
   - math

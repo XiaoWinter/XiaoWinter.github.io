@@ -1,6 +1,6 @@
 ---
 title: chapter 3 Methods of application
-date: 2021-11-28 00:03:00
+date: 2024-11-28 00:03:00
 type: "tags"
 tags:
   - math

@@ -1,6 +1,6 @@
 ---
 title: chapter 8 Imaginary Numbers(continued)
-date: 2021-11-28 00:08:00
+date: 2024-11-28 00:08:00
 type: "tags"
 tags:
   - math
