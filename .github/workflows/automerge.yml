@@ -1,0 +1,46 @@
+name: Merge dev and deploy
+
+on:
+  push:
+    branches:
+      - dev  # 当dev分支有 push 时触发
+
+env:
+  GIT_USER: XiaoWinter
+  GIT_EMAIL: 13629571305@qq.com
+
+jobs:
+  merge-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the source repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Configuration environment
+        env:
+          HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
+        run: |
+          sudo timedatectl set-timezone "Asia/Shanghai"
+          mkdir -p ~/.ssh/
+          echo "$HEXO_DEPLOY_PRI" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.name $GIT_USER
+          git config --global user.email $GIT_EMAIL
+
+      # Checkout the target branch (e.g., master) for merging
+      - name: Checkout target branch (master)
+        run: |
+          git checkout master
+
+      # Merge the dev branch into the target branch
+      - name: Merge dev branch into main
+        run: |
+          git merge dev --no-ff -m "Merging dev branch into main"
+
+      # Push the changes back to the remote repository
+      - name: Push changes to master branch
+        run: |
+          git push origin master
