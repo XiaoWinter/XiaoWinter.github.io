@@ -38,13 +38,11 @@ jobs:
         run: |
           git checkout master
           git pull origin master
-      - name: Check diff
-        run: git diff dev
 
       # Merge the dev branch into the target branch
       - name: Merge dev branch into master
         run: |
-          git merge dev -m "Merging dev branch into master"
+          git merge dev --allow-unrelated-histories -m "Merging dev branch into master"
 
       # Push the changes back to the remote repository
       - name: Push changes to master branch
