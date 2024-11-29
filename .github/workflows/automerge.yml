@@ -37,12 +37,12 @@ jobs:
       - name: Checkout target branch (master)
         run: |
           git checkout master
-          git pull
+          git pull origin master
 
       # Merge the dev branch into the target branch
-      - name: Merge dev branch into main
+      - name: Merge dev branch into master
         run: |
-          git merge dev --no-ff -m "Merging dev branch into main"
+          git merge dev --no-ff --allow-unrelated-histories  -m "Merging dev branch into master"
 
       # Push the changes back to the remote repository
       - name: Push changes to master branch
