@@ -37,6 +37,7 @@ jobs:
       - name: Checkout target branch (master)
         run: |
           git checkout master
+          git pull
 
       # Merge the dev branch into the target branch
       - name: Merge dev branch into main
