@@ -39,7 +39,7 @@ jobs:
           git checkout master
           git pull origin master
       - name: Check diff
-        run: git diff
+        run: git diff dev
 
       # Merge the dev branch into the target branch
       - name: Merge dev branch into master
