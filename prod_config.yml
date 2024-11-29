@@ -1,0 +1,3 @@
+pandoc:
+  # mater 上是git action 上的安装路径
+  pandoc_path: /usr/bin/pandoc
