@@ -39,7 +39,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: /var/cache/apt/archives
-          key: ${{ runner.os }}-apt-pandoc-invariable
+          key: ${{ runner.os }}-apt-pandoc-2.9.2.1
           restore-keys: |
             ${{ runner.os }}-apt-pandoc-
       - name: Install Pandoc
