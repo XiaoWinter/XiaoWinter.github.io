@@ -21,6 +21,10 @@ antdProTable: 官方封装过重，难以还原UI设计，交互逻辑
 
 
 
+![image-20241213163001719](https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213163001719.png)
+
+
+
 ## 设计思路
 
 
@@ -29,7 +33,7 @@ antdProTable: 官方封装过重，难以还原UI设计，交互逻辑
 
 <!-- more-->
 
-## 结构图
+## SimpleTable结构图
 
 简单的表格组件 `SimpleTable` 及其相关的功能模块，包括分页、搜索和数据控制。具体来说：
 
@@ -52,7 +56,7 @@ antdProTable: 官方封装过重，难以还原UI设计，交互逻辑
 ## UI样式及兼容处理
 
 1. UI样式的实现
-2. 交互逻辑，默认组件配置添加
+2. 可配置原生组件默认配置
 3. 不要侵入基础组件
 
 ![image-20241213153951504](https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213153951504.png)
