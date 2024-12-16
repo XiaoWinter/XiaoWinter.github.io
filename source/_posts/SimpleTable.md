@@ -22,7 +22,7 @@ antdProTable: 官方封装过重，难以还原UI设计，交互逻辑
 
 
 ![image-20241213163001719](https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213163001719.png)
-
+<!-- more-->
 
 
 ## 设计思路
@@ -31,7 +31,7 @@ antdProTable: 官方封装过重，难以还原UI设计，交互逻辑
 
 ![image-20241213150840733](https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213150840733.png)
 
-<!-- more-->
+
 
 ## SimpleTable结构图
 
