@@ -12,9 +12,11 @@ mathjax: true
 
 圆锥截面
 
+<!-- more -->
+
 WHEN THE Greek geometers had exhausted, as they thought, the more obvious and interesting properties of figure made up of straight line and circles, they turned to the study of other curves; and , with their almost infallible instinct for hitting upon things worth thinking about, they chiefly devoted themselves to conic sections, that is, to the curves in which planes would cut the surfaces of circular cones. The man who must have the credit of inventing the study is Menaechmus (born 375 B.C and died 325 B.C); he was a pupil of Plato and one of the tutors of Alexander the Great. Alexander, by and by, is a conspicuous example of the advantages of good tuition, for another of his tutors was the philosopher Aristotle. We may suspect that Alexander found Menaechmus rather a dull teacher, for it is related that he asked for the proofs to be made shorter. It was to this request that Menaechmus replied: 'In the country there are private and even royal roads, but in geometry there is only one road for all.' This reply no doubt was true enough in the sense in which it would have been immediately understood by Alexander. But if Menarchmus thought that his proofs could not be shortened, he was grievously mistaken; and most modern mathematicians would be horribly bored, if they were compelled to study the Greek proofs of the properties of conic sections. Nothing illustrates better the gain in power which is obtained by the introduction of relevant ideas into a science than to observe the progressive shortening of proofs which accompanies the growth of richness in idea. There is a certain type of mathematician who is always rather impatient at delaying over the ideas of a subject: he is anxious at once to get on to the proofs of 'important' problems. The history of the science is entirely against him. There are royal roads in science; but those who first tread them are men of genius and not kings.
 
-<!-- more -->
+
 
 当希腊几何学家们认为他们已经穷尽了由直线和圆构成的图形的更显而易见且有趣的性质时，他们转向了对其他曲线的研究；凭借他们几乎是无误的直觉，发现值得思考的事物，他们主要致力于圆锥截面的研究，也就是研究平面如何切割圆锥的表面。必须为发明这一研究领域的人归功于梅内克穆斯（公元前375年出生，公元前325年去世）；他是柏拉图的学生，也是亚历山大大帝的导师之一。亚历山大大帝，逐渐地，成为了良好教育的显著例子，因为他另一个导师是哲学家亚里士多德。我们可以猜测亚历山大认为梅内克穆斯是一个比较乏味的老师，因为据说他要求证明过程缩短。梅内克穆斯对这一要求的回应是：“在乡村有私家路甚至王道，但在几何学中，所有人只能走一条路。” 这个回答无疑在亚历山大能立即理解的意义上是正确的。但如果梅内克穆斯认为他的证明无法简化，他就大错特错了；如果现代的数学家们被迫学习古希腊的圆锥曲线性质的证明，他们大概会觉得非常无聊。没有什么比观察到引入相关思想到科学中所获得的权力增长，更能说明科学进步的力量了，因为这种进步伴随着证明过程的逐步简化，而这一变化正是思想丰富度增长的结果。有一种类型的数学家总是对在学科思想上拖延感到不耐烦：他急切地想要继续推导“重要”问题的证明。科学的发展史完全与他相反；科学中确实有“王道”存在，但最先走上这些道路的不是国王，而是天才人物。
 
