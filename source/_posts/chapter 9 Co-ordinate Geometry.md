@@ -4,7 +4,7 @@ date: 2025-01-05 21:08:00
 type: "tags"
 tags:
   - math
-categories: the introduction of mathematics
+categories: an introduction to mathematics
 mathjax: true
 ---
 
