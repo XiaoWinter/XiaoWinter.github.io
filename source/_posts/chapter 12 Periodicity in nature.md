@@ -1,10 +1,10 @@
 ---
 title: chapter 12 Periodicity in nature
-date: 2025-03-10 10:07:00
+date: 2025-03-10 10:07:01
 type: "tags"
 tags:
   - math
-categories: the introduction of mathematics
+categories: an introduction to mathematics
 mathjax: true
 ---
 

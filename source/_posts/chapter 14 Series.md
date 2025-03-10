@@ -1,10 +1,10 @@
 ---
 title: chapter 14 Series
-date: 2025-03-10 10:07:00
+date: 2025-03-10 10:07:04
 type: "tags"
 tags:
   - math
-categories: the introduction of mathematics
+categories: an introduction to mathematics
 mathjax: true
 ---
 
