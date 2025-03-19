@@ -1,6 +1,6 @@
 ---
 title: chapter 17 Quantity
-date: 2025-03-10 19:09:04
+date: 2025-03-19 19:09:04
 type: "tags"
 tags:
   - math

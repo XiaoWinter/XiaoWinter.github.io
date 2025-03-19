@@ -1,6 +1,6 @@
 ---
 title: chapter 16 Geometry
-date: 2025-03-10 19:08:04
+date: 2025-03-19 19:08:04
 type: "tags"
 tags:
   - math
