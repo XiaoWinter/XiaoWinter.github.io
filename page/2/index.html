@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaowinter.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="开发经历">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DaWinter">
+<meta property="og:url" content="https://xiaowinter.github.io/page/2/index.html">
+<meta property="og:site_name" content="DaWinter">
+<meta property="og:description" content="开发经历">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Da Winter">
+<meta property="article:tag" content="javascript html css vue node react wx webpack vite babel">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://xiaowinter.github.io/page/2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"page/2/index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>DaWinter</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">DaWinter</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">DaWinter's blob</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Da Winter"
+      src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+  <p class="site-author-name" itemprop="name">Da Winter</p>
+  <div class="site-description" itemprop="description">开发经历</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2024/12/18/caculator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/12/18/caculator/" class="post-title-link" itemprop="url">十六进制颜色计算器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-18 15:55:32" itemprop="dateCreated datePublished" datetime="2024-12-18T15:55:32+08:00">2024-12-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>十六进制颜色计算器</title>
+  </head>
+  <style>
+    input {
+      width: 200px;
+    }
+
+    #resultDIVColor,
+    #hexrgbColor {
+      width: 200px;
+      height: 100px;
+    }
+  </style>
+  <body>
+    <div>RGB颜色:(#000000~#FFFFFF)</div>
+    <input
+      type="text"
+      name="hexrgb"
+      id="hexrgb"
+      placeholder="例如：#ffffff"
+      maxlength="7"
+    />
+    <div id="hexrgbColor"></div>
+    <div>透明度:(0~1)</div>
+    <input
+      type="number"
+      name="opacity"
+      id="opacity"
+      min="0"
+      max="1"
+      step="0.1"
+      placeholder="例如: 0.1"
+    />
+    <br />
+    <button id="btn">计算</button>
+    <div>计算结果</div>
+    <div id="resultDIV"></div>
+    <div id="resultDIVColor"></div>
+  </body>
+  <script>
+    const hexRGB = document.getElementById("hexrgb");
+    const hexrgbColor = document.getElementById("hexrgbColor");
+    const opacity = document.getElementById("opacity");
+    const btn = document.getElementById("btn");
+    const resultDIV = document.getElementById("resultDIV");
+    const resultDIVColor = document.getElementById("resultDIVColor");
+
+    btn.onclick = function () {
+      const hex = hexRGB.value;
+      hexrgbColor.style.backgroundColor = hex;
+      const op = opacity.value;
+      const result1 = opacityHexRGB(hex, op);
+      const result2 = applyOpacityToRGB(hex, op);
+      resultDIV.innerHTML = `
+      带透明度： ${result1}
+      <br/>
+      不带透明度：${result2}
+      `;
+      resultDIVColor.style.backgroundColor = result2;
+    };
+
+    function opacityHexRGB(hexRGB, opacity) {
+      // 移除#，并确保长度为6
+      hexRGB = hexRGB.replace("#", "");
+      if (hexRGB.length !== 6) {
+        throw new Error("Invalid hex color format. Must be 6 characters.");
+      }
+
+      // 将十六进制颜色值转为RGB
+      const r = parseInt(hexRGB.substring(0, 2), 16);
+      const g = parseInt(hexRGB.substring(2, 4), 16);
+      const b = parseInt(hexRGB.substring(4, 6), 16);
+
+      // 计算透明度对应的16进制值
+      const a = Math.round(opacity * 255); // alpha 通道值，范围0-255
+      const aHex = a.toString(16).padStart(2, "0"); // 转为2位十六进制，确保小于16的值前面有0
+
+      // 返回带透明度的十六进制颜色值
+      return `#${hexRGB}${aHex}`;
+    }
+
+    console.log("hexo_backgroundHex", hexo_backgroundHex);
+
+    function applyOpacityToRGB(hexRGB, opacity, backgroundHex = "#ffffff") {
+      // 移除#，并确保长度为6
+      hexRGB = hexRGB.replace("#", "");
+      backgroundHex =
+        window.hexo_backgroundHex || backgroundHex.replace("#", "");
+
+      if (hexRGB.length !== 6 || backgroundHex.length !== 6) {
+        throw new Error("Invalid hex color format. Must be 6 characters.");
+      }
+
+      // 将十六进制颜色值转为RGB
+      const r = parseInt(hexRGB.substring(0, 2), 16);
+      const g = parseInt(hexRGB.substring(2, 4), 16);
+      const b = parseInt(hexRGB.substring(4, 6), 16);
+
+      // 背景色的RGB值
+      const br = parseInt(backgroundHex.substring(0, 2), 16);
+      const bg = parseInt(backgroundHex.substring(2, 4), 16);
+      const bb = parseInt(backgroundHex.substring(4, 6), 16);
+
+      // 计算透明度混合后的颜色通道值
+      const rFinal = Math.round(r * opacity + br * (1 - opacity));
+      const gFinal = Math.round(g * opacity + bg * (1 - opacity));
+      const bFinal = Math.round(b * opacity + bb * (1 - opacity));
+
+      // 限制RGB值在0-255之间
+      const rClamped = Math.min(255, Math.max(0, rFinal));
+      const gClamped = Math.min(255, Math.max(0, gFinal));
+      const bClamped = Math.min(255, Math.max(0, bFinal));
+
+      // 返回新的十六进制颜色值
+      const rHex = rClamped.toString(16).padStart(2, "0");
+      const gHex = gClamped.toString(16).padStart(2, "0");
+      const bHex = bClamped.toString(16).padStart(2, "0");
+
+      return `#${rHex}${gHex}${bHex}`;
+    }
+  </script>
+</html>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2024/12/17/%E6%80%8E%E6%A0%B7%E6%89%93%E7%A0%B4%E4%B8%AD%E5%9B%BD%E5%BC%8F%E4%BA%BA%E7%94%9F%E7%9A%84%E5%BE%AA%E7%8E%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/12/17/%E6%80%8E%E6%A0%B7%E6%89%93%E7%A0%B4%E4%B8%AD%E5%9B%BD%E5%BC%8F%E4%BA%BA%E7%94%9F%E7%9A%84%E5%BE%AA%E7%8E%AF/" class="post-title-link" itemprop="url">怎样打破中国式人生的循环？如何理解理想主义【转载】</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-17 20:52:49" itemprop="dateCreated datePublished" datetime="2024-12-17T20:52:49+08:00">2024-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Anthony%E7%9C%8B%E4%B8%96%E7%95%8C/" itemprop="url" rel="index"><span itemprop="name">Anthony看世界</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><strong><a
+target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=aK1VTQsbRn8">youtube视频：<em>怎样打破中国式人生的循环</em></a></strong></p>
+<blockquote>
+<p>正如黑格尔的那句名言所说：<em>凡是合乎理性的，都是现实的</em>。<strong>这句话的意思可以理解为，凡是合乎理性的，都必将在现实中实现自身。这意味着，我们不应该预设了理想和现实的冲突是绝对的，而需要学会用精神的眼光去看待现实，正视现实，也就是要有这样一种见识和眼光，去看出来大多数人所理解的现实，其实并不是真正的现实。</strong></p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/12/17/%E6%80%8E%E6%A0%B7%E6%89%93%E7%A0%B4%E4%B8%AD%E5%9B%BD%E5%BC%8F%E4%BA%BA%E7%94%9F%E7%9A%84%E5%BE%AA%E7%8E%AF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2024/12/16/%E5%AF%B9%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/12/16/%E5%AF%B9%E6%95%B0/" class="post-title-link" itemprop="url">对数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-16 15:55:00" itemprop="dateCreated datePublished" datetime="2024-12-16T15:55:00+08:00">2024-12-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AF%B9%E6%95%B0/" itemprop="url" rel="index"><span itemprop="name">对数</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="基本定义">基本定义</h1>
+<p><span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -2.036ex;" xmlns="http://www.w3.org/2000/svg" width="9.648ex" height="5.204ex" role="img" focusable="false" viewBox="0 -1400 4264.3 2300"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,650)"><g data-mml-node="mtd" transform="translate(732.7,0)"><g data-mml-node="msup"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="TeXAtom" transform="translate(562,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g><g data-mml-node="mo" transform="translate(1314,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(2369.8,0)"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g></g></g><g data-mml-node="mtr" transform="translate(0,-650)"><g data-mml-node="mtd"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path data-c="6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z" transform="translate(278,0)"></path><path data-c="67" d="M329 409Q373 453 429 453Q459 453 472 434T485 396Q485 382 476 371T449 360Q416 360 412 390Q410 404 415 411Q415 412 416 414V415Q388 412 363 393Q355 388 355 386Q355 385 359 381T368 369T379 351T388 325T392 292Q392 230 343 187T222 143Q172 143 123 171Q112 153 112 133Q112 98 138 81Q147 75 155 75T227 73Q311 72 335 67Q396 58 431 26Q470 -13 470 -72Q470 -139 392 -175Q332 -206 250 -206Q167 -206 107 -175Q29 -140 29 -75Q29 -39 50 -15T92 18L103 24Q67 55 67 108Q67 155 96 193Q52 237 52 292Q52 355 102 398T223 442Q274 442 318 416L329 409ZM299 343Q294 371 273 387T221 404Q192 404 171 388T145 343Q142 326 142 292Q142 248 149 227T179 192Q196 182 222 182Q244 182 260 189T283 207T294 227T299 242Q302 258 302 292T299 343ZM403 -75Q403 -50 389 -34T348 -11T299 -2T245 0H218Q151 0 138 -6Q118 -15 107 -34T95 -74Q95 -84 101 -97T122 -127T170 -155T250 -167Q319 -167 361 -139T403 -75Z" transform="translate(778,0)"></path></g><g data-mml-node="TeXAtom" transform="translate(1311,-241.4) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g></g></g><g data-mml-node="mo" transform="translate(1735.1,0)"><path data-c="2061" d=""></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1901.7,0)"><g data-mml-node="mi"><path data-c="1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path></g></g><g data-mml-node="mo" transform="translate(2608.5,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mi" transform="translate(3664.3,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></g></g></g></svg></mjx-container></span>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/12/16/%E5%AF%B9%E6%95%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2024/12/15/%E5%9C%B0%E5%9B%BE%E7%BC%A9%E6%94%BE%E6%AF%94%E4%BE%8B%E7%A1%AE%E5%AE%9A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/12/15/%E5%9C%B0%E5%9B%BE%E7%BC%A9%E6%94%BE%E6%AF%94%E4%BE%8B%E7%A1%AE%E5%AE%9A/" class="post-title-link" itemprop="url">高德地图跨日界线显示</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-15 10:38:00" itemprop="dateCreated datePublished" datetime="2024-12-15T10:38:00+08:00">2024-12-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%9C%B0%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">地图</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="跨日界线问题">跨日界线问题</h1>
+<p>调用高德地图自身的api使地图居中时，如果路线跨越了太平洋，地图自动居中到大西洋;</p>
+<p>在查阅了官方文档，网上搜索之后，并没有找到解决方案。</p>
+<p><a target="_blank" rel="noopener" href="https://codepen.io/xiaowinter/pen/EaYgOVY?editors=1011">问题复现demo</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/12/15/%E5%9C%B0%E5%9B%BE%E7%BC%A9%E6%94%BE%E6%AF%94%E4%BE%8B%E7%A1%AE%E5%AE%9A/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2024/12/12/SimpleTable/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/12/12/SimpleTable/" class="post-title-link" itemprop="url">antd simpleTable</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-12 19:54:00" itemprop="dateCreated datePublished" datetime="2024-12-12T19:54:00+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">前端组件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="问题简述">问题简述</h2>
+<p>andt 表格组件 Table
+需要封装，样式还原原型，统一数据源接口，搜索，分页</p>
+<p><a
+target="_blank" rel="noopener" href="https://ant-design.antgroup.com/components/table-cn">antdTable</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://procomponents.ant.design/components/table">antdProTable</a></p>
+<p>andtTable：单纯的渲染组件</p>
+<p>antdProTable: 官方封装过重，难以还原UI设计，交互逻辑</p>
+<p><img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213163001719.png"
+alt="image-20241213163001719" />
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/12/12/SimpleTable/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2024/12/12/%E8%AE%AE%E4%BA%8B%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/12/12/%E8%AE%AE%E4%BA%8B%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">议事记录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-12 19:54:00" itemprop="dateCreated datePublished" datetime="2024-12-12T19:54:00+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%8F%E4%BD%9C%E8%A7%84%E5%88%99/" itemprop="url" rel="index"><span itemprop="name">协作规则</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="议事流程图">议事流程图</h1>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241216112850832.png"
+alt="image-20241216112850832" />
+<figcaption aria-hidden="true">image-20241216112850832</figcaption>
+</figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/12/12/%E8%AE%AE%E4%BA%8B%E8%AE%B0%E5%BD%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2024/11/29/%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/29/%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">英语初级语法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-29 14:54:00" itemprop="dateCreated datePublished" datetime="2024-11-29T14:54:00+08:00">2024-11-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%8B%B1%E8%AF%AD/" itemprop="url" rel="index"><span itemprop="name">英语</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="英语句子成分">英语句子成分</h2>
+<ul>
+<li>主语</li>
+<li>谓语</li>
+<li>宾语</li>
+<li>表语</li>
+<li>补语</li>
+<li>定语</li>
+<li>状语</li>
+<li>同位语</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/11/29/%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2024/11/29/%E4%B8%8D%E5%8F%AF%E5%88%86%E6%95%B0%E2%88%9A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/29/%E4%B8%8D%E5%8F%AF%E5%88%86%E6%95%B0%E2%88%9A2/" class="post-title-link" itemprop="url">不可分数√2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-29 13:45:49" itemprop="dateCreated datePublished" datetime="2024-11-29T13:45:49+08:00">2024-11-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>不可分数（incommensurable）这一概念的发现主要与古希腊数学家有关，尤其是毕达哥拉斯学派。以下是其发现的背景和过程：</p>
+<h2 id="毕达哥拉斯学派的研究">1. 毕达哥拉斯学派的研究</h2>
+<p>毕达哥拉斯及其追随者认为所有的数都可以用整数的比（即分数）来表示。他们相信所有的量都可以被量化和比较。
+他们通过研究几何图形（如正方形和对角线）来探索数的性质。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/11/29/%E4%B8%8D%E5%8F%AF%E5%88%86%E6%95%B0%E2%88%9A2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2024/11/29/%E5%AF%B9%E8%A7%92%E7%BA%BF%E8%AE%BA%E8%AF%81%EF%BC%88%E5%AE%9E%E6%95%B0%E6%98%AF%E4%B8%8D%E5%8F%AF%E8%A1%A8%E7%A4%BA%E7%9A%84%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/29/%E5%AF%B9%E8%A7%92%E7%BA%BF%E8%AE%BA%E8%AF%81%EF%BC%88%E5%AE%9E%E6%95%B0%E6%98%AF%E4%B8%8D%E5%8F%AF%E8%A1%A8%E7%A4%BA%E7%9A%84%EF%BC%89/" class="post-title-link" itemprop="url">对角线论证（实数是不可表示的）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-29 13:22:59" itemprop="dateCreated datePublished" datetime="2024-11-29T13:22:59+08:00">2024-11-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>对角线论证（Cantor's diagonal
+argument）是德国数学家乔治·康托尔提出的一种证明方法，用于显示实数集是不可列的，意即无法将所有实数列成一个列表。以下是对这一论证的基本解释：
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/11/29/%E5%AF%B9%E8%A7%92%E7%BA%BF%E8%AE%BA%E8%AF%81%EF%BC%88%E5%AE%9E%E6%95%B0%E6%98%AF%E4%B8%8D%E5%8F%AF%E8%A1%A8%E7%A4%BA%E7%9A%84%EF%BC%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2024/11/29/%E6%81%A9%E6%83%85%E5%85%89%E4%B9%8B%E5%9B%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/29/%E6%81%A9%E6%83%85%E5%85%89%E4%B9%8B%E5%9B%BD/" class="post-title-link" itemprop="url">恩情光之国</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-29 12:53:59" itemprop="dateCreated datePublished" datetime="2024-11-29T12:53:59+08:00">2024-11-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%81%A9%E6%83%85/" itemprop="url" rel="index"><span itemprop="name">恩情</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>从星系外访问回来的奥特队长爷爷，全然不顾身体的疲惫，连夜找我们几个小奥特曼商量星系守备的安排。谈的晚了，便送我们出门，要塞罗送我们回奥特竞技场。</p>
+<p>在去大门口的路上，我们说,"奥特爷爷，您回去休息吧，您刚从系外回来"。</p>
+<p>奥特爷爷摇摇头，"不碍事"，"你们知道，现在全宇宙，有很多圣诞老人把奥特曼当敌人，不断给我们制造麻烦。你们是光之国的未来，你们的事情便是M87的事情，是头等大事"。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/11/29/%E6%81%A9%E6%83%85%E5%85%89%E4%B9%8B%E5%9B%BD/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Da Winter</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

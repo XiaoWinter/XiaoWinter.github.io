@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaowinter.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="QUANTITY IN THE previous chapter we pointed out that lengths are measurable in terms of some unit length, areas in term of a unit area, and volumes in terms of a unit volume. 在上一章中，我们指出，长度是通过某个单位长度来衡量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="chapter 17 Quantity">
+<meta property="og:url" content="https://xiaowinter.github.io/2025/03/19/chapter%2017%20Quantity/index.html">
+<meta property="og:site_name" content="DaWinter">
+<meta property="og:description" content="QUANTITY IN THE previous chapter we pointed out that lengths are measurable in terms of some unit length, areas in term of a unit area, and volumes in terms of a unit volume. 在上一章中，我们指出，长度是通过某个单位长度来衡量">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-19T11:09:04.000Z">
+<meta property="article:modified_time" content="2025-03-19T11:09:04.000Z">
+<meta property="article:author" content="Da Winter">
+<meta property="article:tag" content="math">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://xiaowinter.github.io/2025/03/19/chapter%2017%20Quantity/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://xiaowinter.github.io/2025/03/19/chapter%2017%20Quantity/","path":"2025/03/19/chapter 17 Quantity/","title":"chapter 17 Quantity"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>chapter 17 Quantity | DaWinter</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">DaWinter</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">DaWinter's blob</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#quantity"><span class="nav-number">1.</span> <span class="nav-text">QUANTITY</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Da Winter"
+      src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+  <p class="site-author-name" itemprop="name">Da Winter</p>
+  <div class="site-description" itemprop="description">开发经历</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2025/03/19/chapter%2017%20Quantity/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="chapter 17 Quantity | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          chapter 17 Quantity
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-03-19 19:09:04" itemprop="dateCreated datePublished" datetime="2025-03-19T19:09:04+08:00">2025-03-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/an-introduction-to-mathematics/" itemprop="url" rel="index"><span itemprop="name">an introduction to mathematics</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="quantity">QUANTITY</h1>
+<p>IN THE previous chapter we pointed out that lengths are measurable in
+terms of some unit length, areas in term of a unit area, and volumes in
+terms of a unit volume.</p>
+<p>在上一章中，我们指出，长度是通过某个单位长度来衡量的，面积是通过单位面积来衡量的，体积是通过单位体积来衡量的。
+<span id="more"></span> When we have a set of things such lengths which are
+measurable in terms of any one of them, we say that they are quantities
+of the same kind, so are areas, and so are volumes. But an area is not a
+quantity of the same kind as a length, nor is it of the same kind as a
+volume. Let us think a little more on what is meant by being measurable,
+taking lengths as an example.</p>
+<p>当我们有一组事物（如长度），它们可以用其中任何一个来衡量时，我们说它们是同类的量，面积也是如此，体积也是如此。但面积并不是与长度相同种类的量，体积也不是与长度相同种类的量。让我们稍微思考一下“可测量”的含义，以长度为例。</p>
+<p>Lengths are measured by the foot-rule. By transporting the foot-rule
+form place to place we judge of the equality of lengths. Again, three
+adjacent lengths, each of one foot, form one whole length of three feet.
+Thus to measure lengths we have to determine the equality of lengths and
+the addition of length. When some test has been applied, such as the
+transporting of a foot-rule, we say that the lengths are equal; and when
+some process has been applied, so as to secure length being contiguous
+and not overlapping, we say that the lengths have been added to form one
+whole length. But we cannot arbitrarily take any test as the test of
+equality and any process as the process of addition. The results of
+operations of addition and of judgements of equality must be in
+accordance with certain preconceived conditions. For example, the
+addition of two greater lengths must yield a length greater than that
+yielded by the addition of two smaller lengths. These preconceived
+conditions when accurately formulated may be called axioms of quantity.
+The only question as to their truth of falsehood which can arise is
+whether , when the axioms are satisfied, we necessarily get what
+ordinary people call quantities. If we do not, then the name 'axioms of
+quantity' is ill-judged——that is all.</p>
+<p>长度是用尺子来测量的。通过将尺子从一个地方移动到另一个地方，我们判断两个长度是否相等。再比如，三个相邻的一英尺的长度可以组成一个总长度为三英尺的整体。因此，要测量长度，我们必须确定<strong>长度的相等性</strong>和<strong>长度的相加性</strong>。</p>
+<p>当我们施加了某种检验方法，例如移动尺子进行比对，我们就说这些长度是相等的；当我们施加了某种过程，使得各段长度首尾相接、不重叠时，我们就说这些长度被加在了一起，形成了一个整体的长度。</p>
+<p>但我们不能随意地采用任何测试方法作为“相等”的标准，也不能随意选择任何过程作为“相加”的过程。长度的相加操作和相等判断的结果，必须符合某些预设的条件。</p>
+<p>例如，把两个较长的长度相加，所得的结果必须大于将两个较短的长度相加所得的结果。这样的预设条件，一旦被准确地表述出来，就可以称为<strong>“量的公理”</strong>（axioms
+of quantity）。</p>
+<p>关于这些公理的真伪，唯一可能出现的问题是：<strong>当这些公理被满足时，我们是否必然得到普通人所说的“量”</strong>。如果我们得不到，那“量的公理”这个名字就是不恰当的——仅此而已。</p>
+<p>These axioms of quantity are entirely abstract, just as are the
+mathematical properties of space. They are the same for all quantities,
+and they presuppose no special mode of perception. The ideas associated
+with the notion of quantity are the means by which a continuum like a
+line, an area, or a volume can be split up into definite parts. Then
+these parts are counted; so that numbers can be used to determine the
+exact properties of a continuous whole.</p>
+<p>这些“量的公理”是完全抽象的，正如空间的数学性质那样。它们适用于所有的“量”，并不依赖于任何特定的感知方式。与“量”的概念相关联的那些观念，是我们将类似线、面积或体积这样的连续体划分为明确部分的手段。然后，这些部分可以被计数；从而，数就可以用来确定一个连续整体的确切性质。</p>
+<p>Our perception of the flow of time and of the succession of events is
+a chief example of the application of these ideas of quantity. We
+measure time (as has been said in considering periodicity) by the
+repetition of similar events——the burning of successive inches of a
+uniform candle, the rotation of the earth relatively to the fixed stars,
+the rotation of the hands of a clock are all examples of such
+repetitions. Events of these types take the place of the foot-rule in
+relation to lengths. It is not necessary to assume that events of any
+one of these types are exactly equal in duration at each recurrence.
+What is necessary is that a rule should be known which will enable us to
+express the relative duration of, say, two examples of some type. For
+example, we may if we like suppose that the rate of the earth's rotation
+is decreasing so that each day is longer than the preceding by some
+minute fraction of a second. Such a rule enables us to compare the
+length of any day with that of any other day. But what is essential is
+that one series of repetitions, such as successive days, should be taken
+as the standard series; and, if the various events of that series are
+not taken as of equal duration, that a rule should be stated which
+regulates the duration to be assigned to each day in terms of the
+duration of any other day.</p>
+<p>我们对时间流逝和事件先后顺序的感知，是这些“量”的观念应用的一个主要例子。我们通过相似事件的重复来测量时间（这一点在讨论周期性时已提到）——例如均匀蜡烛连续燃烧的每一英寸、地球相对于恒星的自转、钟表指针的旋转，都是这类重复的实例。这些类型的事件，在时间测量中的作用，相当于长度测量中的尺子。</p>
+<p>我们并不需要假设这类事件在每次重复中持续的时间完全相等。我们真正需要的，是一个能够帮助我们表达某一类型中两个实例相对时长的规则。例如，我们可以认为地球的自转速度在逐渐减慢，因此每一天的长度相较于前一天会增加极小的一部分秒数。这样的一个规则可以帮助我们将任何一天的时长与另一日进行比较。</p>
+<p>但真正关键的是，我们需要选定一组重复事件（比如连续的天数）作为标准系列；如果我们并不认为这个系列中的每个事件持续时间都相等，那就必须有一个规则，来规定如何根据某一天的时长来确定其他各天的时长。</p>
+<p>What then are the requisites which such a rule ought to have? In the
+first place it should lead to the assignment of nearly equal durations
+to events which common sense judges to possess equal durations. A rule
+which made days of violently different lengths, and which made the
+speeds of apparently similar operations vary utterly out of proportion
+to the apparent minuteness of their differences, would never do. Hence
+the first requisite is general agreement with common sense. But this is
+not sufficient absolutely to determine the rule, for common sense is a
+rough observer and very easily satisfied. The next requisite is that
+minute adjustments of the rule should be so made as to allow of the
+simplest possible statements of the laws of nature. For example,
+astronomers tell us that the earth's rotation is slowing down, so that
+each day gains in length by some inconceivably minute fraction of a
+second. Their only reason for their assertion (as stated more fully in
+the discussion of periodicity) is that without it they would have to
+abandon the Newtonian laws of motion. In order to keep the laws of
+motion simple, they alter the measure of time. This is a perfectly
+legitimate procedure so long as it is thoroughly understood.</p>
+<p>那么，这样一个规则应具备哪些必要条件呢？首先，它应当使得那些根据常识判断为具有相同时长的事件，被分配上几乎相等的时间长度。一个规则如果导致白天长度极度不一致，或者让表面上类似的动作在速度上出现与它们差异程度极不相称的巨大差别，那是绝对行不通的。因此，第一个必要条件是：它必须大致符合常识。但这还不足以完全决定规则的内容，因为常识只是一个粗略的观察者，而且很容易就满足了。</p>
+<p>接下来的必要条件是：该规则的细微调整必须以尽可能简化自然规律的表述为目标。例如，天文学家告诉我们，地球的自转正在逐渐减慢，因此每天的长度都以一个不可思议的极小分数在增加。他们做出这一断言的唯一理由（在周期性的讨论中有更详细说明）是：如果不做出这样的假设，他们就不得不放弃牛顿的运动定律。为了保持运动定律的简洁性，他们修改了时间的计量方式。只要这种做法被彻底理解，它就是完全合理的。</p>
+<p>What has been said above about the abstract nature of the
+mathematical properties of space applies with appropriate verbal changes
+to the mathematical properties of time. A sense of the flux of time
+accompanies all our sensations and perceptions, and practically all that
+interests us in regard to time can be paralleled by the abstract
+mathematical properties which we ascribe to it. Conversely what has been
+said about the two requisites for the rule by which we determine the
+length of the day, also applies to the rule for determining the length
+of a yard measure——namely, the yard measure appears to retain the same
+length as it moves about. Accordingly, any rule must bring out that,
+apart from minute changes, it does remain of invariable length. Again,
+the second requisite is this, a definite rule for minute changes shall
+be stated which allows of the simplest expression of the laws of nature.
+For example, in accordance with the second requisite the yard measures
+are supposed to expand and contract with changes of temperature
+according to the substances which they are made of.</p>
+<p>上文所提到的关于空间数学性质抽象性的内容，也适用于时间的数学性质，只需在措辞上做出适当的调整。我们所有的感官体验和感知都会伴随着对时间流动的感觉，而我们对时间的大多数关注点，几乎都可以用我们赋予它的抽象数学性质来对应。</p>
+<p>反过来说，前面提到的关于确定一天长度的规则所需的两个条件，也同样适用于确定一码长度的规则——也就是说，<strong>一码的长度在移动时似乎保持不变</strong>。因此，任何规则都必须能够体现出这样一个事实：<strong>除了一些微小的变化外，其长度确实是恒定不变的</strong>。</p>
+<p>接下来，第二个必要条件是：<strong>必须明确规定这些微小变化的规则，使得自然规律的表达能够尽可能简洁</strong>。例如，依据这一条件，我们假定<strong>码尺会根据它所用材料的性质，随温度变化而发生热胀冷缩</strong>。</p>
+<p>Apart from the facts that our sensations are accompanied with
+perceptions of locality and of duration, and that lines, areas, volumes,
+and durations are each in their way quantities, the theory of numbers
+would be of very subordinate use in the exploration of the laws of the
+Universe. As it is, physical science reposes on the main ideas of
+number, quantity, space, and time. The mathematical sciences associated
+with them do not form the whole of mathematics, but they are the
+substratum of mathematical physics as at present existing.</p>
+<p>除了我们的感官体验伴随着对位置和持续时间的感知，以及线、面积、体积和时间长度在各自的方式上都是“量”的这一事实之外，数字理论在探索宇宙规律中的作用将是非常次要的。
+但实际上，物理科学是建立在数字、数量、空间和时间这些基本概念之上的。与这些概念相关的数学科学虽然并不构成整个数学体系，但它们却是目前数学物理学的基础。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/math/" rel="tag"># math</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/03/19/chapter%2016%20Geometry/" rel="prev" title="chapter 16 Geometry">
+                  <i class="fa fa-angle-left"></i> chapter 16 Geometry
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Da Winter</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

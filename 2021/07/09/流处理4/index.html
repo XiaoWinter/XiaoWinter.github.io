@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaowinter.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="File 和 FileReader File 对象继承自 Blob，并扩展了与文件系统相关的功能。 有两种方式可以获取它。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【浏览器怎么操作二进制】【四】文件File及文件读取FileReader">
+<meta property="og:url" content="https://xiaowinter.github.io/2021/07/09/%E6%B5%81%E5%A4%84%E7%90%864/index.html">
+<meta property="og:site_name" content="DaWinter">
+<meta property="og:description" content="File 和 FileReader File 对象继承自 Blob，并扩展了与文件系统相关的功能。 有两种方式可以获取它。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-09T11:54:00.000Z">
+<meta property="article:modified_time" content="2021-07-09T11:54:00.000Z">
+<meta property="article:author" content="Da Winter">
+<meta property="article:tag" content="File">
+<meta property="article:tag" content="FileReader">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://xiaowinter.github.io/2021/07/09/%E6%B5%81%E5%A4%84%E7%90%864/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://xiaowinter.github.io/2021/07/09/%E6%B5%81%E5%A4%84%E7%90%864/","path":"2021/07/09/流处理4/","title":"【浏览器怎么操作二进制】【四】文件File及文件读取FileReader"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【浏览器怎么操作二进制】【四】文件File及文件读取FileReader | DaWinter</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">DaWinter</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">DaWinter's blob</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#file-%E5%92%8C-filereader"><span class="nav-number">1.</span> <span class="nav-text">File 和 FileReader</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#filereader"><span class="nav-number">1.1.</span> <span class="nav-text">FileReader</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#filereader-%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text">FileReader 事件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Da Winter"
+      src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+  <p class="site-author-name" itemprop="name">Da Winter</p>
+  <div class="site-description" itemprop="description">开发经历</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2021/07/09/%E6%B5%81%E5%A4%84%E7%90%864/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【浏览器怎么操作二进制】【四】文件File及文件读取FileReader | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【浏览器怎么操作二进制】【四】文件File及文件读取FileReader
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-09 19:54:00" itemprop="dateCreated datePublished" datetime="2021-07-09T19:54:00+08:00">2021-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JS%E4%BA%8C%E8%BF%9B%E5%88%B6/" itemprop="url" rel="index"><span itemprop="name">JS二进制</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="file-和-filereader">File 和 FileReader</h3>
+<p><a target="_blank" rel="noopener" href="https://www.w3.org/TR/FileAPI/#dfn-file">File</a> 对象继承自
+<code>Blob</code>，并扩展了与文件系统相关的功能。</p>
+<p>有两种方式可以获取它。</p>
+<span id="more"></span>
+<p>第一种，与 <code>Blob</code> 类似，有一个构造器：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">File</span>(fileParts, fileName, [options]);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong><code>fileParts</code></strong> ——
+Blob/BufferSource/String 类型值的数组。</p></li>
+<li><p><strong><code>fileName</code></strong> —— 文件名字符串。</p></li>
+<li><p><code>options</code></p>
+<p>—— 可选对象：</p>
+<ul>
+<li><strong><code>lastModified</code></strong> ——
+最后一次修改的时间戳（整数日期）。</li>
+</ul></li>
+</ul>
+<p>第二种，更常见的是，我们从 <code>&lt;input type="file"&gt;</code>
+或拖放或其他浏览器接口来获取文件。在这种情况下，file
+将从操作系统（OS）获得 this 信息。（得查查规范）</p>
+<p>由于 <code>File</code> 是继承自 <code>Blob</code> 的，所以
+<code>File</code> 对象具有相同的属性，附加：</p>
+<ul>
+<li><code>name</code> —— 文件名，</li>
+<li><code>lastModified</code> —— 最后一次修改的时间戳。</li>
+</ul>
+<p>这就是我们从 <code>&lt;input type="file"&gt;</code> 中获取
+<code>File</code> 对象的方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;file&quot;</span> onchange=<span class="string">&quot;showFile(this)&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">function</span> <span class="title function_">showFile</span>(<span class="params">input</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">let</span> file = input.<span class="property">files</span>[<span class="number">0</span>];</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title function_">alert</span>(<span class="string">`File name: <span class="subst">$&#123;file.name&#125;</span>`</span>); <span class="comment">// 例如 my.png</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title function_">alert</span>(<span class="string">`Last modified: <span class="subst">$&#123;file.lastModified&#125;</span>`</span>); <span class="comment">// 例如 1552830408824</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>请注意：</strong></p>
+<p>输入（input）可以选择多个文件，因此 <code>input.files</code>
+是一个类数组对象。这里我们只有一个文件，所以我们只取
+<code>input.files[0]</code>。</p>
+<h4 id="filereader"><a
+target="_blank" rel="noopener" href="https://zh.javascript.info/file#filereader">FileReader</a></h4>
+<p><a
+target="_blank" rel="noopener" href="https://www.w3.org/TR/FileAPI/#dfn-filereader">FileReader</a>
+是一个对象，其唯一目的是从 <code>Blob</code>（因此也从
+<code>File</code>）对象中读取数据。</p>
+<p>它使用事件来传递数据，因为从磁盘读取数据可能比较费时间。</p>
+<p>构造函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>(); <span class="comment">// 没有参数</span></span><br></pre></td></tr></table></figure>
+<p>主要方法:</p>
+<ul>
+<li><strong><code>readAsArrayBuffer(blob)</code></strong> ——
+将数据读取为二进制格式的 <code>ArrayBuffer</code>。</li>
+<li><strong><code>readAsText(blob, [encoding])</code></strong> ——
+将数据读取为给定编码（默认为 <code>utf-8</code>
+编码）的文本字符串。</li>
+<li><strong><code>readAsDataURL(blob)</code></strong> ——
+读取二进制数据，并将其编码为 base64 的 data url。</li>
+<li><strong><code>abort()</code></strong> —— 取消操作。</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>read*</th>
+<th>参数</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>readAsArrayBuffer</td>
+<td>blob</td>
+<td>ArrayBuffer</td>
+</tr>
+<tr class="even">
+<td>readAsText</td>
+<td>blob</td>
+<td>String</td>
+</tr>
+<tr class="odd">
+<td>readAsDataURL</td>
+<td>blob</td>
+<td>DataUrl</td>
+</tr>
+</tbody>
+</table>
+<h5 id="filereader-事件">FileReader 事件</h5>
+<p>读取过程中，有以下事件：</p>
+<ul>
+<li><code>loadstart</code> —— 开始加载。</li>
+<li><code>progress</code> —— 在读取过程中出现。</li>
+<li><code>load</code> —— 读取完成，没有 error。</li>
+<li><code>abort</code> —— 调用了 <code>abort()</code>。</li>
+<li><code>error</code> —— 出现 error。</li>
+<li><code>loadend</code> —— 读取完成，无论成功还是失败。</li>
+</ul>
+<p>读取完成后，我们可以通过以下方式访问读取结果：</p>
+<ul>
+<li><code>reader.result</code> 是结果（如果成功）</li>
+<li><code>reader.error</code> 是 error（如果失败）。</li>
+</ul>
+<p>使用最广泛的事件无疑是 <code>load</code> 和 <code>error</code>。</p>
+<p>这是一个读取文件的示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;file&quot;</span> onchange=<span class="string">&quot;readFile(this)&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">function</span> <span class="title function_">readFile</span>(<span class="params">input</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">let</span> file = input.<span class="property">files</span>[<span class="number">0</span>];</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">let</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  reader.<span class="title function_">readAsText</span>(file);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  reader.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="variable language_">console</span>.<span class="title function_">log</span>(reader.<span class="property">result</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  reader.<span class="property">onerror</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="variable language_">console</span>.<span class="title function_">log</span>(reader.<span class="property">error</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>在 Web Workers 中可以使用
+<code>FileReaderSync</code></strong></p>
+<p>对于 Web Worker，还有一种同步的 <code>FileReader</code> 变体，称为 <a
+target="_blank" rel="noopener" href="https://www.w3.org/TR/FileAPI/#FileReaderSync">FileReaderSync</a>。</p>
+<p>它的读取方法 <code>read*</code>
+不会生成事件，但是会像常规函数那样返回一个结果。</p>
+<p>不过，这仅在 Web Worker
+中可用，因为在读取文件的时候，同步调用会有延迟，而在 Web Worker
+中，这种延迟并不是很重要。它不会影响页面。</p>
+<h4 id="总结"><a
+target="_blank" rel="noopener" href="https://zh.javascript.info/file#zong-jie">总结</a></h4>
+<p><code>File</code> 对象继承自 <code>Blob</code>。</p>
+<p>除了 <code>Blob</code> 方法和属性外，<code>File</code> 对象还有
+<code>name</code> 和 <code>lastModified</code>
+属性，以及从文件系统读取的内部功能。我们通常从用户输入如
+<code>&lt;input&gt;</code> 或拖放事件来获取 <code>File</code> 对象。</p>
+<p><code>FileReader</code> 对象可以从文件或 blob
+中读取数据，可以读取为以下三种格式：</p>
+<ul>
+<li>字符串（<code>readAsText</code>）。</li>
+<li><code>ArrayBuffer</code>（<code>readAsArrayBuffer</code>）。</li>
+<li>data url，base-64 编码（<code>readAsDataURL</code>）。</li>
+</ul>
+<p>但是，在很多情况下，我们不必读取文件内容。就像我们处理 blob
+一样，我们可以使用 <code>URL.createObjectURL(file)</code> 创建一个短的
+url，并将其赋给 <code>&lt;a&gt;</code> 或
+<code>&lt;img&gt;</code>。这样，文件便可以下载文件或者将其呈现为图像，作为
+canvas 等的一部分。</p>
+<p>而且，如果我们要通过网络发送一个
+<code>File</code>，那也很容易：<strong>像 <code>XMLHttpRequest</code> 或
+<code>fetch</code> 等网络 API 本身就接受 <code>File</code>
+对象</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/File/" rel="tag"># File</a>
+              <a href="/tags/FileReader/" rel="tag"># FileReader</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/09/%E6%B5%81%E5%A4%84%E7%90%865/" rel="prev" title="【浏览器怎么操作二进制】【五】总结">
+                  <i class="fa fa-angle-left"></i> 【浏览器怎么操作二进制】【五】总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/09/%E6%B5%81%E5%A4%84%E7%90%863/" rel="next" title="【浏览器怎么操作二进制】【三】Blob 消费者">
+                  【浏览器怎么操作二进制】【三】Blob 消费者 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Da Winter</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

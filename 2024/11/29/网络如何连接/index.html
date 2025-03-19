@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaowinter.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="网络如何连接 浏览器生成消息 生成HTTP请求消息 URL：浏览器是具有多种客户端功能的综合性客户端软件，因此它需要一些东西判断应该使用其中那种功能来访问相应的数据，而不同的URL就是用来干这个的 1234567891011http:&#x2F;&#x2F;user:password@www.glasscom.com:80&#x2F;dir&#x2F;file1.htmftp:&#x2F;&#x2F;user:password@ftp.glasscom.c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络如何连接">
+<meta property="og:url" content="https://xiaowinter.github.io/2024/11/29/%E7%BD%91%E7%BB%9C%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5/index.html">
+<meta property="og:site_name" content="DaWinter">
+<meta property="og:description" content="网络如何连接 浏览器生成消息 生成HTTP请求消息 URL：浏览器是具有多种客户端功能的综合性客户端软件，因此它需要一些东西判断应该使用其中那种功能来访问相应的数据，而不同的URL就是用来干这个的 1234567891011http:&#x2F;&#x2F;user:password@www.glasscom.com:80&#x2F;dir&#x2F;file1.htmftp:&#x2F;&#x2F;user:password@ftp.glasscom.c">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/105.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/106.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/107.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/108.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/109.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/110.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/111.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/112.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/114.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/115.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/116.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/117.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/118.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/120.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/121.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/122.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/123.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/124.png">
+<meta property="article:published_time" content="2024-11-29T03:03:42.000Z">
+<meta property="article:modified_time" content="2024-11-29T03:03:42.000Z">
+<meta property="article:author" content="Da Winter">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/105.png">
+
+
+<link rel="canonical" href="https://xiaowinter.github.io/2024/11/29/%E7%BD%91%E7%BB%9C%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://xiaowinter.github.io/2024/11/29/%E7%BD%91%E7%BB%9C%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5/","path":"2024/11/29/网络如何连接/","title":"网络如何连接"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>网络如何连接 | DaWinter</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">DaWinter</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">DaWinter's blob</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">网络如何连接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%94%9F%E6%88%90%E6%B6%88%E6%81%AF"><span class="nav-number">1.1.</span> <span class="nav-text">浏览器生成消息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90http%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF"><span class="nav-number">1.1.1.</span> <span class="nav-text">生成HTTP请求消息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A6%82%E4%BD%95%E8%A7%A3%E6%9E%90%E7%BD%91%E5%9D%80"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">浏览器如何解析网址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%B6%88%E6%81%AF%E5%AE%9E%E9%99%85%E7%9A%84%E6%A0%B7%E5%AD%90"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">请求消息实际的样子</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#http-%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.1.1.2.1.</span> <span class="nav-text">HTTP 协议</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%EF%BD%84%EF%BD%8E%EF%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9F%A5%E8%AF%A2web%E6%9C%8D%E5%8A%A1%E5%99%A8ip%E5%9C%B0%E5%9D%80"><span class="nav-number">1.1.2.</span> <span class="nav-text">向ＤＮＳ服务器查询web服务器IP地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%90%91dns%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9F%A5%E8%AF%A2%E5%9F%9F%E5%90%8D%E5%AF%B9%E5%BA%94%E7%9A%84ip"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">如何向DNS服务器查询域名对应的IP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ip%E5%9C%B0%E5%9D%80%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">ip地址基本知识</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#tcpip-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.2.1.1.1.</span> <span class="nav-text">TCP&#x2F;IP 的基本思路</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ip%E5%9C%B0%E5%9D%80%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.2.1.1.2.</span> <span class="nav-text">IP地址的表示方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8ip%E7%A1%AE%E5%AE%9A%E9%80%9A%E4%BF%A1%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%90%86%E7%94%B1"><span class="nav-number">1.1.2.1.1.3.</span> <span class="nav-text">使用IP确定通信对象的理由</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9F%9F%E5%90%8D%E7%9A%84%E7%90%86%E7%94%B1"><span class="nav-number">1.1.2.1.1.4.</span> <span class="nav-text">使用域名的理由</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#socket%E5%BA%93%E6%8F%90%E4%BE%9B%E6%9F%A5%E8%AF%A2ip%E5%9C%B0%E5%9D%80%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.2.1.1.5.</span> <span class="nav-text">socket库提供查询IP地址的功能</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E8%A7%A3%E6%9E%90%E5%99%A8%E5%90%91-dns-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%91%E5%87%BA%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.1.2.1.2.</span> <span class="nav-text">通过解析器向 DNS
+服务器发出查询</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%99%A8%E7%9A%84%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.2.1.2.1.</span> <span class="nav-text">解析器的内部原理</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E4%B8%96%E7%95%8Cdns%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%A4%A7%E6%8E%A5%E5%8A%9B"><span class="nav-number">1.1.3.</span> <span class="nav-text">全世界DNS服务器的大接力</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">域名的层次结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BB%E6%89%BE%E7%9B%B8%E5%BA%94%E7%9A%84-dns-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B9%B6%E8%8E%B7%E5%8F%96-ip-%E5%9C%B0%E5%9D%80"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">寻找相应的 DNS 服务器并获取
+IP 地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E7%BC%93%E5%AD%98%E5%8A%A0%E5%BF%AB-dns-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E5%93%8D%E5%BA%94"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">通过缓存加快 DNS
+服务器的响应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A7%94%E6%89%98%E5%8D%8F%E8%AE%AE%E6%A0%88%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF"><span class="nav-number">1.1.4.</span> <span class="nav-text">委托协议栈发送消息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2ip%E5%9C%B0%E5%9D%80%E4%B9%8B%E5%90%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B0%B1%E5%B0%86%E6%B6%88%E6%81%AF%E5%A7%94%E6%89%98%E7%BB%99%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8F%91%E9%80%81%E7%BB%99web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%99%E4%B8%AA%E5%A7%94%E6%89%98%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%8C%E6%88%90%E7%9A%84"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">查询IP地址之后，浏览器就将消息委托给操作系统发送给web服务器，这个委托是如何完成的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%A5%97%E6%8E%A5%E5%AD%97%E9%98%B6%E6%AE%B5"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">创建套接字阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E9%98%B6%E6%AE%B5%E6%8A%8A%E7%AE%A1%E9%81%93%E6%8E%A5%E4%B8%8A%E5%8E%BB"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">连接阶段：把管道接上去</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1%E9%98%B6%E6%AE%B5%E4%BC%A0%E9%80%92%E6%B6%88%E6%81%AF"><span class="nav-number">1.1.4.4.</span> <span class="nav-text">通信阶段：传递消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%AD%E5%BC%80%E9%98%B6%E6%AE%B5%E6%94%B6%E5%8F%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9D%9F"><span class="nav-number">1.1.4.5.</span> <span class="nav-text">断开阶段：收发数据结束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E7%94%B5%E4%BF%A1%E5%8F%B7%E4%BC%A0%E8%BE%93tcpip%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.5.</span> <span class="nav-text">用电信号传输TCP&#x2F;IP数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%A5%97%E6%8E%A5%E5%AD%97"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">创建套接字</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE%E6%A0%88%E7%9A%84%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.5.1.1.</span> <span class="nav-text">协议栈的内部结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A5%97%E6%8E%A5%E5%AD%97%E7%9A%84%E5%AE%9E%E4%BD%93%E5%B0%B1%E6%98%AF%E9%80%9A%E4%BF%A1%E6%8E%A7%E5%88%B6%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.5.1.2.</span> <span class="nav-text">套接字的实体就是通信控制信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E7%94%A8-socket-%E6%97%B6%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.5.1.3.</span> <span class="nav-text">调用 socket 时的操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">连接服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"><span class="nav-number">1.1.5.2.1.</span> <span class="nav-text">连接是什么意思</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%9F%E8%B4%A3%E4%BF%9D%E5%AD%98%E6%8E%A7%E5%88%B6%E4%BF%A1%E6%81%AF%E7%9A%84%E5%A4%B4%E9%83%A8"><span class="nav-number">1.1.5.2.2.</span> <span class="nav-text">负责保存控制信息的头部</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%93%8D%E4%BD%9C%E7%9A%84%E5%AE%9E%E9%99%85%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.5.2.3.</span> <span class="nav-text">连接操作的实际过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%B6%E5%8F%91%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.6.</span> <span class="nav-text">收发数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E5%BC%80%E5%B9%B6%E5%88%A0%E9%99%A4%E5%A5%97%E6%8E%A5%E5%AD%97"><span class="nav-number">1.1.7.</span> <span class="nav-text">从服务器断开并删除套接字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ip%E4%B8%8E%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%8C%85%E6%94%B6%E5%8F%91%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.8.</span> <span class="nav-text">IP与以太网包收发操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8udp%E5%8D%8F%E8%AE%AE%E6%94%B6%E5%8F%91%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.9.</span> <span class="nav-text">用UDP协议收发操作</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Da Winter"
+      src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+  <p class="site-author-name" itemprop="name">Da Winter</p>
+  <div class="site-description" itemprop="description">开发经历</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2024/11/29/%E7%BD%91%E7%BB%9C%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="网络如何连接 | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网络如何连接
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-29 11:03:42" itemprop="dateCreated datePublished" datetime="2024-11-29T11:03:42+08:00">2024-11-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="网络如何连接">网络如何连接</h1>
+<h2 id="浏览器生成消息">浏览器生成消息</h2>
+<h3 id="生成http请求消息">生成HTTP请求消息</h3>
+<p><span
+style="color:red">URL：浏览器是具有多种客户端功能的综合性客户端软件，因此它需要一些东西判断应该使用其中那种功能来访问相应的数据，而不同的URL就是用来干这个的</span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">http://user:password@www.glasscom.com:80/dir/file1.htm</span><br><span class="line"></span><br><span class="line">ftp://user:password@ftp.glasscom.com:21/dir/file1.htm</span><br><span class="line"></span><br><span class="line">file://localhost/c:/path/file1.zip</span><br><span class="line"></span><br><span class="line">mailto:tone@glasscom.com</span><br><span class="line"></span><br><span class="line">news:comp.protocols.tcp-ip</span><br><span class="line"></span><br><span class="line">尽管 URL 有各种不同的写法，但它们有一个共同点，那就是 URL 开头的文字，即“http:”“ftp:”“file:”“mailto:”这部分文字都表示浏览器应当使用的访问方法</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h4 id="浏览器如何解析网址">浏览器如何解析网址</h4>
+<p>URL 的格式会随着协议的不同而不同,以HTTP请求为例解析URL</p>
+<p>HTTP的固定格式为</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/105.png"
+alt="105" />
+<figcaption aria-hidden="true">105</figcaption>
+</figure>
+<h4 id="请求消息实际的样子">请求消息实际的样子</h4>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/106.png"
+alt="106" />
+<figcaption aria-hidden="true">106</figcaption>
+</figure>
+<h5 id="http-协议">HTTP 协议</h5>
+<p>HTTP协议定义了客户端和服务器之间交互的消息内容和步骤，其基本思路非常简单</p>
+<p>URL：Uniform Resource Identifier，统一资源标识符</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25013398">CGI 程序</a>：对 Web
+服务器程序调用其他程序的规则所做的定义就是 CGI，而按照 CGI
+规范来工作的程序就称为 CGI 程序。</p>
+<p><strong>首先</strong>，客户端会向服务器发送请求。</p>
+<p>请求消息中包含的内容是“<strong>对什么</strong>（URI）”和“<strong>进行怎样的操作</strong>（METHOD，也叫
+HTTP 谓词，或者 HTTP 动词）”两个部分。</p>
+<p>收到请求消息<strong>之后</strong>，Web
+服务器会对其中的内容进行解析，通过
+URI和方法来判断“对什么”“进行怎样的操作”，并根据这些要求来完成自己的工作，然后将结果存放在响应消息中。</p>
+<p>在响应消息的开头有一个状态码，它用来表示操作的执行结果是成功还是发生了错误。状态码后面就是头字段和网页数据。响应消息会被发送回客户端，然后客户端会对消息进行解析，使用。到这里，HTTP
+的整个工作就完成了。</p>
+<p>现在大家应该已经了解了 HTTP 的全貌</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/107.png"
+alt="107" />
+<figcaption aria-hidden="true">107</figcaption>
+</figure>
+<p>准确来说，消息体的格式会通过消息头中的 Content-Type 字段来定义（MIME
+类型）</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/108.png"
+alt="108" />
+<figcaption aria-hidden="true">108</figcaption>
+</figure>
+<h3
+id="向ｄｎｓ服务器查询web服务器ip地址">向ＤＮＳ服务器查询web服务器IP地址</h3>
+<h4
+id="如何向dns服务器查询域名对应的ip">如何向DNS服务器查询域名对应的IP</h4>
+<h5 id="ip地址基本知识">ip地址基本知识</h5>
+<p>生成 HTTP 消息之后，接下来我们需要委托操作系统将消息发送给Web
+服务器。（　发送消息的功能对于所有的应用程序来说都是通用的，因此让操作系统来</p>
+<p>实现这一功能，其他应用程序委托操作系统来进行操作，这是一个比较合理的做法。）</p>
+<p>在委托操作系统发送消息时，必须要提供的不是通信对象的域名，而是它的 IP
+地址。因此，在生成 HTTP 消息之后，下一个步骤就是根据域名查询 IP
+地址。</p>
+<h6 id="tcpip-的基本思路">TCP/IP 的基本思路</h6>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">互联网和公司内部的局域网都是基于 TCP/IP 的思路来设计的，所以我们先来了解 TCP/IP 的基本思路。TCP/IP 的结构如图 1.8 所示，就是由一些小的子网，通过路由器 A 连接起来组成一个大的网络。</span><br><span class="line"></span><br><span class="line">这里的子网可以理解为用集线器 B 连接起来的几台计算机 C，我们将它看作一个单位，称为子网。</span><br><span class="line"></span><br><span class="line">将子网通过路由器连接起来，就形成了一个网络 。</span><br></pre></td></tr></table></figure>
+<p><span style="color:red">IP地址概念</span></p>
+<p>在网络中，所有的设备都会被分配一个地址。这个地址就相当于现实中某条路上的“××
+号 ××
+室”。其中“号”对应的号码是分配给整个子网的，而“室”对应的号码是分配给子网中的计算机的，这就是网络中的地址。“号”对应的号码称为网络号，“室”对应的号码称为主机号，这个地址的整体称为
+IP 地址 。</p>
+<p><strong>消息的传送</strong></p>
+<p>通过 IP
+地址我们可以判断出访问对象服务器的位置，从而将消息发送到服务器。消息传送的具体过程在后面的章节有详细讲解，不过现在我们先简单了解一下。发送者发出的消息首先经过子网中的集线器
+A，转发到距离发送者最近的路由器上（图 1.8
+①）。接下来，路由器会根据消息的目的地判断下一个路由器的位置，然后将消息发送到下一个路由器，即消息再次经过子网内的集线器被转发到下一个路由器（图
+1.8 ②）。前面的过程不断重复，最终消息就被传送到了目的地。</p>
+<p><span style="color:red">路由器：一种对包进行转发的设备，</span></p>
+<p><span
+style="color:red">集线器：一种对包进行转发的设备，分为中继式集线器和交换式集线器两种</span></p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/109.png"
+alt="109" />
+<figcaption aria-hidden="true">109</figcaption>
+</figure>
+<p><span style="color:red">实际IP 地址</span> 实际的 IP 地址是一串32
+比特的数字，按照 8 比特（1 字节）为一组分成 4
+组，分别用十进制表示然后再用圆点隔开</p>
+<p><span style="color:red">网络ID和主机ID</span></p>
+<p>最初设计互联网络时，为了便于寻址以及层次化构造网络，每个IP地址包括两个标识码（ID），即网络ID和主机ID。同一个物理网络上的所有主机都使用同一个网络ID，网络上的一个主机（包括网络上工作站，服务器和路由器等）有一个主机ID与其对应。</p>
+<p><span style="color:red">子网掩码(NetMask)</span></p>
+<p>子网掩码从逻辑上把一个大网络划分成一些小网络。子网掩码是由一系列的1和0构成，通过将其同IP地址做“与”运算来指出一个IP地址的网络号是什么。对于传统IP地址分类来说，A类地址的子网掩码是255.0.0.0；B类地址的[子网掩码]是255.255.0.0；C类地址的子网掩码是255.255.255.0。例如，如果要将一个B类网络166.111.0.0划分为多个C类子网来用的话，只要将其子网掩码设置为255.255.255.0即可，这样166.111.1.1和166.111.2.1就分属于不同的网络了。像这样，通过较长的子网掩码将一个网络划分为多个网络的方法就叫做划分子网(Subnetting)</p>
+<h6 id="ip地址的表示方法">IP地址的表示方法</h6>
+<ul>
+<li>IP地址的表示方法</li>
+</ul>
+<p>10.11.12.13</p>
+<ul>
+<li>采用与IP地址主体相同的格式表示子网掩码的方法</li>
+</ul>
+<p>10.11.12.13/255.255.255.0</p>
+<ul>
+<li>采用网络号比特数表示子网掩码的方法</li>
+</ul>
+<p>10.11.12.13/24</p>
+<ul>
+<li>表示子网的地址</li>
+</ul>
+<p>10.11.12.<span style="color:blue">0</span>/24
+主机号部分的比特全部为0，这个地址表示的不是单独的一台计算机，而是代表了整个子网</p>
+<ul>
+<li>表示子网内广播的地址</li>
+</ul>
+<p>10.11.12.255/24
+主机号部分的比特全部为1，这个地址表示对整个子网进行广播（发送包）</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/110.png"
+alt="110" />
+<figcaption aria-hidden="true">110</figcaption>
+</figure>
+<h6 id="使用ip确定通信对象的理由">使用IP确定通信对象的理由</h6>
+<ol type="1">
+<li><p>IP 地址的长度为 32 比特，也就是 4
+字节，相对地，域名最短也要几十个字节，最长甚至可以达到 255
+字节。换句话说，使用 IP 地址只需要处理 4
+字节的数字，而域名则需要处理几十个到 255
+个字节的字符，这增加了路由器的负担，传送数据也会花费更长的时间</p></li>
+<li><p>可能有人会说：“那使用高性能路由器不就能解决这个问题了吗？”然而，路由器的速度是有极限的，而互联网内部流动的数据量已然让路由器疲于应付了，因此我们不应该再采用效率更低的设计。</p>
+<p>随着技术的发展，路由器的性能也会不断提升，但与此同时，数据量也在以更快的速度增长，在可预见的未来，这样的趋势应该不会发生变化。出于这样的原因，使用名称本身来确定通信对象并不是一个聪明的设计。</p></li>
+</ol>
+<h6 id="使用域名的理由">使用域名的理由</h6>
+<ol type="1">
+<li>对于人类来说，记住由数字组成的IP地址是非常困难的</li>
+</ol>
+<p>DNS作为桥梁解决了IP地址和域名间的转换问题</p>
+<h6 id="socket库提供查询ip地址的功能">socket库提供查询IP地址的功能</h6>
+<p>向 DNS 服务器发出查询，也就是向 DNS
+服务器发送查询消息，并接收服务器返回的响应消息。换句话说，对于 DNS
+服务器，我们的计算机上一定有相应的 DNS 客户端，而相当于 DNS
+客户端的部分称为 DNS 解析器，或者简称解析器。</p>
+<p>通过 DNS 查询 IP
+地址的操作称为域名解析，因此负责执行解析（resolution）这一操作的就叫解析器（resolver）了，解析器实际上是一段程序，它包含在操作系统的
+Socket 库中</p>
+<p><span style="color:red">Socket 库</span> <strong>Socket</strong>
+库是在加州大学伯克利分校开发的 UNIX 系操作系统 BSD 中开发的
+C语言库，互联网中所使用的大多数功能都是基于 Socket 库来开发的。因此，BSD
+之外的其他操作系统以及 C 语言之外的其他编程语言也参照 Socket
+库开发了相应的网络库。可以说，Socket 库是网络开发中的一种标准库</p>
+<h5 id="通过解析器向-dns-服务器发出查询">通过解析器向 DNS
+服务器发出查询</h5>
+<p>解析器的用法非常简单。Socket
+库中的程序都是标准组件，只要从应用程序中进行调用就可以了。</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/111.png"
+alt="111" />
+<figcaption aria-hidden="true">111</figcaption>
+</figure>
+<p>调用解析器后，解析器会向 DNS 服务器发送查询消息，然后 DNS
+服务器会返回响应消息。响应消息中包含查询到的 IP 地址，解析器会取出
+IP</p>
+<p>地址，并将其写入浏览器指定的内存地址中。只要运行图 1.11
+中的这一行程序，就可以完成前面所有这些工作，我们也就完成了 IP
+地址的查询。接</p>
+<p>下来，浏览器在向 Web 服务器发送消息时，只要从该内存地址取出 IP 地
+址，并将它与 HTTP 请求消息一起交给操作系统就可以了。</p>
+<h6 id="解析器的内部原理">解析器的内部原理</h6>
+<p>下面来看一看当应用程序调用解析器时，解析器内部是怎样工作的（图
+1.12）。网络应用程序（在我们的场景中就是指浏览器）调用解析器时，</p>
+<p>程序的控制流程就会转移到解析器的内部。</p>
+<ol type="1">
+<li><p>当控制流程转移到解析器后，解析器会生成要发送给 DNS
+服务器的查询消息。</p>
+<p>这个过程与浏览器生成要发送给 Web 服务器的 HTTP
+请求消息的过程类似，解析器会根据 DNS 的规格，生成一条表示“请告诉我
+www.lab.glasscom.com 的 IP 地址 的数据（HTTP 消息是用文本编写的，但 DNS
+消息是使用二进制数据编写的。），并将它发送给 DNS 服务器</p></li>
+<li><p>发送消息这个操作并不是由解析器自身来执行，而是要委托给操作系统内部的协议栈来执行。（这是因为和浏览器一样，解析器本身也不具备使用</p>
+<p>网络收发数据的功能）</p></li>
+<li><p>解析器调用协议栈后，控制流程会再次转移，协议栈会执行发送消息的操作，然后通过网卡将消息发送给
+DNS 服务器</p></li>
+<li><p>当 DNS
+服务器收到查询消息后，它会根据消息中的查询内容进行查询</p></li>
+<li><p>DNS进行IP地址查询。如果要访问的 Web 服务器已经在 DNS
+服务器上注册，那么这条记录就能够被找到，然后其 IP
+地址会被写入响应消息并返回给客户端</p></li>
+<li><p>接下来，消息经过网络到达客户端，再经过协议栈被传递给解析器（图
+1.12 ⑦⑧），然后解析器读取出消息取出 IP 地址，并将 IP
+地址传递给应用程序（图 1.12 ⑨）。</p></li>
+<li><p>到这里，解析器的工作就完成了，控制流程重新回到应用程序（浏览器）。现在应用程序已经能够从内存中取出
+IP 地址了，所以说 IP 地址是用这种方式传递给应用程序的。</p></li>
+</ol>
+<p><span
+style="color:red">协议栈：操作系统内部的网络控制软件，也叫“协议驱动”“TCP/IP
+驱动”等。</span></p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/112.png"
+alt="112" />
+<figcaption aria-hidden="true">112</figcaption>
+</figure>
+<h3 id="全世界dns服务器的大接力">全世界DNS服务器的大接力</h3>
+<p><span style="color:red">DNS服务器的基本工作</span></p>
+<p>其中，来自客户端的查询消息包含以下 3 种信息。</p>
+<p>（a）<strong>域名</strong></p>
+<p>服务器、邮件服务器（邮件地址中 @ 后面的部分）的名称</p>
+<p>（b） <strong>Class</strong></p>
+<p>在最早设计 DNS 方案时，DNS
+在互联网以外的其他网络中的应用也被考虑到了，而 Class
+就是用来识别网络的信息。不过，如今除了</p>
+<p>互联网并没有其他的网络了，因此 Class 的值永远是代表互联网的 IN</p>
+<p>（c）<strong>记录类型</strong></p>
+<p>表示域名对应何种类型的记录。</p>
+<p>例如，当类型为 A 时，表示域名对应的是 IP 地址；当类型为 MX
+时，表示域名对应的是邮件服务器。对于不同的记录类型，服务器向客户端返回的信息也会不同</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/114.png"
+alt="114" />
+<figcaption aria-hidden="true">114</figcaption>
+</figure>
+<p>查询示例</p>
+<p>例如，如果要查询 www.lab.glasscom.com 这个域名对应的 IP
+地址，客户端会向 DNS 服务器发送包含以下信息的查询消息。</p>
+<p>（a）域名 = www.lab.glasscom.com</p>
+<p>（b） Class = IN</p>
+<p>（c）记录类型 = A</p>
+<p>然后，DNS 服务器会从已有的记录中查找域名、Class
+和记录类型全部匹配的记录。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DNS 服务器会从域名与 IP 地址的对照表中查找相应的记录，并返回 IP 地址</span><br></pre></td></tr></table></figure>
+<h4 id="域名的层次结构">域名的层次结构</h4>
+<p>如何查询DNS服务器不存在的信息？</p>
+<p>将信息分布保存在多台 DNS 服务器中，这些 DNS
+服务器相互接力配合，从而查找出要查询的信息</p>
+<p><span style="color:orange">首先，DNS
+服务器中的所有信息都是按照域名以分层次的结构来保存的。</span></p>
+<p>DNS 中的域名都是用句点来分隔的，比如
+www.lab.glasscom.com，这里的句点代表了不同层次之间的界限，就相当于公司里面的组织结构不用部、科之类的名称来划分，只是用句点来分隔而已
+。</p>
+<p>在域名中，越靠右的位置表示其层级越高，比如 www.lab.glasscom.com
+这个域名如果按照公司里的组织结构来说，大概就是“com 事业集团 glasscom 部
+lab 科的 www”这样。其中，相当于一个层级的部分称为域。因此，com
+域的下一层是glasscom 域，再下一层是 lab 域，再下面才是 www
+这个名字。</p>
+<p>这种具有层次结构的域名信息会注册到 DNS
+服务器中，而每个域都是作为一个整体来处理的。换句话说就是，一个域的信息是作为一个整体存放在
+DNS 服务器中的，不能将一个域拆开来存放在多台 DNS 服务器中。不过，DNS
+服务器和域之间的关系也并不总是一对一的，一台 DNS
+服务器中也可以存放多个域的信息。</p>
+<p>于是，DNS
+服务器也具有了像域名一样的层次结构，每个域的信息都存放在相应层级的 DNS
+服务器中。</p>
+<p>例如，这里有一个公司的域，那么就相应地有一台 DNS
+服务器，其中存放了公司中所有 Web 服务器和邮件服务器的信息
+。对于公司域来说，例如现在需要为每一个事业集团配备一台 DNS
+服务器，分别管理各事业集团自己的信息，但我们之前也说过一个域是不可分割的，这该怎么办呢？没关系，我们可以在域的下面创建下级域
+B，然后再将它们分别分配给各个事业集团。比如，假设公司的域为
+example.co.jp， 我们可以在这个域的下面创建两个子域， 即
+sub1.example.co.jp 和
+sub2.example.co.jp，然后就可以将这两个下级域分配给不同的事业集团来使用。</p>
+<p>通过实际的域名可能更容易理解，比如 www.nikkeibp.co.jp
+这个域名，最上层的 jp 代表分配给日本这个国家的域；下一层的 co
+是日本国内进行分类的域，代表公司；再下层的 nikkeibp
+就是分配给某个公司的域；最下层的 www 就是服务器的名称。</p>
+<h4 id="寻找相应的-dns-服务器并获取-ip-地址">寻找相应的 DNS 服务器并获取
+IP 地址</h4>
+<p>下面再来看一看如何找到 DNS
+服务器中存放的信息。这里的关键在于如何找到我们要访问的 Web
+服务器的信息归哪一台 DNS 服务器管。</p>
+<p>互联网中有数万台 DNS
+服务器，肯定不能一台一台挨个去找。我们可以采用下面的办法。首先，将负责管理下级域的
+DNS 服务器的 IP 地址注册到它们的上级 DNS 服务器中，然后上级 DNS 服务器的
+IP 地址再注册到更上一级的 DNS 服务器中，以此类推。</p>
+<p>也就是说，负责管理 lab.glasscom.com 这个域的 DNS 服务器的 IP
+地址需要注册到 glasscom.com 域的 DNS服务器中，而 glasscom.com 域的 DNS
+服务器的 IP 地址又需要注册到 com域的 DNS
+服务器中。这样，我们就可以通过上级 DNS 服务器查询出下级</p>
+<p>DNS 服务器的 IP 地址，也就可以向下级 DNS 服务器发送查询请求了。</p>
+<p>在互联网中，com 和 jp 的上面还有一级域，称为根域。</p>
+<p><span
+style="color:orange">除此之外还需要完成另一项工作，那就是将根域的 DNS
+服务器信息保存在互联网中所有的 DNS 服务器中。</span></p>
+<p>这样一来，任何 DNS 服务器就都可以找到并访问根域 DNS 服务器了。</p>
+<p>因此，客户端只要能够找到任意一台DNS 服务器，就可以通过它找到根域 DNS
+服务器，然后再一路顺藤摸瓜找到位于下层的某台目标 DNS 服务器（图
+1.15）。</p>
+<p>分配给根域 DNS 服务器的 IP 地址在全世界仅有 13
+个。而且这些地址几乎不发生变化，因此将这些地址保存在所有的 DNS
+服务器中也并不是一件难事。实际上，根域DNS 服务器的相关信息已经包含在 DNS
+服务器程序的配置文件中了，因此只要安装了 DNS
+服务器程序，这些信息也就被自动配置好了。</p>
+<p>到这里所有的准备工作就都完成了。当我们配置一台 DNS
+服务器时，必须要配置好上面这些信息，这样 DNS 服务器就能够从上万台 DNS
+服务器中找到目标服务器。</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/115.png"
+alt="115" />
+<figcaption aria-hidden="true">115</figcaption>
+</figure>
+<p>如图 1.16 所示，客户端首先会访问最近的一台 DNS 服务器（也就是客户端的
+TCP/IP 设置中填写的 DNS 服务器地址），假设我们要查询
+www.lab.glasscom.com 这台 Web 服务器的相关信息（图 1.16 ①）。由于最近的
+DNS 服务器中没有存放 www.lab.glasscom.com
+这一域名对应的信息，所以我们需要从顶层开始向下查找。最近的 DNS
+服务器中保存了根域 DNS
+服务器的信息，因此它会将来自客户端的查询消息转发给根域 DNS 服务器（图
+1.16 ②）。根域服务器中也没有 www.lab.glasscom.com
+这个域名，但根据域名结构可以判断这个域名属于 com 域，因此根域 DNS
+服务器会返回它所管理的 com 域中的DNS 服务器的 IP
+地址，意思是“虽然我不知道你要查的那个域名的地址，但你可以去 com
+域问问看”。接下来，最近的 DNS 服务器又会向 com 域的DNS
+服务器发送查询消息（图 1.16 ③）。com 域中也没有
+www.lab.glasscom.com这个域名的信息，和刚才一样，com
+域服务器会返回它下面的 glasscom.com域的 DNS 服务器的 IP
+地址。以此类推，只要重复前面的步骤，就可以顺藤摸瓜找到目标 DNS
+服务器（图 1.16 ⑤），只要向目标 DNS 服务器发送查询消息，</p>
+<p>就能够得到我们需要的答案，也就是 www.lab.glasscom.com 的 IP
+地址了。</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/116.png"
+alt="116" />
+<figcaption aria-hidden="true">116</figcaption>
+</figure>
+<h4 id="通过缓存加快-dns-服务器的响应">通过缓存加快 DNS
+服务器的响应</h4>
+<p>在真实的互联网中，一台 DNS 服务器可以管理多个域的信息，因此并不是像图
+1.16 这样每个域都有一台自己的 DNS 服务器。图中，每一个域旁边都写着一台
+DNS 服务器，但现实中上级域和下级域有可能共享同一台 DNS
+服务器。在这种情况下，访问上级 DNS 服务器时就可以向下跳过一级 DNS
+服务器，直接返回再下一级 DNS 服务器的相关信息。</p>
+<p>此外，有时候并不需要从最上级的根域开始查找，因为 DNS 服务器有一个缓存
+A
+功能，可以记住之前查询过的域名。如果要查询的域名和相关信息已经在缓存中，那么就可以直接返回响应，接下来的查询可以从缓存的位置开始向下进行。相比每次都从根域找起来说，缓存可以减少查询所需的时间。</p>
+<p>这个缓存机制中有一点需要注意，那就是信息被缓存后，原本的注册信息可能会发生改变，这时缓存中的信息就有可能是不正确的。因此，DNS
+服务器中保存的信息都设置有一个有效期，当缓存中的信息超过有效期后，数据就会从缓存中删除。而且，在对查询进行响应时，DNS
+服务器也会告知客户端这一响应的结果是来自缓存中还是来自负责管理该域名的
+DNS 服务器。</p>
+<h3 id="委托协议栈发送消息">委托协议栈发送消息</h3>
+<h4
+id="查询ip地址之后浏览器就将消息委托给操作系统发送给web服务器这个委托是如何完成的">查询IP地址之后，浏览器就将消息委托给操作系统发送给web服务器，这个委托是如何完成的</h4>
+<p>知道了 IP 地址之后，就可以委托操作系统内部的协议栈向这个目标
+IP地址，也就是我们要访问的 Web 服务器发送消息了。要发送给 Web 服务器的
+HTTP 消息是一种数字信息（digital
+data），因此也可以说是委托协议栈来发送数字信息。收发数字信息这一操作不仅限于浏览器，对于各种使用网络的应用程序来说都是共通的。因此，这一操作的过程也不仅适用于Web，而是适用于任何网络应用程序
+A。下面就来一起探索这一操作的过程。</p>
+<p>和向 DNS 服务器查询 IP 地址的操作一样，这里也需要使用 Socket
+库中的程序组件。不过，查询 IP
+地址只需要调用一个程序组件就可以了，而这里需要按照指定的顺序调用多个程序组件，这个过程有点复杂。发送数据是一系列操作相结合来实现的，如果不能理解这个操作的全貌，就无法理解其中每个操作的意义。因此，我们先来介绍一下收发数据操作的整体思路。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">向操作系统内部的协议栈发出委托时，需要按照指定的顺序来调用 Socket 库中的程序组件</span><br></pre></td></tr></table></figure>
+<p><span style="color:orange">使用 Socket 库来收发数据的操作过程如图
+1.17 所示
+</span>。简单来说，收发数据的两台计算机之间连接了一条数据通道，数据沿着这条通道流动，最
+终到达目的地。我们可以把数据通道想象成一条管道，将数据从一端送入管道，数据就会到达管道的另一端然后被取出。数据可以从任何一端被送入管道，数据的流动是双向的。不过，这并不是说现实中真的有这么一条管道，只是为了帮助大家理解数据收发操作的全貌。</p>
+<p>收发数据的整体思路就是这样，但还有一点也非常重要。光从图上来看，这条管道好像一开始就有，实际上并不是这样，在进行收发数据操作之前，双方需要先建立起这条管道才行。建立管道的关键在于管道两端的数据出入口，这些出入口称为<span
+style="color:red">套接字</span>。我们需要先创建套接字，然后再将套接字连接起来形成管道。</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/117.png"
+alt="117" />
+<figcaption aria-hidden="true">117</figcaption>
+</figure>
+<p>实际的过程是下面这样的。<span
+style="color:#f06600">首先，服务器一方先创建套接字，然后等待客户端向该套接字连接管道
+A。当服务器进入等待状态时，客户端就可以连接管道了。具体来说，客户端也会先创建一个套接字，然后从该套接字延伸出管道，最后管道连接到服务器端的套接字上。当双方的套接字连接起来之后，通信准备就完成了。</span>接下来，就像我们刚刚讲过的一样，只要将数据送入套接字就可以收发数据了。</p>
+<p>我们再来看一看收发数据操作结束时的情形。<span
+style="color:#f06600">当数据全部发送完毕之后，连接的管道将会被断开。管道在连接时是由客户端发起的，但在断开时可以由客户端或服务器任意一方发起
+A。其中一方断开后，另一方也会随之断开，当管道断开后，套接字也会被删除。</span>到此为止，通信操作就结束了。</p>
+<p>综上所述，收发数据的操作分为若干个阶段，可以大致总结为以下 4 个。
+(socket委托执行栈)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">（1）创建套接字（创建套接字阶段） </span><br><span class="line"></span><br><span class="line">（2）将管道连接到服务器端的套接字上（连接阶段） </span><br><span class="line"></span><br><span class="line">（3）收发数据（通信阶段） </span><br><span class="line"></span><br><span class="line">（4）断开管道并删除套接字（断开阶段）</span><br></pre></td></tr></table></figure>
+<h4 id="创建套接字阶段">创建套接字阶段</h4>
+<p style="color:#f06600">
+首先是套接字创建阶段。客户端创建套接字的操作非常简单，只要调用 Socket
+库中的 socket 程序组件 A 就可以了（图 1.18 ①）。和调用解析器一样，调用
+socket 之后，控制流程会转移到 socket
+内部并执行创建套接字的操作，完成之后控制流程又会被移交回应用程序。
+</p>
+<p style="color:#f06600">
+套接字创建完成后，协议栈会返回一个描述符(程序返回值：保存于变量)，应用程序会将收到的描述符存放在内存中。
+</p>
+<p>描述符是用来识别不同的套接字的，大家可以作如下理解。我们现在只关注了浏览器访问
+Web
+服务器的过程，但实际上计算机中会同时进行多个数据的通信操作，比如可以打开两个浏览器窗口，同时访问两台
+Web 服务器。这时，有两个数据收发操作在同时进行，也就需</p>
+<p>要创建两个不同的套接字。这个例子说明，同一台计算机上可能同时存在多个套接字，在这样的情况下，我们就需要一种方法来识别出某个特定的套接字，这种方法就是描述符。我们可以将描述符理解成给某个套接字分配的编号。</p>
+<p>当创建套接字后，我们就可以使用这个套接字来执行收发数据的操作了。这时，只要我们出示描述符，协议栈就能够判断出我们希望用哪一个套接字来连接或者收发数据了。</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/118.png"
+alt="118" />
+<figcaption aria-hidden="true">118</figcaption>
+</figure>
+<h4 id="连接阶段把管道接上去">连接阶段：把管道接上去</h4>
+<p style="color:#f06600">
+接下来，我们需要委托协议栈将客户端创建的套接字与服务器那边的套接字连接起来。应用程序通过调用
+Socket 库中的名为 connect 的程序组件来完成这一操作。这里的要点是当调用
+connect 时，需要指定描述符、服务器 IP 地址和端口号这 3 个参数。
+</p>
+<p>服务器上所使用的端口号是根据应用的种类事先规定好的，</p>
+<p>既然确定连接对象的套接字需要使用端口号，那么服务器也得知道客户端的套接字号码才行吧，这个问题是怎么解决的呢？事情是这样的，首先，客户端在创建套接字时，协议栈会为这个套接字随便分配一个端口号
+A。接下来，当协议栈执行连接操作时，会将这个随便分配的端口号通知给服务器。</p>
+<p>总而言之，当调用 connect
+时，协议栈就会执行连接操作。当连接成功后，协议栈会将对方的 IP
+地址和端口号等信息保存在套接字中，这样我们就可以开始收发数据了。</p>
+<h4 id="通信阶段传递消息">通信阶段：传递消息</h4>
+<p>当套接字连接起来之后，剩下的事情就简单了。只要将数据送入套接字，数据就会被发送到对方的套接字中。当然，应用程序无法直接控制套接字，因此还是要通过
+Socket 库委托协议栈来完成这个操作。这个操作需要使用 write
+这个程序组件，具体过程如下</p>
+<p>(1)首先，应用程序需要在内存中准备好要发送的数据。根据用户输入的网址生成的
+HTTP 请求消息就是我们要发送的数据。接下来，当调用
+write时，需要指定描述符和发送数据（图 1.18
+③），然后协议栈就会将数据发送到服务器。由于套接字中已经保存了已连接的通信对象的相关信息，所以只要通过描述符指定套接字，就可以识别出通信对象，并向其发送数据。接着，发送数据会通过网络到达我们要访问的服务器</p>
+<p>(2)接下来，服务器执行接收操作，解析收到的数据内容并执行相应的操作，向客户端返回响应消息
+。</p>
+<p>(3)当消息返回后，需要执行的是接收消息的操作。接收消息的操作是通过
+Socket 库中的 read 程序组件委托协议栈来完成的（图 1.18 ③’）。调用read
+时需要指定用于存放接收到的响应消息的内存地址，这一内存地址称为接收缓冲区。</p>
+<p>于是，当服务器返回响应消息时，read
+就会负责将接收到的响应消息存放到接收缓冲区中。由于接收缓冲区是一块位于应用程序内</p>
+<p>部的内存空间，因此当消息被存放到接收缓冲区中时，就相当于已经转交给了应用程序。</p>
+<h4 id="断开阶段收发数据结束">断开阶段：收发数据结束</h4>
+<p>当浏览器收到数据之后，收发数据的过程就结束了。接下来，我们需要调用
+Socket 库的 close 程序组件进入断开阶段（图 1.18
+④）。最终，连接在套接字之间的管道会被断开，套接字本身也会被删除。</p>
+<p>断开的过程如下。</p>
+<p style="color:#f06600">
+Web 使用的 HTTP 协议规定，当 Web
+服务器发送完响应消息之后，应该主动执行断开操作 ，因此 Web
+服务器会首先调用close
+来断开连接。断开操作传达到客户端之后，客户端的套接字也会进入断开阶段。接下来，当浏览器调用
+read 执行接收数据操作时，read
+会告知浏览器收发数据操作已结束，连接已经断开。浏览器得知后，也会调用close
+进入断开阶段
+</p>
+<p>本章我们探索了浏览器与 Web
+服务器之间收发消息的过程，但实际负责收发消息的是协议栈、网卡驱动和网卡，只有这
+3 者相互配合，数据才能够在网络中流动起来。</p>
+<h3 id="用电信号传输tcpip数据">用电信号传输TCP/IP数据</h3>
+<h4 id="创建套接字">创建套接字</h4>
+<h5 id="协议栈的内部结构">协议栈的内部结构</h5>
+<p>本章我们将探索<span
+style="color:red">操作系统中的网络控制软件（协议栈）</span>和<span
+style="color:red">网络硬件（网
+卡）</span>是如何将浏览器的消息发送给服务器的</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/120.png"
+alt="120" />
+<figcaption aria-hidden="true">120</figcaption>
+</figure>
+<p><span style="color:orange">协议栈的上半部分有两块，分别是负责用 TCP
+协议收发数据的部分和负责用 UDP
+协议收发数据的部分</span>，它们会接受应用程序的委托执行收发数据的操作。关于
+TCP 和UDP
+我们将在后面讲解，现在大家只要先记住下面这句话就可以了：像浏览器、邮件等一般的应用程序都是使用
+TCP 收发数据的，而像 DNS 查询等收发较短的控制数据的时候则使用 UDP</p>
+<p><span style="color:orange">下面一半是用 IP
+协议控制网络包收发操作的部分</span>。在互联网上传送数据时，数据会被切分成一个一个的网络包
+A，而将网络包发送给通信对象的操作就是由 IP 来负责的。此外，IP 中还包括
+ICMPA 协议和 ARPB 协议。ICMP
+用于告知网络包传送过程中产生的错误以及各种控制消息，ARP 用于根据 IP
+地址查询相应的以太网 MAC 地址 。</p>
+<p><span style="color:orange">IP
+下面的网卡驱动程序负责控制网卡硬件</span>，而最下面的网卡则负责完成实际的收发操作，也就是对网线中的信号执行发送和接收的操作</p>
+<h5 id="套接字的实体就是通信控制信息">套接字的实体就是通信控制信息</h5>
+<p><span style="color:red">在数据收发中扮演关键角色的套接字</span></p>
+<p>在协议栈内部有一块用于存放控制信息的内存空间，这里记录了用于控制通信操作的<span
+style="color:red">控制信息</span>，<span
+style="color:orange">例如通信对象的 IP
+地址、端口号、通信操作的进行状态,等待时间等</span>。本来套接字就只是一个概念而已，并不存在实体，如果一定要赋予它一个实体，我们可以说这些控制信息就是套接字的实体，或者说<span
+style="color:red">存放控制信息的内存空间就是套接字的实体。</span></p>
+<p>套接字中记录了用于控制通信操作的各种控制信息，协议栈则需要根据这些信息判断下一步的行动，这就是套接字的作用。</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/121.png"
+alt="121" />
+<figcaption aria-hidden="true">121</figcaption>
+</figure>
+<h5 id="调用-socket-时的操作">调用 socket 时的操作</h5>
+<p>当浏览器调用 socketA、connect 等 Socket
+库中的程序组件时，协议栈内部是如何工作的</p>
+<p>首先，我们再来看一下浏览器通过 Socket
+库向协议栈发出委托的一系列操作。</p>
+<p>首先是创建套接字的阶段（开辟内存，存入控制信息）</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/122.png"
+alt="122" />
+<figcaption aria-hidden="true">122</figcaption>
+</figure>
+<h4 id="连接服务器">连接服务器</h4>
+<h5 id="连接是什么意思">连接是什么意思</h5>
+<p>连接实际上是通信双方交换控制信息，在套接字中记录这些必要信息并准备数据收发的一连串操作，在讲解具体的过程之前，我们</p>
+<p>先来说一说“连接”到底代表什么意思。</p>
+<p>套接字刚刚创建完成的时候，里面并没有存放任何数据，也不知道通信的对象是谁。在这个状态下，即便应用程序要求发送数据，协议栈也不知道数据应该发送给谁。浏览器可以根据网址来查询服务器的
+IP 地址，而且根据规则也知道应该使用 80
+号端口，但只有浏览器知道这些必要的信息是不够的，因为在调用 socket
+创建套接字时，这些信息并没有传递给协议栈。因此，我们需要把服务器的 IP
+地址和端口号等信息告知协议栈，这是连接操作的目的之一。</p>
+<p>那么，服务器这边又是怎样的情况呢？服务器上也会创建套接字
+，但服务器上的协议栈和客户端一样，只创建套接字是不知道应该和谁进行通信的。而且，和客户端不同的是，在服务器上，连应用程序也不知道通信对象是谁，这样下去永远也没法开始通信。于是，我们需要让客户端向服务器告知必要的信息，比如“我想和你开始通信，我的
+IP 地址是 xxx.xxx.xxx.xxx，端口号是
+yyyy。”可见，客户端向服务器传达开始通信的请求，也是连接操作的目的之一。</p>
+<p>之前我们讲过，<span
+style="color:orange">连接实际上是通信双方交换控制信息，在套接字中记录这些必要信息并准备数据收发的一连串操作，</span>像上面提到的客户端将
+IP地址和端口号告知服务器这样的过程就属于交换控制信息的一个具体的例子。所谓控制信息，就是用来控制数据收发操作所需的一些信息，IP
+地址和端口号就是典型的例子。除此之外还有其他一些控制信息，我们后面会逐一进行介绍。</p>
+<p><span
+style="color:green">连接操作中所交换的控制信息是根据通信规则来确定的</span>，只要根据规则执行连接操作，双方就可以得到必要的信息从而完成数据收发的准备。此外，当执行数据收发操作时，我们还需要一块用来临时存放要收发的数据的内存空间，这块内存空间称为<span
+style="color:red">缓冲区</span>，它也是在连接操作的过程中分配的。上面这些就是“连接”
+这个词代表的具体含义。</p>
+<h5 id="负责保存控制信息的头部">负责保存控制信息的头部</h5>
+<p>关于控制信息，这里再补充一些。之前我们说的<span
+style="color:orange">控制信息其实可以大体上分为两类。</span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">通信操作中使用的控制信息分为两类。</span><br><span class="line">（1） 头部中记录的信息</span><br><span class="line">（2） 套接字（协议栈中的内存空间）中记录的信息</span><br></pre></td></tr></table></figure>
+<p>第一类是<span
+style="color:orange">客户端和服务器相互联络时交换的控制信息</span>。这些信息不仅连接时需要，包括数据收发和断开连接操作在内，整个通信过程中都需要，这些内容在
+TCP 协议的规格中进行了定义。具体来说，表 2.1 中的这些字段就是 TCP
+规格中定义的控制信息
+。这些字段是固定的，在连接、收发、断开等各个阶段中，每次客户端和服务器之间进行通信时，都需要提供这些控制信息。<span
+style="color:orange">具体来说，如图
+2.4（a）所示，这些信息会被添加在客户端与服务器之间传递的网络包的开头</span>。在连接阶段，由于数据收发还没有开始，所以如图
+2.4（b）所示，网络包中没有实际的数据，只有控制信息。这些控制信息位于网络包的开头，因此被称为<span
+style="color:red">头部</span>。此外，以太网和 IP
+协议也有自己的控制信息，这些信息也叫头部，为了避免各种不同的头部发生混淆，我们一般会记作
+TCP 头部、以太网头部 、IP 头部。</p>
+<p><span
+style="color:orange">客户端和服务器在通信中会将必要的信息记录在头部并相互确认</span>，例如下面这样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">发送方：“开始数据发送。”</span><br><span class="line">接收方：“请继续。”</span><br><span class="line">发送方：“现在发送的是 ×× 号数据。”</span><br><span class="line">接收方：“×× 号数据已收到。”</span><br><span class="line">……（以下省略）</span><br></pre></td></tr></table></figure>
+<p>正是有了这样的交互过程，双方才能够进行通信。<span
+style="color:orange">头部的信息非常重要，理解了头部各字段的含义，就等于理解了整个通信的过程</span>。在后面介绍协议栈的工作过程时，我们将根据需要讲解头部各字段的含义，现在大家只要先记住头部是用来记录和交换控制信息的就可以了。</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/123.png"
+alt="123" />
+<figcaption aria-hidden="true">123</figcaption>
+</figure>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/124.png"
+alt="124" />
+<figcaption aria-hidden="true">124</figcaption>
+</figure>
+<p>控制信息还有另外一类，<span
+style="color:orange">那就是保存在套接字中，用来控制协议栈操作的信息
+</span>。应用程序传递来的信息以及从通信对象接收到的信息都会保存在这里，还有收发数据操作的执行状态等信息也会保存在这里，协议栈会根据这些信息来执行每一步的操作。我们可以说，套接字的控制信息和协议栈的程序本身其实是一体的，因此，“协议栈具体需要哪些信息”会根据协议栈本身的实现方式不同而不同
+，但这并没有什么问题。因为协议栈中的控制信息通信对方是看不见的，<span
+style="color:orange">只要在通信时按照规则将必要的信息写入头部，客户端和服务器之间的通信就能够得以成立</span>。例如，Windows
+和Linux
+操作系统的内部结构不同，协议栈的实现方式不同，必要的控制信息也就不同。但即便如此，两种系统之间依然能够互相通信，同样地，计算机和手机之间也能够互相通信。正如前面所说，协议栈的实现不同，因此我们无法具体说明协议栈里到底保存了哪些控制信息，但可以用命令来显示一些重要的套接字控制信息（图
+2.2），这些信息无论何种操作系统的协议栈都是共通的，通过理解这些重要信息，就能够理解协议栈的工作方式了。</p>
+<h5 id="连接操作的实际过程">连接操作的实际过程</h5>
+<p>我们已经了解了连接操作的含义，下面来看一下具体的操作过程。这个过程是从应用程序调用
+Socket 库的 connect 开始的（图2.3②）。</p>
+<p><code>connect（&lt; 描述符 &gt;, &lt; 服务器 IP 地址和端口号 &gt;, …）</code></p>
+<p>上面的调用提供了服务器的 IP 地址和端口号，这些信息会传递给协议栈中的
+TCP 模块。然后，TCP 模块会与该 IP 地址对应的对象，也就是与服务器的 TCP
+模块交换控制信息，这一交互过程包括下面几个步骤。</p>
+<p><span style="color:orange">首
+先，客户端先创建一个包含表示开始数据收发操作的控制信息的头部</span>。如
+表 2.1
+所示，头部包含很多字段，这里要关注的重点是发送方和接收方的端口号。</p>
+<p>到这里，客户端（发送方）的套接字就准确找到了服务器（接收方）的套接字，也就是搞清楚了我应该连接哪个套接字。然后，<span
+style="color:#1199ee">我们将头部中的控制位的 SYN 比特设置为
+1，</span>大家可以认为它表示连接
+。此外还需要设置适当的序号和窗口大小，这一点我们会稍后详细讲解。</p>
+<p><span style="color:orange">当 TCP 头部创建好之后，接下来 TCP
+模块会将信息传递给 IP 模块并委托它进行发送 。</span></p>
+<p><span style="color:orange">IP
+模块执行网络包发送操作后，网络包就会通过网络到达服务器，然后服务器上的
+IP 模块会将接收到的数据传递给 TCP 模块，服务器的 TCP 模块根据 TCP
+头部中的信息找到端口号对应的套接字，</span>也就是说，从处于等待连接状态的套接字中找到与
+TCP 头部中记录的端口号</p>
+<p>相同的套接字就可以了。</p>
+<p><span
+style="color:orange">当找到对应的套接字之后，套接字中会写入相应的信息，并将状态改为正在连接
+。</span></p>
+<p><span style="color:#1199ee">上述操作完成后，服务器的 TCP
+模块会返回响应，这个过程和客户端一样，需要在 TCP
+头部中设置发送方和接收方端口号以及 SYN 比特。</span></p>
+<p><span style="color:#1199ee">此外，在返回响应时还需要将 ACK
+控制位设为1，这表示已经接收到相应的网络包。</span></p>
+<p><span
+style="color:green">网络中经常会发生错误，网络包也会发生丢失，因此双方在通信时必须相互确认网络包是否已经送达
+，而设置ACK 比特就是用来进行这一确认的。接下来，服务器 TCP 模块会将
+TCP头部传递给 IP 模块，并委托 IP 模块向客户端返回响应。</span></p>
+<p><span style="color:orange">然后，网络包就会返回到客户端，通过 IP
+模块到达 TCP 模块，并通过 TCP
+头部的信息确认连接服务器的操作是否成功。如果 SYN 为 1
+则表示连接成功，这时会向套接字中写入服务器的 IP
+地址、端口号等信息，同时还会将状态改为连接完毕。</span></p>
+<p>到这里，客户端的操作就已经完成，但其实还剩下<span
+style="color:orange">最后一个步骤。刚才服务器返回响应时将 ACK 比特设置为
+1，相应地，客户端也需要将 ACK 比特设置为 1
+并发回服务器，告诉服务器刚才的响应包已经收到。当这个服务器收到这个返回包之后，连接操作才算全部完成。</span></p>
+<p><span
+style="color:#1199ee">现在，套接字就已经进入随时可以收发数据的状态了</span>，大家可以认为这时有一根管子把两个套接字连接了起来。当然，实际上并不存在这么一根管子，不过这样想比较容易理解，网络业界也习惯这样来描述。这根管子，我们称之为连接
+A。只要数据传输过程在持续，也就在调用 close
+断开之前，连接是一直存在的。</p>
+<p>建立连接之后，协议栈的连接操作就结束了，也就是说 connect
+已经执行完毕，控制流程被交回到应用程序。</p>
+<h3 id="收发数据">收发数据</h3>
+<h3 id="从服务器断开并删除套接字">从服务器断开并删除套接字</h3>
+<h3 id="ip与以太网包收发操作">IP与以太网包收发操作</h3>
+<h3 id="用udp协议收发操作">用UDP协议收发操作</h3>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/11/28/chapter%208%20Imaginary%20Numbers(continued)/" rel="prev" title="chapter 8 Imaginary Numbers(continued)">
+                  <i class="fa fa-angle-left"></i> chapter 8 Imaginary Numbers(continued)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/11/29/%E6%81%A9%E6%83%85%E5%85%89%E4%B9%8B%E5%9B%BD/" rel="next" title="恩情光之国">
+                  恩情光之国 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Da Winter</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

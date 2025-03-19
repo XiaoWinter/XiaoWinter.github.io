@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaowinter.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="参考资料  Crash Course 计算机视频 计算机的早期历史 美索不达米亚 1000 BC 算盘          time area Instance 进制     1000BC 美索不达米亚 算盘 10   1694 德国 步进计算器 10   before 20 C world 计算表    1822 英国（Charles Babbage） 差分机（论文）    1822-1842">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从门到CPU">
+<meta property="og:url" content="https://xiaowinter.github.io/2021/07/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/index.html">
+<meta property="og:site_name" content="DaWinter">
+<meta property="og:description" content="参考资料  Crash Course 计算机视频 计算机的早期历史 美索不达米亚 1000 BC 算盘          time area Instance 进制     1000BC 美索不达米亚 算盘 10   1694 德国 步进计算器 10   before 20 C world 计算表    1822 英国（Charles Babbage） 差分机（论文）    1822-1842">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/040.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/041.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/042.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/043.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/044.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/045.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/046.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/047.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/048.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/049.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/050.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/051.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/052.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/054.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/055.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/057.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/056.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/058.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/059.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/060.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/061.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/063.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/062.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/064.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/065.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/067.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/068.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/069.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/070.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/071.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/072.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/073.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/074.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/075.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/076.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/077.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/078.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/079.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/080.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/081.png">
+<meta property="article:published_time" content="2021-07-09T11:54:00.000Z">
+<meta property="article:modified_time" content="2021-07-09T11:54:00.000Z">
+<meta property="article:author" content="Da Winter">
+<meta property="article:tag" content="CPU">
+<meta property="article:tag" content="内存">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/040.png">
+
+
+<link rel="canonical" href="https://xiaowinter.github.io/2021/07/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://xiaowinter.github.io/2021/07/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/","path":"2021/07/09/计算机概论/","title":"从门到CPU"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>从门到CPU | DaWinter</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">DaWinter</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">DaWinter's blob</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%97%A9%E6%9C%9F%E5%8E%86%E5%8F%B2"><span class="nav-number">1.</span> <span class="nav-text">计算机的早期历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">电子计算机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E9%80%BB%E8%BE%91%E4%B8%8E%E9%80%BB%E8%BE%91%E9%97%A8"><span class="nav-number">3.</span> <span class="nav-text">布尔逻辑与逻辑门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E4%BB%A3%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">布尔代数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E9%97%A8-and-or-not-xor"><span class="nav-number">3.2.</span> <span class="nav-text">逻辑门 and or not xor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#and-%E4%B8%8E%E9%97%A8"><span class="nav-number">3.2.1.</span> <span class="nav-text">and 与门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#or-%E6%88%96%E9%97%A8"><span class="nav-number">3.2.2.</span> <span class="nav-text">or 或门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#not-%E9%9D%9E%E9%97%A8"><span class="nav-number">3.2.3.</span> <span class="nav-text">not 非门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xor-%E5%BC%82%E6%88%96%E9%97%A8"><span class="nav-number">3.2.4.</span> <span class="nav-text">xor 异或门</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">二进制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E9%80%A2%E4%BA%8C%E8%BF%9B%E4%B8%80"><span class="nav-number">4.1.</span> <span class="nav-text">二进制，逢二进一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">4.1.1.</span> <span class="nav-text">字符的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#unicode"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">unicode</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#unicode-%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">unicode 的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#utf-8"><span class="nav-number">4.1.1.3.</span> <span class="nav-text">utf-8</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%95%B0%E9%80%BB%E8%BE%91%E5%8D%95%E5%85%83-alu-arithmetic-logic-unit"><span class="nav-number">5.</span> <span class="nav-text">算数逻辑单元 ALU
+(Arithmetic &amp; Logic Unit)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%8D%95%E5%85%83"><span class="nav-number">5.1.</span> <span class="nav-text">计算单元</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.1.1.</span> <span class="nav-text">加法实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a-half-adder-%E5%8D%8A%E5%8A%A0%E5%99%A8"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">a half adder 半加器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%A8%E5%8A%A0%E5%99%A8"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">全加器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bit-adder-8bit%E4%BD%8D%E5%8A%A0%E6%B3%95"><span class="nav-number">5.1.1.3.</span> <span class="nav-text">8bit adder 8bit位加法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E5%8D%95%E5%85%83"><span class="nav-number">5.2.</span> <span class="nav-text">逻辑单元</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#alu-%E6%8A%BD%E8%B1%A1"><span class="nav-number">5.2.1.</span> <span class="nav-text">ALU 抽象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E5%86%85%E5%AD%98registers-ram"><span class="nav-number">6.</span> <span class="nav-text">寄存器和内存（Registers &amp;
+RAM）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sava-1"><span class="nav-number">6.1.</span> <span class="nav-text">sava 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sava-0"><span class="nav-number">6.2.</span> <span class="nav-text">sava 0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%81%E5%AD%98and-or-latch"><span class="nav-number">6.3.</span> <span class="nav-text">锁存（AND-OR LATCH）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%A8%E9%94%81gated-latch"><span class="nav-number">6.4.</span> <span class="nav-text">门锁（GATED LATCH）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E5%87%BA%E9%97%A8%E9%94%81%E7%BB%84%E4%BB%B6"><span class="nav-number">6.4.1.</span> <span class="nav-text">抽象出门锁组件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8-register"><span class="nav-number">6.5.</span> <span class="nav-text">寄存器 register</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%B0%E5%9D%80"><span class="nav-number">6.6.</span> <span class="nav-text">地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E5%99%A8multiplexer"><span class="nav-number">6.6.1.</span> <span class="nav-text">多路复用器(multiplexer)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98memory"><span class="nav-number">6.6.2.</span> <span class="nav-text">内存（memory）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E9%9A%8F%E6%9C%BA%E5%9C%B0%E5%9D%80%E5%AD%98%E5%82%A8sram"><span class="nav-number">6.6.3.</span> <span class="nav-text">静态随机地址存储（SRAM）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-center-processing-unit-cpu"><span class="nav-number">7.</span> <span class="nav-text">The Center Processing Unit
+（CPU）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6"><span class="nav-number">7.1.</span> <span class="nav-text">基础组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E8%A1%A8"><span class="nav-number">7.2.</span> <span class="nav-text">指令表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpu-%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%9E%84"><span class="nav-number">7.3.</span> <span class="nav-text">cpu 基本架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpu-%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-number">7.4.</span> <span class="nav-text">cpu 执行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%89%80%E6%9C%89%E5%AF%84%E5%AD%98%E5%99%A8%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B"><span class="nav-number">7.4.1.</span> <span class="nav-text">启动计算机，所有寄存器从零开始</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BA%86%E4%B8%BE%E4%BE%8B%E6%88%91%E4%BB%AC%E5%9C%A8-ram-%E6%94%BE%E4%BA%86%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="nav-number">7.4.2.</span> <span class="nav-text">为了举例我们在 RAM
+放了一个程序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83"><span class="nav-number">7.5.</span> <span class="nav-text">控制单元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cpu"><span class="nav-number">7.6.</span> <span class="nav-text">CPU</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%92%8C%E7%A8%8B%E5%BA%8Finstructionprograms"><span class="nav-number">8.</span> <span class="nav-text">指令和程序(Instruction&amp;Programs)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%BA%9B%E6%8C%87%E4%BB%A4"><span class="nav-number">8.1.</span> <span class="nav-text">增加一些指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%8C%87%E4%BB%A4"><span class="nav-number">8.2.</span> <span class="nav-text">循环的指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%BE%AA%E7%8E%AF"><span class="nav-number">8.3.</span> <span class="nav-text">有条件的循环</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Da Winter"
+      src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+  <p class="site-author-name" itemprop="name">Da Winter</p>
+  <div class="site-description" itemprop="description">开发经历</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2021/07/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%A6%82%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="从门到CPU | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从门到CPU
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-09 19:54:00" itemprop="dateCreated datePublished" datetime="2021-07-09T19:54:00+08:00">2021-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>参考资料</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av21376839?p=1">Crash Course
+计算机视频</a></p>
+<h2 id="计算机的早期历史">计算机的早期历史</h2>
+<p>美索不达米亚 1000 BC 算盘</p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 39%" />
+<col style="width: 36%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>time</th>
+<th>area</th>
+<th>Instance</th>
+<th>进制</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1000BC</td>
+<td>美索不达米亚</td>
+<td>算盘</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>1694</td>
+<td>德国</td>
+<td>步进计算器</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>before 20 C</td>
+<td>world</td>
+<td>计算表</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>1822</td>
+<td>英国（Charles Babbage）</td>
+<td>差分机（论文）</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>1822-1842</td>
+<td>英国(Charles Babbage)</td>
+<td>分析机（general computer）</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>18X（8|9）？</td>
+<td>美国（Hollerith IBM 创始人）</td>
+<td>打孔卡片制表机</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Ada Lovelace 给分析机写了假象程序(第一程序员)</p>
+<p>Charles Babbage 设计了分析机，即通用计算机 （计算机之父）</p>
+<span id="more"></span>
+<h2 id="电子计算机">电子计算机</h2>
+<p>机械继电器（开关），利用电磁线圈的磁场把开关吸下来，联通电路</p>
+<p>二极管 （首先出现为热电子管）</p>
+<p>三级真空管（二代继电器），每秒客开闭千次</p>
+<p>1947 贝尔实验室
+晶体管（半导体材料继电器），每秒万次开闭，加州硅谷，出现仙童半导体公司，仙童来变成了英特尔，目前的晶体管体积
+50 纳米，每秒上百万次开闭，工作几十年，</p>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 16%" />
+<col style="width: 9%" />
+<col style="width: 15%" />
+<col style="width: 49%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>time</th>
+<th>area</th>
+<th>instance</th>
+<th>person</th>
+<th>remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1944</td>
+<td>IBM</td>
+<td>Mark II</td>
+<td>IBM</td>
+<td>1947 pulled a bug</td>
+</tr>
+<tr class="even">
+<td>1943.12</td>
+<td>英国 Bletchley</td>
+<td>Mark I</td>
+<td>Tommy Flowers</td>
+<td>大规模使用真空管(1600)，可编程，解密 Nazi</td>
+</tr>
+<tr class="odd">
+<td>1941</td>
+<td>英国 Bletchley</td>
+<td>Bombe</td>
+<td>Alan Turing</td>
+<td>designd to break Enigma code</td>
+</tr>
+<tr class="even">
+<td>1946</td>
+<td>美</td>
+<td>ENIAC</td>
+<td>Pennsylvania</td>
+<td>积分，真正意义电子计算机</td>
+</tr>
+<tr class="odd">
+<td>1958</td>
+<td>美</td>
+<td>IBM608</td>
+<td>IBM</td>
+<td>使用晶体管</td>
+</tr>
+</tbody>
+</table>
+<h2 id="布尔逻辑与逻辑门">布尔逻辑与逻辑门</h2>
+<h3 id="布尔代数"><a
+target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2016/08/boolean-algebra.html">布尔代数</a></h3>
+<p>关于真值的逻辑运算称为布尔代数（Boolean
+Algebra），以它的创始人布尔命名。</p>
+<p>在编程语言中表示 T 值和 F 值的数据类型叫做布尔类型，在 C
+语言中通常用<code>int</code>类型来表示，非 0 表示 T，0 表示
+F。布尔逻辑是写程序的基本功之一，程序中的很多错误都可以归因于逻辑错误。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">以下是一些布尔代数的基本定理，为了简洁易读，T和F用1和0表示，AND用*号表示，OR用+号表示（从真值表可以看出AND和OR运算确实有些类似*和+），NOT用¬表示，x、y、z的值可能是0也可能是1。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">¬¬x=x</span><br><span class="line"></span><br><span class="line">x*0=0</span><br><span class="line">x+1=1</span><br><span class="line"></span><br><span class="line">x*1=x</span><br><span class="line">x+0=x</span><br><span class="line"></span><br><span class="line">x*x=x</span><br><span class="line">x+x=x</span><br><span class="line"></span><br><span class="line">x*¬x=0</span><br><span class="line">x+¬x=1</span><br><span class="line"></span><br><span class="line">x*y=y*x</span><br><span class="line">x+y=y+x</span><br><span class="line"></span><br><span class="line">x*(y*z)=(x*y)*z</span><br><span class="line">x+(y+z)=(x+y)+z</span><br><span class="line"></span><br><span class="line">x*(y+z)=x*y+x*z</span><br><span class="line">x+y*z=(x+y)*(x+z)</span><br><span class="line"></span><br><span class="line">x+x*y=x</span><br><span class="line">x*(x+y)=x</span><br><span class="line"></span><br><span class="line">x*y+x*¬y=x</span><br><span class="line">(x+y)*(x+¬y)=x</span><br><span class="line"></span><br><span class="line">¬(x*y)=¬x+¬y</span><br><span class="line">¬(x+y)=¬x*¬y</span><br><span class="line"></span><br><span class="line">x+¬x*y=x+y</span><br><span class="line">x*(¬x+y)=x*y</span><br><span class="line"></span><br><span class="line">x*y+¬x*z+y*z=x*y+¬x*z</span><br><span class="line">(x+y)*(¬x+z)*(y+z)=(x+y)*(¬x+z)</span><br><span class="line"></span><br><span class="line">除了第1行之外，这些公式都是每两行一组的，每组的两个公式就像对联一样：把其中一个公式中的*换成+、+换成*、0换成1、1换成0，就变成了与它对称的另一个公式。这些定理都可以通过真值表证明</span><br></pre></td></tr></table></figure>
+<h3 id="逻辑门-and-or-not-xor">逻辑门 and or not xor</h3>
+<p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/sunshine-jackie/p/8137240.html">逻辑门的晶体管实现</a></p>
+<p>VDD 就是电源的意思</p>
+<h4 id="and-与门">and 与门</h4>
+<table>
+<thead>
+<tr class="header">
+<th>true</th>
+<th>true</th>
+<th>true</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>true</td>
+<td>false</td>
+<td>false</td>
+</tr>
+<tr class="even">
+<td>false</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr class="odd">
+<td>false</td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h4 id="or-或门">or 或门</h4>
+<table>
+<thead>
+<tr class="header">
+<th>true</th>
+<th>true</th>
+<th>true</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>true</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr class="even">
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr class="odd">
+<td>false</td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h4 id="not-非门">not 非门</h4>
+<table>
+<thead>
+<tr class="header">
+<th>true</th>
+<th>false</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>false</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<h4 id="xor-异或门">xor 异或门</h4>
+<table>
+<thead>
+<tr class="header">
+<th>true</th>
+<th>true</th>
+<th>false</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>true</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr class="even">
+<td>false</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr class="odd">
+<td>false</td>
+<td>false</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二进制">二进制</h2>
+<h3 id="二进制逢二进一">二进制，逢二进一</h3>
+<table>
+<thead>
+<tr class="header">
+<th>2<sup>7</sup></th>
+<th>2<sup>6</sup></th>
+<th>2<sup>5</sup></th>
+<th>2<sup>4</sup></th>
+<th>2<sup>3</sup></th>
+<th>2<sup>2</sup></th>
+<th>2<sup>1</sup></th>
+<th>2<sup>0</sup></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>二进制中，</p>
+<p>一个 0 或 1 表示一位（1bit）</p>
+<p>8bit = 1byte(字节)</p>
+<h4 id="字符的表示">字符的表示</h4>
+<p>字符表示最简单的方法就是给字母一个编号，就有了 ASCII</p>
+<p>为了表示 the world 的所有字符，后来就出现了 Unicode 和
+ISO，之后他们俩兼容了，现在常用的编码实现位
+utf-8,它是一种可变长的编码，<a href="#####utf-8">utf-8 编码规则</a></p>
+<h5 id="unicode">unicode</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">正如上一节所说，世界上存在着多种编码方式，同一个二进制数字可以被解释成不同的符号。因此，要想打开一个文本文件，就必须知道它的编码方式，否则用错误的编码方式解读，就会出现乱码。为什么电子邮件常常出现乱码？就是因为发信人和收信人使用的编码方式不一样。</span><br><span class="line"></span><br><span class="line">可以想象，如果有一种编码，将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，那么乱码问题就会消失。这就是 Unicode，就像它的名字都表示的，这是一种所有符号的编码。</span><br><span class="line"></span><br><span class="line">Unicode 当然是一个很大的集合，现在的规模可以容纳100多万个符号。每个符号的编码都不一样，比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字严。具体的符号对应表，可以查询unicode.org，或者专门的汉字对应表。</span><br></pre></td></tr></table></figure>
+<h5 id="unicode-的问题">unicode 的问题</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">需要注意的是，Unicode 只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储。</span><br><span class="line"></span><br><span class="line">比如，汉字严的 Unicode 是十六进制数4E25，转换成二进制数足足有15位（100111000100101），也就是说，这个符号的表示至少需要2个字节。表示其他更大的符号，可能需要3个字节或者4个字节，甚至更多。</span><br><span class="line"></span><br><span class="line">这里就有两个严重的问题，第一个问题是，如何才能区别 Unicode 和 ASCII ？计算机怎么知道三个字节表示一个符号，而不是分别表示三个符号呢？第二个问题是，我们已经知道，英文字母只用一个字节表示就够了，如果 Unicode 统一规定，每个符号用三个或四个字节表示，那么每个英文字母前都必然有二到三个字节是0，这对于存储来说是极大的浪费，文本文件的大小会因此大出二三倍，这是无法接受的。</span><br><span class="line"></span><br><span class="line">它们造成的结果是：1）出现了 Unicode 的多种存储方式，也就是说有许多种不同的二进制格式，可以用来表示 Unicode。2）Unicode 在很长一段时间内无法推广，直到互联网的出现。</span><br></pre></td></tr></table></figure>
+<h5 id="utf-8">utf-8</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">互联网的普及，强烈要求出现一种统一的编码方式。UTF-8 就是在互联网上使用最广的一种 Unicode 的实现方式。其他实现方式还包括 UTF-16（字符用两个字节或四个字节表示）和 UTF-32（字符用四个字节表示），不过在互联网上基本不用。重复一遍，这里的关系是，UTF-8 是 Unicode 的实现方式之一。</span><br><span class="line"></span><br><span class="line">UTF-8 最大的一个特点，就是它是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。</span><br><span class="line"></span><br><span class="line">UTF-8 的编码规则很简单，只有二条：</span><br><span class="line"></span><br><span class="line">1）对于单字节的符号，字节的第一位设为0，后面7位为这个符号的 Unicode 码。因此对于英语字母，UTF-8 编码和 ASCII 码是相同的。</span><br><span class="line"></span><br><span class="line">2）对于n字节的符号（n &gt; 1），第一个字节的前n位都设为1，第n + 1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的 Unicode 码。</span><br><span class="line"></span><br><span class="line">下表总结了编码规则，字母x表示可用编码的位。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr class="header">
+<th>Unicode 符号范围(十六进制)</th>
+<th>UTF-8 编码方式（二进制）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0000 0000-0000 007F</td>
+<td>0xxxxxxx</td>
+</tr>
+<tr class="even">
+<td>0000 0080-0000 07FF</td>
+<td>110xxxxx 10xxxxxx</td>
+</tr>
+<tr class="odd">
+<td>0000 0800-0000 FFFF</td>
+<td>1110xxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr class="even">
+<td>0001 0000-0010 FFFF</td>
+<td>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">跟据上表，解读 UTF-8 编码非常简单。如果一个字节的第一位是0，则这个字节单独就是一个字符；如果第一位是1，则连续有多少个1，就表示当前字符占用多少个字节。</span><br><span class="line"></span><br><span class="line">下面，还是以汉字严为例，演示如何实现 UTF-8 编码。</span><br><span class="line"></span><br><span class="line">严的 Unicode 是4E25（100111000100101），根据上表，可以发现4E25处在第三行的范围内（0000 0800 - 0000 FFFF），因此严的 UTF-8 编码需要三个字节，即格式是1110xxxx 10xxxxxx 10xxxxxx。然后，从严的最后一个二进制位开始，依次从后向前填入格式中的x，多出的位补0。这样就得到了，严的 UTF-8 编码是11100100 10111000 10100101，转换成十六进制就是E4B8A5。</span><br></pre></td></tr></table></figure>
+<p>引用</p>
+<p><a
+target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">字符编码笔记：ASCII，Unicode
+和 UTF-8</a></p>
+<h2 id="算数逻辑单元-alu-arithmetic-logic-unit">算数逻辑单元 ALU
+(Arithmetic &amp; Logic Unit)</h2>
+<h3 id="计算单元">计算单元</h3>
+<p>上面我们介绍了二进制和布尔代数，现在通过硬件保存和布尔运算二进制数，来实现计算单元</p>
+<h4 id="加法实现">加法实现</h4>
+<h5 id="a-half-adder-半加器">a half adder 半加器</h5>
+<p>进行 1bit 运算，
+没有进位（十进制满10进1，二进制满2进1），在使用半加器做加法时，两个输入，</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/040.png"
+alt="040" />
+<figcaption aria-hidden="true">040</figcaption>
+</figure>
+<h5 id="全加器">全加器</h5>
+<p>full adder 使用两个 half adder 实现</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/041.png"
+alt="041" />
+<figcaption aria-hidden="true">041</figcaption>
+</figure>
+<h5 id="bit-adder-8bit位加法">8bit adder 8bit位加法</h5>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/042.png"
+alt="042" />
+<figcaption aria-hidden="true">042</figcaption>
+</figure>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/043.png"
+alt="043" />
+<figcaption aria-hidden="true">043</figcaption>
+</figure>
+<h3 id="逻辑单元">逻辑单元</h3>
+<p>进行布尔运算 and or not xor</p>
+<p>对输入的信号，进行逻辑运算，结果符合真值表</p>
+<h4 id="alu-抽象">ALU 抽象</h4>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/044.png"
+alt="044" />
+<figcaption aria-hidden="true">044</figcaption>
+</figure>
+<h2 id="寄存器和内存registers-ram">寄存器和内存（Registers &amp;
+RAM）</h2>
+<p>RAM （内存）: Random Access Memory
+（随机访问存储，意思是可以直接访问到任意内存位置，而不是访问的时候是随机的）
+Registers （寄存器）:
+存储一个数字，如果计算机设计时时8位，那么一个寄存器就时一个8位数字存储器</p>
+<h3 id="sava-1">sava 1</h3>
+<p>把或门输出与输入链接，可以形成一个 1
+的永久存储，因为输入始终有一个1</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/045.png"
+alt="045" />
+<figcaption aria-hidden="true">045</figcaption>
+</figure>
+<h3 id="sava-0">sava 0</h3>
+<p>把与门输出与输入连接，可以形成一个 0
+的永久存储，因为输入始终有一个0</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/046.png"
+alt="046" />
+<figcaption aria-hidden="true">046</figcaption>
+</figure>
+<h3 id="锁存and-or-latch">锁存（AND-OR LATCH）</h3>
+<p>将上述两个电路结合起来就做成了一个锁存器</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/047.png"
+alt="047" />
+<figcaption aria-hidden="true">047</figcaption>
+</figure>
+<p>set 设为 1 后，无论 set 如何改变，输出一直为 1，即 set 将状态置为
+1。</p>
+<p>reset 设为 1 后，无论 reset 如何改变，输出一直为 0，即 reset
+将状态置为 0。</p>
+<p>set 和 reset 都为 0 的话，锁存器将会保存最后设置的状态，1bit
+的记忆功能就实现了，记忆的结果取决于最后关闭的是谁。</p>
+<h3 id="门锁gated-latch">门锁（GATED LATCH）</h3>
+<p>1bit 的可控制写入存储</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/048.png"
+alt="048" />
+<figcaption aria-hidden="true">048</figcaption>
+</figure>
+<p>允许写入线为 0 时，set,reset 恒为 0,不可写入，允许写入线为 1 时，输入
+0 将 reset 锁存，存储0，输入 1 将 set 锁存，存储1</p>
+<h4 id="抽象出门锁组件">抽象出门锁组件</h4>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/049.png"
+alt="049" />
+<figcaption aria-hidden="true">049</figcaption>
+</figure>
+<h3 id="寄存器-register">寄存器 register</h3>
+<p>寄存器是<a
+target="_blank" rel="noopener" href="https://baike.baidu.com/item/CPU/120556">CPU</a>内部用来存放数据的一些小型存储区域，用来暂时存放参与运算的数据和运算结果。其实寄存器就是一种常用的时序逻辑电路，但这种时序逻辑电路只包含存储电路。寄存器的存储电路是由锁存器或触发器构成的，因为一个锁存器或触发器能存储
+1 位二进制数，所以由 N 个<a
+target="_blank" rel="noopener" href="https://baike.baidu.com/item/锁存器/10801965">锁存器</a>或触发器可以构成
+N
+位寄存器。寄存器是中央处理器内的组成部分。寄存器是有限存储容量的高速存储部件，它们可用来暂存指令</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/050.png"
+alt="050" />
+<figcaption aria-hidden="true">050</figcaption>
+</figure>
+<p>16x16 门锁矩阵</p>
+<p>更大位的寄存器</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/051.png"
+alt="051" />
+<figcaption aria-hidden="true">051</figcaption>
+</figure>
+<p>启用某个锁存的方式位激活相应的排线和列线，注意，排线和列线并无连接，可以想象他们交界处，排线像拱桥一样越过了列线，另外，排线会连接他对应的那一排的锁存组件，列线会连接他对应的那一列的锁存组件。</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/052.png"
+alt="052" />
+<figcaption aria-hidden="true">052</figcaption>
+</figure>
+<p>在允许写入线前加一个<strong>与门</strong>，与行线和列线相连，就可以具体指向某个锁存，比如第一排，第一列，那么第一排第一列所连接的锁存，它的读写控制线才能真正被启动</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/054.png"
+alt="054" />
+<figcaption aria-hidden="true">054</figcaption>
+</figure>
+<p>启用行列线，再<strong>启用写入操作线</strong>，就可以操作这个锁存，再因为没有行列线的锁存是关闭启用写入线，所以写入操作线就算公用的（1
+条线连所有），也可以做到针对某个锁存操作，</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/055.png"
+alt="055" />
+<figcaption aria-hidden="true">055</figcaption>
+</figure>
+<p>启用行列线，再启用<strong>读取操作线</strong>，就可以打开门锁输出线的开关组件，而此时的写入操作线是关闭状态，所以可以放心启用数据输入输出线，来<strong>读取到这个锁存的输出</strong></p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/057.png"
+alt="057" />
+<figcaption aria-hidden="true">057</figcaption>
+</figure>
+<p>启用行列线，再启用<strong>写入操作线</strong>，就可以开启此所存的写入操作，此时操作<strong>数据输入输出线</strong>，可以设置锁存的值</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/056.png"
+alt="056" />
+<figcaption aria-hidden="true">056</figcaption>
+</figure>
+<h3 id="地址">地址</h3>
+<p>如何表示操作的是哪个锁存，（我们是使用 16x16 门锁矩阵）</p>
+<p>4bit 可以表示 16
+个数字（0-15）正好对应16根线，比如0100，意思就是4，就是第5根线（起始值是0000代表第一根线），1111是15代表第16根线。两个16线用8个bit就能表示，前4代表行，后4代表列；8
+个 bit 就可以表示一个地址（行，列），例如 3 行 10 列（0011，1010）</p>
+<h4 id="多路复用器multiplexer">多路复用器(multiplexer)</h4>
+<p>为了将行和列转换为地址，我们需要多路复用器(multiplexer)
+多路复用器就是执行将
+8bit的一个数字拆成两个4bit,在把4bit的数字，对应到那一根线，让那根线的开关闭合，连通电路</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/058.png"
+alt="058" />
+<figcaption aria-hidden="true">058</figcaption>
+</figure>
+<h4 id="内存memory">内存（memory）</h4>
+<p>现在这个内存是通过8根线，代表地址，1根线代表数据读写，1根控制可读，1根控制可写。</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/059.png"
+alt="059" />
+<figcaption aria-hidden="true">059</figcaption>
+</figure>
+<h4 id="静态随机地址存储sram">静态随机地址存储（SRAM）</h4>
+<p>我们将8个1bit的内存并联，操作同一个地址，8根数据线分别写入8个小内存里，另外两根是可读可写线。如此一来，一个可存8位数据的，地址范围是0到255的存储装置就做好了，这也就是RAM(内存)</p>
+<p>存储 8bit 数据的方式，8 个比特位用相同的地址分别存储</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/060.png"
+alt="060" />
+<figcaption aria-hidden="true">060</figcaption>
+</figure>
+<p>这个是一个 SRAM （static random access memory）</p>
+<p>把这个内存单元，看成拥有 256 个地址，每个地址能读写一个 8bit
+值，这就是 RAM</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/061.png"
+alt="061" />
+<figcaption aria-hidden="true">061</figcaption>
+</figure>
+<h2 id="the-center-processing-unit-cpu">The Center Processing Unit
+（CPU）</h2>
+<h3 id="基础组件">基础组件</h3>
+<p>将上面所封装的寄存器和内存拿下来使用，记住我们始终操作的是8位的数据，鉴于我们的设计，我们肯定是需要一个8位的寄存器来存储地址，鉴于我们的读写功能，可能需要多于1个的8位寄存器来存储读取的数据，在一下的内容中，我们希望实现一些计算功能，我们其实此时完成了图灵机的一部分，即，一个存储设备，读写存储设备，访问存储设备的任意位置，目前我们缺少的是程序，而接下来我们定义指令，并在计算时，使用到上面封装的计算单元（ALU）来完成我们的图灵计算机。</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/063.png"
+alt="063" />
+<figcaption aria-hidden="true">063</figcaption>
+</figure>
+<h3 id="指令表">指令表</h3>
+<p>我们定义指令，指令由8bit组成，前4位代表操作，后四位代表操作对象（地址，或寄存器），在这个例子中，我们的地址只有4位，（这是为了简化举例，我们上面所组装的8位地址是有用的，现代计算机早已经是64位了，而64位就代表其能操作的数值是64位，能使用的地址远超我们现在的例子，所以当前使用4位的地址仅仅是方便举例）如图所示，LOAD_A的意思是把后四位代表内存位置的值，读取到A寄存器里。</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/062.png"
+alt="062" />
+<figcaption aria-hidden="true">062</figcaption>
+</figure>
+<h3 id="cpu-基本架构">cpu 基本架构</h3>
+<p>我们还需要两个寄存器来完成 CPU，一个用来存储指令地址（本例是
+RAM），一个用来存储指令</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/064.png"
+alt="064" />
+<figcaption aria-hidden="true">064</figcaption>
+</figure>
+<h3 id="cpu-执行流程">cpu 执行流程</h3>
+<h4
+id="启动计算机所有寄存器从零开始">启动计算机，所有寄存器从零开始</h4>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/065.png"
+alt="065" />
+<figcaption aria-hidden="true">065</figcaption>
+</figure>
+<h4 id="为了举例我们在-ram-放了一个程序">为了举例我们在 RAM
+放了一个程序</h4>
+<p><strong>取指令</strong></p>
+<p>cpu 的第一个阶段叫做<code>取指令阶段</code>FETCH PHASE
+,负责拿到指令</p>
+<ul>
+<li>指令地址寄存器连到 RAM，此时寄存器地址为０,因此 RAM 返回地址 0
+的值,值会复制到指令寄存器里</li>
+</ul>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/067.png"
+alt="067" />
+<figcaption aria-hidden="true">067</figcaption>
+</figure>
+<p><strong>解码指令</strong></p>
+<p>cpu 的第二个阶段叫做<code>解码阶段</code>DECODE
+FHASE,负责解析出要执行什么指令</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/068.png"
+alt="068" />
+<figcaption aria-hidden="true">068</figcaption>
+</figure>
+<p>在我们定义的指令中,一个 8 位值,前 4 位代表指令,后 4
+位代表参数;对于指令寄存器的值我们需要使用一个控制单元来进行解码</p>
+<ul>
+<li>检查指令是不是 LOAD_A,我们可以用很少的逻辑门实现</li>
+</ul>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/069.png"
+alt="069" />
+<figcaption aria-hidden="true">069</figcaption>
+</figure>
+<p><strong>执行指令</strong></p>
+<p>知道了是什么指令,我们就可以进入执行阶段</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/070.png"
+alt="070" />
+<figcaption aria-hidden="true">070</figcaption>
+</figure>
+<ul>
+<li>电路的连接保证 LOAD_A 正确执行</li>
+</ul>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/071.png"
+alt="071" />
+<figcaption aria-hidden="true">071</figcaption>
+</figure>
+<ul>
+<li>关闭电路,指令地址寄存器+1</li>
+</ul>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/072.png"
+alt="072" />
+<figcaption aria-hidden="true">072</figcaption>
+</figure>
+<h3 id="控制单元">控制单元</h3>
+<p>分析完一个指令后,其他的指令也是类似的情况,所以将所有指令封装成一个控制单元</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/073.png"
+alt="073" />
+<figcaption aria-hidden="true">073</figcaption>
+</figure>
+<ul>
+<li>对于 ADD 指令我们需要使用 ALU</li>
+</ul>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/074.png"
+alt="074" />
+<figcaption aria-hidden="true">074</figcaption>
+</figure>
+<ul>
+<li>始终以精确的间隔触发电信号,控制单元会利用这个信号,推进 cpu
+的内部操作,确保一切按步骤进行,cpu"取指令--&gt;解码--&gt;执行"的速度叫"时钟速度(CLOCK
+SPEED)"
+通过时钟，计算机一步一步得执行，取指令，解码指令，执行指令，读指令...
+计算机中运行的是电信号，电的传播速度在我们的认知上是光速，所以cpu的极限频率大概和光速有关吧。</li>
+</ul>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/075.png"
+alt="075" />
+<figcaption aria-hidden="true">075</figcaption>
+</figure>
+<h3 id="cpu">CPU</h3>
+<p>我们把寄存器，ALU
+，指令控制封装到一起，到中国人很喜欢提的芯片上，这个芯片就叫CPU</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/076.png"
+alt="076" />
+<figcaption aria-hidden="true">076</figcaption>
+</figure>
+<h2
+id="指令和程序instructionprograms">指令和程序(Instruction&amp;Programs)</h2>
+<p>cpu
+之所以强大,是因为它是可编程的,写入不同的指令就会执行不同的任务,CPU
+是一个可以被软件控制的硬件</p>
+<p>这是上一节的例子,四个指令形成了一个加法的操作</p>
+<p>RA（register A）</p>
+<ul>
+<li>RAM 地址 14 的值 加载到 RA（寄存器A）</li>
+<li>RAM 地址 15 的值加载到 RB（寄存器B）</li>
+<li>ADD RB &amp; RA ,将结果写入 RA（寄存器A）</li>
+<li>将 RA 的值存到 RAM 的 13 地址</li>
+</ul>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/077.png"
+alt="077" />
+<figcaption aria-hidden="true">077</figcaption>
+</figure>
+<h3 id="增加一些指令">增加一些指令</h3>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/078.png"
+alt="078" />
+<figcaption aria-hidden="true">078</figcaption>
+</figure>
+<p>负数跳JUMP是通过 ALU 的标志位实现的</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/079.png"
+alt="079" />
+<figcaption aria-hidden="true">079</figcaption>
+</figure>
+<p>没有 halt,cpu 就会继续执行下去,由于 0
+不是指令所以电脑会崩,因为指令和数据都放在内存里,他们在根本上没有区别,都是二进制数,所以
+halt 很重要,能区分指令和数据</p>
+<h3 id="循环的指令">循环的指令</h3>
+<p>INST（instruction）</p>
+<ul>
+<li>RAM14 LOAD RA</li>
+<li>RAM15 LOAD RB</li>
+<li>ADD RB &amp; RA into RA</li>
+<li>JUMP 2 =&gt;INST.ADDR.REGISTER（指令寄存器） change into 2=&gt;
+EXECUTE RAM 2 INST（指令）</li>
+<li>ADD RB &amp; RA into RA</li>
+<li>JUMP 2 =&gt;INST.ADDR.REGISTER（指令寄存器） change into 2=&gt;
+EXECUTE RAM 2 INST（指令</li>
+<li>...</li>
+</ul>
+<p>(INFINITE LOOP)</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/080.png"
+alt="080" />
+<figcaption aria-hidden="true">080</figcaption>
+</figure>
+<h3 id="有条件的循环">有条件的循环</h3>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/081.png"
+alt="081" />
+<figcaption aria-hidden="true">081</figcaption>
+</figure>
+<p>SUB(subtract) ALU(Arithmetic &amp; Logic Unit)</p>
+<ul>
+<li>RAM14 LOAD RA</li>
+<li>RAM15 LOAD RB</li>
+<li>SUB RA - RB into RA 11-5=6&gt;0</li>
+<li>JUMP_NEG 5 =&gt; ALU RESULT &gt;0 =&gt;don't EXECUTE</li>
+<li>JUMP 2=&gt;INST.ADDR.REGISTER change into 2=&gt; EXECUTE RAM2
+INST</li>
+<li>SUB RB RA into RA into RA 6-5=1&gt;0</li>
+<li>JUMP_NEG 5 =&gt; ALU RESULT &gt;0 =&gt;don't EXECUTE</li>
+<li>JUMP 2=&gt;INST.ADDR.REGISTER change into 2=&gt; EXECUTE RAM2
+INST</li>
+<li>SUB RA - RB into RA 1-5=-4&gt;0</li>
+<li>JUMP_NEG 5 =&gt; ALU RESULT &lt;0 =&gt;INST.ADDR.REGISTER change
+into 5=&gt; EXECUTE RAM5 INST</li>
+<li>ADD RB &amp; RA into RA</li>
+<li>STORE RA into RAM 13</li>
+<li>HALT (结束)</li>
+</ul>
+<p>ALU 没有除法,但是我们可以通过程序来实现,</p>
+<p>扩展资料</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://crashcourse.club/">Crash Course 字幕组</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.patreon.com/crashcourse">Crash Course
+官方</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CPU/" rel="tag"># CPU</a>
+              <a href="/tags/%E5%86%85%E5%AD%98/" rel="tag"># 内存</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/08/18/%E5%A6%82%E4%BD%95%E5%9C%A8%E4%BF%A1%E6%81%AF%E4%B8%8D%E8%B6%B3%E6%97%B6%E4%BD%9C%E5%86%B3%E7%AD%96/" rel="prev" title="信息不足时如何做出决策">
+                  <i class="fa fa-angle-left"></i> 信息不足时如何做出决策
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/09/%E6%B5%81%E5%A4%84%E7%90%865/" rel="next" title="【浏览器怎么操作二进制】【五】总结">
+                  【浏览器怎么操作二进制】【五】总结 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Da Winter</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

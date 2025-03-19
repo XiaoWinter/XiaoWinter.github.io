@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaowinter.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="问题简述 andt 表格组件 Table 需要封装，样式还原原型，统一数据源接口，搜索，分页 antdTable antdProTable andtTable：单纯的渲染组件 antdProTable: 官方封装过重，难以还原UI设计，交互逻辑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="antd simpleTable">
+<meta property="og:url" content="https://xiaowinter.github.io/2024/12/12/SimpleTable/index.html">
+<meta property="og:site_name" content="DaWinter">
+<meta property="og:description" content="问题简述 andt 表格组件 Table 需要封装，样式还原原型，统一数据源接口，搜索，分页 antdTable antdProTable andtTable：单纯的渲染组件 antdProTable: 官方封装过重，难以还原UI设计，交互逻辑">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213163001719.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213150840733.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213145040903.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213143002501.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213153951504.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213155443550.png">
+<meta property="og:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213161440188.png">
+<meta property="article:published_time" content="2024-12-12T11:54:00.000Z">
+<meta property="article:modified_time" content="2024-12-12T11:54:00.000Z">
+<meta property="article:author" content="Da Winter">
+<meta property="article:tag" content="antd">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213163001719.png">
+
+
+<link rel="canonical" href="https://xiaowinter.github.io/2024/12/12/SimpleTable/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://xiaowinter.github.io/2024/12/12/SimpleTable/","path":"2024/12/12/SimpleTable/","title":"antd simpleTable"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>antd simpleTable | DaWinter</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">DaWinter</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">DaWinter's blob</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E7%AE%80%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">问题简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">设计思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simpletable%E7%BB%93%E6%9E%84%E5%9B%BE"><span class="nav-number">3.</span> <span class="nav-text">SimpleTable结构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ui%E6%A0%B7%E5%BC%8F%E5%8F%8A%E5%85%BC%E5%AE%B9%E5%A4%84%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">UI样式及兼容处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">6.</span> <span class="nav-text">目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E"><span class="nav-number">6.1.</span> <span class="nav-text">目录结构说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E8%AF%A6%E6%83%85"><span class="nav-number">7.</span> <span class="nav-text">方案详情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">8.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">9.</span> <span class="nav-text">进阶使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#api"><span class="nav-number">10.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#usetablecontroller"><span class="nav-number">10.1.</span> <span class="nav-text">useTableController</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0"><span class="nav-number">10.1.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E"><span class="nav-number">10.1.2.</span> <span class="nav-text">返回</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E7%AE%B1%E5%8D%B3%E7%94%A8%E7%BB%84%E4%BB%B6"><span class="nav-number">11.</span> <span class="nav-text">开箱即用组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-1"><span class="nav-number">11.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#simpletableinstance"><span class="nav-number">11.2.</span> <span class="nav-text">SimpleTableInstance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#simplesearchinstance"><span class="nav-number">11.3.</span> <span class="nav-text">SimpleSearchInstance</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Da Winter"
+      src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+  <p class="site-author-name" itemprop="name">Da Winter</p>
+  <div class="site-description" itemprop="description">开发经历</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xiaowinter.github.io/2024/12/12/SimpleTable/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/Desig萨达ner.png">
+      <meta itemprop="name" content="Da Winter">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaWinter">
+      <meta itemprop="description" content="开发经历">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="antd simpleTable | DaWinter">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          antd simpleTable
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-12 19:54:00" itemprop="dateCreated datePublished" datetime="2024-12-12T19:54:00+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">前端组件</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="问题简述">问题简述</h2>
+<p>andt 表格组件 Table
+需要封装，样式还原原型，统一数据源接口，搜索，分页</p>
+<p><a
+target="_blank" rel="noopener" href="https://ant-design.antgroup.com/components/table-cn">antdTable</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://procomponents.ant.design/components/table">antdProTable</a></p>
+<p>andtTable：单纯的渲染组件</p>
+<p>antdProTable: 官方封装过重，难以还原UI设计，交互逻辑</p>
+<p><img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213163001719.png"
+alt="image-20241213163001719" /> <span id="more"></span></p>
+<h2 id="设计思路">设计思路</h2>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213150840733.png"
+alt="image-20241213150840733" />
+<figcaption aria-hidden="true">image-20241213150840733</figcaption>
+</figure>
+<h2 id="simpletable结构图">SimpleTable结构图</h2>
+<p>简单的表格组件 <code>SimpleTable</code>
+及其相关的功能模块，包括分页、搜索和数据控制。具体来说：</p>
+<ul>
+<li><strong>useTableController</strong>：这是一个自定义
+Hook，用于管理表格的数据、分页和搜索逻辑。它提供了以下功能：
+<ul>
+<li><strong>paginationController</strong>：管理分页状态，包括当前页码、每页大小、总记录数等。</li>
+<li><strong>searchController</strong>：管理搜索参数和重置功能。</li>
+<li><strong>tableController</strong>：管理表格数据，包括加载状态、选中的行等。</li>
+<li><strong>refresh</strong>：刷新表格数据。</li>
+<li><strong>reset</strong>：重置分页和搜索参数。</li>
+</ul></li>
+<li><strong>SimpleTable</strong>：这是一个表格组件，基于 Ant Design 的
+<code>Table</code> 组件。它接收 <code>columns</code> 和
+<code>tableController</code>
+作为属性，并渲染表格数据。支持行选择功能。</li>
+<li><strong>SimplePagination</strong>：这是一个分页组件，基于 Ant Design
+的 <code>Pagination</code> 组件。它接收
+<code>paginationController</code> 作为属性，并渲染分页控件。</li>
+<li><strong>SimpleSearch</strong>：这是一个搜索组件，基于
+<code>@ant-design/pro-components</code> 的 <code>QueryFilter</code>
+组件。它接收 <code>searchController</code>
+和子组件作为属性，并提供搜索表单的功能，支持表单提交和重置。</li>
+</ul>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213145040903.png"
+alt="image-20241213145040903" />
+<figcaption aria-hidden="true">image-20241213145040903</figcaption>
+</figure>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213143002501.png"
+alt="image-20241213143002501" />
+<figcaption aria-hidden="true">image-20241213143002501</figcaption>
+</figure>
+<h2 id="ui样式及兼容处理">UI样式及兼容处理</h2>
+<ol type="1">
+<li>UI样式的实现</li>
+<li>可配置原生组件默认配置</li>
+<li>不要侵入基础组件</li>
+</ol>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213153951504.png"
+alt="image-20241213153951504" />
+<figcaption aria-hidden="true">image-20241213153951504</figcaption>
+</figure>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213155443550.png"
+alt="image-20241213155443550" />
+<figcaption aria-hidden="true">image-20241213155443550</figcaption>
+</figure>
+<h2 id="应用">应用</h2>
+<p>提供当前UI，及交互逻辑标准实现，并添加实用组件</p>
+<figure>
+<img data-src="https://typora-huang-cong.oss-cn-shanghai.aliyuncs.com/image-20241213161440188.png"
+alt="image-20241213161440188" />
+<figcaption aria-hidden="true">image-20241213161440188</figcaption>
+</figure>
+<h2 id="目录结构">目录结构</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">src/components/SimpleTable/</span><br><span class="line">├── context.ts</span><br><span class="line">├── index.ts</span><br><span class="line">├── SimpleTableInstance.tsx</span><br><span class="line">├── standardWrapper.tsx</span><br><span class="line">├── style.module.less</span><br><span class="line">└── types.ts</span><br></pre></td></tr></table></figure>
+<h3 id="目录结构说明">目录结构说明</h3>
+<ol type="1">
+<li><strong>context.ts</strong>:
+<ul>
+<li>定义和导出 <code>SIMPLETABLE_CONTEXT</code> 和
+<code>SIMPLETABLE_CONTEXT_TYPE</code>，用于在组件之间传递配置属性。</li>
+</ul></li>
+<li><strong>index.ts</strong>:
+<ul>
+<li>导出 <code>SimpleTable</code> 组件及其相关组件，方便外部引用。</li>
+</ul></li>
+<li><strong>SimpleTableInstance.tsx</strong>:
+<ul>
+<li>实现 <code>SimpleTable</code> 组件的实例化逻辑，包括
+<code>Search</code>、<code>Table</code> 和 <code>Pagination</code>
+子组件的配置和渲染。</li>
+</ul></li>
+<li><strong>standardWrapper.tsx</strong>:
+<ul>
+<li>使用 <code>styled-components</code> 和 <code>React.Context</code> 对
+<code>SimpleTable</code> 组件的各个部分（如
+<code>Search</code>、<code>Table</code> 和
+<code>Pagination</code>）进行样式修改，并传递配置属性。</li>
+</ul></li>
+<li><strong>style.module.less</strong>:
+<ul>
+<li>定义 <code>SimpleTable</code> 组件的样式，使用 CSS
+模块化的方式避免样式冲突。</li>
+</ul></li>
+<li><strong>types.ts</strong>:
+<ul>
+<li>定义 <code>SimpleTable</code>
+组件及其子组件的相关类型，确保类型安全。</li>
+</ul></li>
+</ol>
+<h2 id="方案详情">方案详情</h2>
+<p>1.抽离 table 的状态和数据到控制器，暴露出 table
+渲染数据，seachController 和 pagenationController 写为 hooks。</p>
+<p>2.将控制器和数据传入 Search,Table,Pagination，简单封装为
+SimpleSearch,SimpleTable,SimplePagination
+等<strong>纯逻辑组件</strong>完成表单交互。</p>
+<p>3.使用 styled-components 编写 Wrapper
+组件包装<strong>纯逻辑组件</strong>完成与 UI 设计稿的一致性。</p>
+<p>4.使用 React.Context 在 Wrapper 和<strong>纯逻辑组件</strong>之间传递
+antd 组件 props 实现封装组件和 antd 组件 API 整合。</p>
+<p>5.使用 Wrapper 和<strong>纯逻辑组件</strong>封装开箱即用
+Table,以覆盖多数场景。</p>
+<h2 id="基本使用">基本使用</h2>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  <span class="title class_">SimpleSearchInstance</span>,</span><br><span class="line">  <span class="title class_">SimpleTableInstance</span>,</span><br><span class="line">  useTableController,</span><br><span class="line">  <span class="title class_">GetTableData</span>,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&quot;@/components/SimpleTable&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="attr">dataFetcher</span>: <span class="title class_">GetTableData</span>&lt;<span class="built_in">any</span>&gt; = <span class="title function_">async</span> (&#123; page, size, params &#125;) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> resp = <span class="keyword">await</span> <span class="title function_">request</span>(<span class="string">&quot;/absc/v1/enterprise-accounts/list&quot;</span>, <span class="string">&quot;GET&quot;</span>, &#123;</span><br><span class="line">      page,</span><br><span class="line">      size,</span><br><span class="line">      ...params,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123; totalElements, failed, content &#125; = resp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (failed) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">total</span>:<span class="number">0</span>,<span class="attr">data</span>:[]&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">data</span>: content,</span><br><span class="line">      <span class="attr">total</span>: totalElements,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; pagenationController, tableController, searchController &#125; =</span><br><span class="line">    <span class="title function_">useTableController</span>(dataFetcher);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> columns = [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;账号&quot;</span>,</span><br><span class="line">      <span class="attr">dataIndex</span>: <span class="string">&quot;userId&quot;</span>,</span><br><span class="line">      <span class="attr">key</span>: <span class="string">&quot;userId&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;操作&quot;</span>,</span><br><span class="line">      <span class="attr">dataIndex</span>: <span class="string">&quot;address&quot;</span>,</span><br><span class="line">      <span class="attr">key</span>: <span class="string">&quot;address&quot;</span>,</span><br><span class="line">      <span class="attr">render</span>: <span class="function">() =&gt;</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">            navigate(&quot;/home/user-manage/edit/12&quot;);</span></span><br><span class="line"><span class="language-xml">          &#125;&#125;</span></span><br><span class="line"><span class="language-xml">        &gt;</span></span><br><span class="line"><span class="language-xml">          编辑</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">      ),</span><br><span class="line">    &#125;,</span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 搜索</span></span><br><span class="line">     <span class="language-xml"><span class="tag">&lt;<span class="name">SimpleSearchInstance</span> <span class="attr">searchController</span>=<span class="string">&#123;searchController&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ProFormText</span> <span class="attr">placeholder</span>=<span class="string">&#x27;请输入&#x27;</span> <span class="attr">name</span>=<span class="string">&#x27;accountName&#x27;</span> <span class="attr">label</span>=<span class="string">&#x27;用户名&#x27;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ProFormText</span> <span class="attr">placeholder</span>=<span class="string">&#x27;请输入&#x27;</span> <span class="attr">name</span>=<span class="string">&#x27;mobilePhone&#x27;</span> <span class="attr">label</span>=<span class="string">&#x27;手机号&#x27;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ProFormText</span> <span class="attr">placeholder</span>=<span class="string">&#x27;请输入&#x27;</span> <span class="attr">name</span>=<span class="string">&#x27;email&#x27;</span> <span class="attr">label</span>=<span class="string">&#x27;邮箱&#x27;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">SimpleSearchInstance</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">     <span class="comment">// 表头</span></span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">SimpleTableInstance</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">columns</span>=<span class="string">&#123;columns&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">tableController</span>=<span class="string">&#123;tableController&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">pagenationController</span>=<span class="string">&#123;pagenationController&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      /&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="进阶使用方式">进阶使用方式</h2>
+<p>自定义包装器，包装核心组件实现样式自定义，以及antd组件Table的API使用；具体写法参考
+standardWrapper</p>
+<h2 id="api">API</h2>
+<h3 id="usetablecontroller">useTableController</h3>
+<h4 id="参数">参数</h4>
+<table>
+<thead>
+<tr class="header">
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必输</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>tableDataFrom</td>
+<td>函数或数组</td>
+<td>数据源</td>
+<td>是</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>options.autoQuery</td>
+<td>boolean</td>
+<td>创建自动查询</td>
+<td>否</td>
+<td>true</td>
+</tr>
+<tr class="odd">
+<td>options.size</td>
+<td>number</td>
+<td>每页大小</td>
+<td>否</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<h4 id="返回">返回</h4>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"> <span class="comment">// pagination控制器</span></span><br><span class="line"> <span class="attr">paginationController</span>: <span class="title class_">PaginationController</span>;</span><br><span class="line"> <span class="comment">// 查询框控制器</span></span><br><span class="line"> <span class="attr">searchController</span>: <span class="title class_">SearchController</span>;</span><br><span class="line"> <span class="comment">// 表格数据</span></span><br><span class="line"> <span class="attr">tableController</span>: <span class="title class_">TableController</span>&lt;T&gt;;</span><br><span class="line"> <span class="comment">// 刷新数据</span></span><br><span class="line"> <span class="attr">refresh</span>: <span class="function">() =&gt;</span> <span class="title class_">Promise</span>&lt;<span class="built_in">void</span>&gt;;</span><br><span class="line"> <span class="comment">// 重置表格</span></span><br><span class="line"> <span class="attr">reset</span>: <span class="function">(<span class="params"><span class="attr">arg</span>: &#123;</span></span></span><br><span class="line"><span class="params"><span class="function">   page?: <span class="built_in">number</span>;</span></span></span><br><span class="line"><span class="params"><span class="function">   size?: <span class="built_in">number</span>;</span></span></span><br><span class="line"><span class="params"><span class="function">   params?: Record&lt;<span class="built_in">string</span>, <span class="built_in">any</span>&gt;;</span></span></span><br><span class="line"><span class="params"><span class="function"> &#125;</span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="开箱即用组件">开箱即用组件</h2>
+<h3 id="基本使用-1">基本使用</h3>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  <span class="title class_">SimpleSearchInstance</span>,</span><br><span class="line">  <span class="title class_">SimpleTableInstance</span>,</span><br><span class="line">  useTableController,</span><br><span class="line">  <span class="title class_">GetTableData</span>,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&quot;@/components/SimpleTable&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ProFormText</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@ant-design/pro-form&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Component</span>:<span class="title class_">React</span>.<span class="property">FC</span>&lt;<span class="title class_">PropsType</span>&gt; = <span class="function">()=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 声明数据源</span></span><br><span class="line">  <span class="keyword">const</span> <span class="attr">dataFetcher</span>: <span class="title class_">GetTableData</span>&lt;<span class="built_in">any</span>&gt; = <span class="title function_">async</span> (&#123; page, size, params &#125;) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> resp = <span class="keyword">await</span> <span class="title function_">request</span>(<span class="string">&quot;/absc/v1/enterprise-accounts/list&quot;</span>, <span class="string">&quot;GET&quot;</span>, &#123;</span><br><span class="line">       <span class="comment">// pagination 和后端的page相差1</span></span><br><span class="line">      <span class="attr">page</span>:page-<span class="number">1</span>,</span><br><span class="line">      size,</span><br><span class="line">      ...params,</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123; totalElements, failed, content &#125; = resp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (failed) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">data</span>: [],</span><br><span class="line">        <span class="attr">total</span>: <span class="number">0</span>,</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">data</span>: content,</span><br><span class="line">      <span class="attr">total</span>: totalElements,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; paginationController, tableController, searchController ,refresh,reset&#125; =</span><br><span class="line">    <span class="title function_">useTableController</span>(dataFetcher);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">       <span class="tag">&lt;<span class="name">SimpleSearchInstance</span> <span class="attr">searchController</span>=<span class="string">&#123;searchController&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ProFormText</span> <span class="attr">placeholder</span>=<span class="string">&#x27;请输入&#x27;</span> <span class="attr">name</span>=<span class="string">&#x27;accountName&#x27;</span> <span class="attr">label</span>=<span class="string">&#x27;用户名&#x27;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ProFormText</span> <span class="attr">placeholder</span>=<span class="string">&#x27;请输入&#x27;</span> <span class="attr">name</span>=<span class="string">&#x27;mobilePhone&#x27;</span> <span class="attr">label</span>=<span class="string">&#x27;手机号&#x27;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ProFormText</span> <span class="attr">placeholder</span>=<span class="string">&#x27;请输入&#x27;</span> <span class="attr">name</span>=<span class="string">&#x27;email&#x27;</span> <span class="attr">label</span>=<span class="string">&#x27;邮箱&#x27;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">SimpleSearchInstance</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">     <span class="tag">&lt;<span class="name">SimpleTableInstance</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">columns</span>=<span class="string">&#123;generateColumns()&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">tableController</span>=<span class="string">&#123;tableController&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">paginationController</span>=<span class="string">&#123;paginationController&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/&gt;</span></span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="simpletableinstance">SimpleTableInstance</h3>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 19%" />
+<col style="width: 51%" />
+<col style="width: 6%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必输</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>columns</td>
+<td>数组</td>
+<td>antd的Table组件的columns</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td>tableController</td>
+<td>tableController</td>
+<td>antd的Table组件的dataSource 和 loading</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td>paginationController</td>
+<td>PaginationController</td>
+<td>SimplePagination的参数，简单封装了pagination的逻辑</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td>tableExtraProps</td>
+<td>antd的Table的props</td>
+<td>antd的Table的props，使用table功能时传入对应的参数</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td>paginationExtraProps</td>
+<td>antd的Pagination的props</td>
+<td>antd的Pagination的props,使用Props的功能时，可以传入对应的参数</td>
+<td>否</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<h3 id="simplesearchinstance">SimpleSearchInstance</h3>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 39%" />
+<col style="width: 37%" />
+<col style="width: 6%" />
+<col style="width: 4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+<th>是否必输</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>searchController</td>
+<td>SearchController</td>
+<td>SimpleSearch的参数，简单封装了QueryFilter的逻辑</td>
+<td>是</td>
+<td>无</td>
+</tr>
+<tr class="even">
+<td>searchExtraProps</td>
+<td><span class="citation"
+data-cites="ant-design/pro-components的组件QueryFilter的props">@ant-design/pro-components的组件QueryFilter的props</span></td>
+<td>使用QueryFilter的功能时可以传入对应的参数</td>
+<td>否</td>
+<td>无</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/antd/" rel="tag"># antd</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/12/12/%E8%AE%AE%E4%BA%8B%E8%AE%B0%E5%BD%95/" rel="prev" title="议事记录">
+                  <i class="fa fa-angle-left"></i> 议事记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/12/15/%E5%9C%B0%E5%9B%BE%E7%BC%A9%E6%94%BE%E6%AF%94%E4%BE%8B%E7%A1%AE%E5%AE%9A/" rel="next" title="高德地图跨日界线显示">
+                  高德地图跨日界线显示 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Da Winter</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
