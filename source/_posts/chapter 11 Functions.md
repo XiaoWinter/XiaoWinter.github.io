@@ -13,7 +13,7 @@ mathjax: true
 THE MATHEMATICAL use of the term function has been adopted also in common life. For example, 'His temper is a function of his digestion,' uses the term exactly in this mathematical sense. It means that a rule can be assigned which will tell you what his temper will be when you know how his digestion is working. Thus the idea of a 'function' is simple enough, we only have to see how it is applied in mathematics to variable numbers. Let us think first of some concrete examples: If a train has been travelling at the rate of twenty miles per hour, the distance ($s$ miles) gone after any number of hours, say $t$ , is given by $s=20*t$ ; and $s$ is called a function of $t$ . Also $20*t$ is the function of $t$ with which $s$ is identical. If John is one year older than Thomas, then , when Thomas is at any age of $x$ years, John's age ($y$ years) is given by $y=x+1;$ and $y$ is a function of $x$, namely, is the function $x+1$.
 
 “数学中‘函数’一词的使用也被引入到日常生活中。例如，‘他的脾气是他消化情况的函数’，在这里‘函数’一词正是以数学意义被使用。它的意思是，可以设定一个规则，通过知道他的消化状况，来预测他的脾气。因此，‘函数’的概念其实很简单，我们只需要看它在数学中如何应用于变量数值。首先让我们考虑一些具体的例子：如果一列火车以每小时20英里的速度行驶，那么经过若干小时后的行驶距离（$s$ 英里）可以表示为 $s=20*t$；此时，$s$ 就是 $t$ 的函数，而 $20*t$ 就是与 $s$ 相同的函数。如果约翰比托马斯大一岁，那么当托马斯的年龄为 $x$ 岁时，约翰的年龄（$y$ 岁）可以表示为 $y=x+1$；此时，$y$ 是 $x$ 的函数，具体来说，就是函数 $x+1$。
-
+<!--more-->
 In these examples $t$ and $x$ are called the 'arguments' of the functions in which they appear. Thus $t$ is the argument of the functions $20*t$ , and $x$ is the argument of the function of $x+1$. If $s=20*t$, and $y=x+1$, then $s$ and $y$ are called the 'values' of the function $20*t$ and $x+1$ respectively.
 
 在这些例子中，$t$ 和 $x$ 被称为它们所出现的函数的“自变量”。因此，$t$ 是函数 $20*t$ 的自变量，$x$ 是函数 $x+1$ 的自变量。如果有 $s=20*t$ , $y=x+1$，那么 $s$ 和 $y$ 分别被称为函数 $20*t$ 和 $x+1$ 的“值”。
